@@ -1,0 +1,224 @@
+﻿Plant_ID,Scientific_Name,KNApSAcK_ID,CAS,Compound_Name,Molecular_Formula,Molecular_Weight,KNApSAcK_Organism,KNApSAcK_Search_Name,Plant_ID_DB,Common_Name_KO,English_Name,Scientific_Name_DB
+PLANT033,Salvia rosmarinus,C00000136,470-82-6,"1,8-Cineol",C10H18O,154.1357652,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00000152,7400-08-0,p-Coumaric acid,C9H8O3,164.04734412,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00000155,89-83-8,m-Thymol,C10H14O,150.10446507,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00000156,499-75-2,Carvacrol,C10H14O,150.10446507,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00000184,2867-05-2,alpha-Thujene,C10H16,136.12520051,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00000219,1211-29-6,Methyl jasmonate,C13H20O3,224.1412445,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00000357,66-25-1,Hexanal,C6H12O,100.08881501,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00000615,501-16-6,Caffeic acid,C9H8O4,180.04225874,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00000619,97-53-0,Eugenol,C10H12O2,164.08372963,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00000659,40957-99-1,Medioresinol,C21H24O7,388.15220312,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00000674,491-70-3,"5,7,3',4'-Tetrahydroxyflavone",C15H10O6,286.04773805,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00000805,80-56-8,alpha-Pinene,C10H16,136.12520051,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00000816,127-91-3,beta-Pinene,C10H16,136.12520051,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00000819,76-22-2,Camphor,C10H16O,152.12011513,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00000823,138-86-3,Limonene,C10H16,136.12520051,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00000839,13466-78-9,3-Carene,C10H16,136.12520051,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00000842,20347-65-3,(+)-Bornyl acetate,C12H20O2,196.14632988,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00000846,763-10-0,Geranyl diphospate,C10H20O7P2,314.06842597,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00000848,358-71-4,Isopentenyl diphosphate,C5H12O7P2,246.00582572,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00000853,123-35-3,beta-Myrcene,C10H16,136.12520051,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00000856,99-96-7,4-Hydroxybenzoic acid,C7H6O3,138.03169406,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00000861,586-62-9,alpha-Terpinolene,C10H16,136.12520051,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00000894,515-03-7,Sclareol,C20H36O2,308.27153039,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00000907,13058-04-3,Farnesyl pyrophosphate,C15H28O7P2,382.13102623,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00000960,552-58-9,Eriodictyol,C15H12O6,288.06338812,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00000968,520-33-2,Hesperetin,C16H14O6,302.07903818,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00000970,520-26-3,Hesperidin,C28H34O15,610.18977042,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00000973,480-43-3,Isosakuranetin,C16H14O5,286.08412356,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00000987,13241-33-3,Neohesperidin,C28H34O15,610.18977042,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00001016,5128-44-9,"5-Hydroxy-7,4'-dimethoxyflavone",C17H14O5,298.08412356,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00001017,578-74-5,Apigenin 7-O-beta-D-glucopyranoside,C21H20O10,432.10564686,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00001043,437-64-9,"5,4'-Dihydroxy-7-methoxyflavone",C16H12O5,284.06847349,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00001050,1447-88-7,Hispidulin,C16H12O6,300.06338812,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00001195,150-97-0,Mevalonic acid,C6H12O4,148.07355887,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00002663,60-12-8,2-Phenylethanol,C8H10O,122.07316494,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00002674,530-57-4,Syringic acid,C9H10O5,198.05282343,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00002741,93-15-2,Methyleugenol,C11H14O2,178.09937969,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00002770,20283-92-5,Labiatenic acid,C18H16O8,360.08451749,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00003028,507-70-0,Borneol,C10H18O,154.1357652,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00003029,79-92-5,Camphene,C10H16,136.12520051,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00003032,473-06-3,Chrysanthenone,C10H14O,150.10446507,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00003040,99-87-6,p-Cymene,C10H14,134.10955045,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00003045,1195-79-5,Fenchone,C10H16O,152.12011513,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00003047,78-70-6,Linalool,C10H18O,154.1357652,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00003051,99-83-2,alpha-Phellandrene,C10H16,136.12520051,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00003054,89-81-6,Piperitone,C10H16O,152.12011513,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00003060,99-86-5,alpha-Terpinene,C10H16,136.12520051,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00003061,99-85-4,gamma-Terpinene,C10H16,136.12520051,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00003067,18309-32-5,(R)-(+)-Verbenone,C10H14O,150.10446507,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00003110,87-44-5,beta-Caryophyllene,C15H24,204.18780077,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00003118,3856-25-5,alpha-Copaene,C15H24,204.18780077,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00003120,17699-14-8,alpha-Cubebene,C15H24,204.18780077,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00003121,13744-15-5,beta-Cubebene,C15H24,204.18780077,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00003147,6753-98-6,alpha-Caryophyllene (obsol.),C15H24,204.18780077,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00003203,14912-44-8,alpha-Ylangene,C15H24,204.18780077,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00003204,495-60-3,alpha-Zingiberene,C15H24,204.18780077,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00003410,5957-80-2,Carnosol,C20H26O4,330.18310932,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00003426,514-62-5,(+)-Ferruginol,C20H30O,286.22966558,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00003467,150-86-7,Phytol,C20H40O,296.3079159,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00003470,67494-15-9,Pisiferic acid,C20H28O3,316.20384476,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00003739,464-92-6,Asiatic acid,C30H48O5,488.35017464,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00003740,473-98-3,Betulin,C30H50O2,442.38108084,Rosmarinus officinalis L.,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00003741,472-15-1,beta-Betulinic acid,C30H48O3,456.3603454,Rosmarinus officinalis L.,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00003755,111-02-4,All-trans-squalene,C30H50,410.39125159,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00003817,520-36-5,Apigenin,C15H10O5,270.05282343,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00003837,6601-62-3,"5,4'-Dihydroxy-6,7-dimethoxyflavone",C17H14O6,314.07903818,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00003885,520-11-6,Eupafolin,C16H12O7,316.05830274,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00004156,552-57-8,Apigenin-7-O-beta-D-rutinoside,C27H30O14,578.16355567,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00004231,17680-84-1,Hispidulin 7-O-beta-glucoside,C22H22O11,462.11621155,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00004266,5373-11-5,Cinaroside,C21H20O11,448.10056148,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00004268,29741-10-4,Luteolin 7-glucuronide,C21H18O12,462.07982604,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00004274,53527-42-7,Luteolin 3'-O-beta-D-glucuronide,C21H18O12,462.07982604,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00004386,54300-65-1,6-Hydroxyluteolin 7-glucoside,C21H20O12,464.09547611,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00004400,569-90-4,Nepetin-7-glucoside,C22H22O12,478.11112617,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00004505,160598-98-1,Luteolin 3'-(3''-acetylglucuronide),C23H20O13,504.09039073,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00004506,160598-97-0,Luteolin 3'-(4''-acetylglucuronide),C23H20O13,504.09039073,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00004635,480-19-3,Isorhamnetin,C16H12O7,316.05830274,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00005548,604-80-8,Isorhamnetin 3-O-rutinoside,C28H32O16,624.16903498,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00007242,495-61-4,beta-Bisabolene,C15H24,204.18780077,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00007259,72-89-9,Acetyl-CoA,C23H38N7O17P3S,809.12577304,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00007270,1553-55-5,HMG-CoA,C27H44N7O20P3S,911.1574671,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00007282,7200-26-2,"(S)-2,3-Epoxysqualene",C30H50O,426.38616622,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00007288,17989-41-2,Glycerol-3-phosphate,C3H9O6P,172.01367451,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00007292,190079-18-6,DXP,C5H11O7P,214.0242392,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00007295,151435-51-7,"2-C-Methyl-D-erythritol 2,4-cyclodiphosphate",C5H12O9P2,277.99565496,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00007297,206440-72-4,2-C-Methyl-D-erythritol 4-phosphate,C5H13O7P,216.03988926,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00007304,1189-94-2,Mevalonate 5-phosphate,C6H13O7P,228.03988926,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00007363,119-13-1,delta-Tocopherol,C27H46O2,402.34978071,Rosmarinus officinalis L.,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00007364,148-03-8,beta-Tocopherol,C28H48O2,416.36543078,Rosmarinus officinalis L.,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00007365,7616-22-0,gamma-Tocopherol,C28H48O2,416.36543078,Rosmarinus officinalis L.,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00007366,59-02-9,alpha-Tocopherol,C29H50O2,430.38108084,Rosmarinus officinalis L.,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00007630,20307-83-9,beta-Sesquiphellandrene,C15H24,204.18780077,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00007636,483-76-1,delta-Cadinene,C15H24,204.18780077,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00008817,970-73-0,(+)-Gallocatechin,C15H14O7,306.0739528,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00008818,970-74-1,Epigallocatechin,C15H14O7,306.0739528,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00010303,460-01-5,"2,6-Dimethyl-1,3,5,7-octatetraenene",C10H14,134.10955045,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00010868,5989-27-5,(+)-Limonene,C10H16,136.12520051,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00010872,555-10-2,beta-Phellandrene,C10H16,136.12520051,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00010874,99-84-3,beta-Terpinen,C10H16,136.12520051,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00010889,491-09-8,Piperitenone,C10H14O,150.10446507,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00010905,1195-32-0,4-Isopropenyl-1-methylbenzene,C10H12,132.09390038,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00010938,89-79-2,Isopulegol,C10H18O,154.1357652,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00010967,535-77-3,beta-Cymene,C10H14,134.10955045,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00010974,527-84-4,alpha-Cymene,C10H14,134.10955045,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00011013,503-93-5,"2,6,6-Trimethyl-2,4-cycloheptadien-1-one",C10H14O,150.10446507,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00011067,508-32-7,Teresantanane,C10H16,136.12520051,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00011617,4176-17-4,(R)-(-)-alpha-Curcumene,C15H22,202.1721507,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00012444,19888-34-7,"Humulene 1,2-epoxide",C15H24O,220.18271539,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00012474,118-65-0,Isocaryophyllene,C15H24,204.18780077,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00012483,1139-30-6,(-)-beta-Caryophyllene epoxide,C15H24O,220.18271539,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00012508,16982-00-6,(+)-Cuparene,C15H22,202.1721507,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00013693,112208-83-0,Nepetin 4'-glucoside,C22H22O12,478.11112617,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00020051,24406-05-1,alpha-Cadinene,C15H24,204.18780077,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00020067,21391-99-1,alpha-Calacorene,C15H20,200.15650064,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00020074,483-77-2,Calamenene,C15H22,202.1721507,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00020112,483-78-3,Cadalene,C15H18,198.14085057,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00020130,24268-39-1,gamma-Muurolene,C15H24,204.18780077,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00020376,88-84-6,beta-Guaiene,C15H24,204.18780077,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00021230,489-39-4,Aromadendrene,C15H24,204.18780077,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00021720,546-28-1,beta-Cedrene,C15H24,204.18780077,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00021884,5208-59-3,beta-Bourbonene,C15H24,204.18780077,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00029316,2548-87-0,(2E)-Octenal,C8H14O,126.10446507,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00029335,13877-91-3,(E)-beta-Ocimene,C10H16,136.12520051,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00029350,28973-97-9,cis-beta-Farnesene,C15H24,204.18780077,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00029352,7299-40-3,cis-beta-Terpineol,C10H18O,154.1357652,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00029387,62201-71-2,12-O-Methyl carnosic acid,C21H30O4,346.21440945,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00029423,3391-86-4,1-Octen-3-ol,C8H16O,128.12011513,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00029544,562-74-3,4-Terpineol,C10H18O,154.1357652,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00029633,7372-30-7,Acetylursolic acid,C32H50O4,498.37091008,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00029671,10208-80-7,alpha-Muurolene,C15H24,204.18780077,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00029674,98-55-5,alpha-Terpineol,C10H18O,154.1357652,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00029679,515-69-5,alpha-Bisabolol,C15H26O,222.19836545,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00029762,26707-60-8,"2beta,3beta-Dihydroxyolean-12-en-28-oic acid",C30H48O4,472.35526002,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00029844,76-49-3,Borneol acetate,C12H20O2,196.14632988,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00030193,93380-12-2,Epirosmanol,C20H26O5,346.17802394,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00030223,544-35-4,Ethyl linoleate,C20H36O2,308.27153039,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00030345,39029-41-9,gamma-Cadinene,C15H24,204.18780077,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00030828,124-19-6,Nonadienal,C9H18O,142.1357652,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00030933,1197-01-9,p-Cymen-8-ol,C10H14O,150.10446507,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00031074,13849-91-7,Pomolic acid,C30H48O4,472.35526002,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00031190,85514-31-4,Rosmadial,C20H24O5,344.16237388,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00031191,80225-53-2,Rosmanol,C20H26O5,346.17802394,Rosmarinus officinalis L.,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00031258,3387-41-5,4(10)-Thujene,C10H16,136.12520051,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00031697,35825-57-1,Cryptotanshinone,C19H20O3,296.1412445,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00034185,36413-60-2,Quinic acid,C7H12O6,192.06338812,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00034394,263016-94-0,CDP-ME,C14H25N3O14P2,521.08117551,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00034456,73464-47-8,beta-Gurjunene,C15H24,204.18780077,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00034741,4630-07-3,Valencene,C15H24,204.18780077,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00034763,3777-69-3,2-Pentylfuran,C9H14O,138.10446507,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00034765,106-68-3,3-Octanone,C8H16O,128.12011513,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00034775,110-93-0,6-Methyl-5-hepten-2-one,C8H14O,126.10446507,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00034818,6537-80-0,Cichoric acid,C22H18O12,474.07982604,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00034880,111-71-7,Heptanal,C7H14O,114.10446507,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00034999,7785-70-8,"1R,5R-(+)-alpha-Pinene",C10H16,136.12520051,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00035015,103-45-7,2-Phenylethyl acetate,C10H12O2,164.08372963,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00035044,1721-51-3,alpha-Tocotrienol,C29H44O2,424.33413065,Rosmarinus officinalis L.,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00035060,490-23-3,beta-Tocotrienol,C28H42O2,410.31848058,Rosmarinus officinalis L.,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00035062,99-49-0,Carvone,C10H14O2,166.09937969,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00035077,25612-59-3,delta-Tocotrienol,C27H40O2,396.30283052,Rosmarinus officinalis L.,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00035101,14101-61-2,gamma-Tocotrienol,C28H42O2,410.31848058,Rosmarinus officinalis L.,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00035215,85999-40-2,23-Hydroxybetulinic acid,C30H48O4,472.35526002,Rosmarinus officinalis L.,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00035383,150148-82-6,Rofficerone,C30H48O2,440.36543078,Rosmarinus officinalis L.,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00035384,864933-99-3,Rosmaquinone A,C21H26O5,358.17802394,Rosmarinus officinalis L.,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00035385,864962-10-7,Rosmaquinone B,C21H26O5,358.17802394,Rosmarinus officinalis L.,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00035386,350590-46-4,Royleanonic acid,C20H26O5,346.17802394,Rosmarinus officinalis L.,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00035495,589-98-0,3-Octanol,C8H18O,130.1357652,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00035611,110-38-3,Ethyl decanoate,C12H24O2,200.17763001,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00035613,106-32-1,Ethyl octanoate,C10H20O2,172.14632988,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00035894,4080-46-0,Verbenene,C10H14,134.10955045,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00035987,19407-28-4,Abietatriene,C20H30,270.23475096,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00036174,130233-90-8,Nepetoidin A,C17H14O6,314.07903818,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00036175,55486-06-1,Nepetoidin B,C17H14O6,314.07903818,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00036880,3650-09-7,Carnosic acid,C20H28O4,332.19875938,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00037344,93780-80-4,Isorosmanol,C20H26O5,346.17802394,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00037499,99353-00-1,Methyl rosmarinate,C19H18O8,374.10016755,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00037506,27210-57-7,Miltirone,C19H22O2,282.16197995,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00037531,515-00-4,Myrtenol,C10H16O,152.12011513,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00037604,4371-50-0,p-Cymen-9-ol,C10H14O,150.10446507,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00037652,30460-92-5,Pinocarvone,C10H14O,150.10446507,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00037772,178895-25-5,Salviaflaside,C24H26O13,522.13734092,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00041292,113085-62-4,7-Methoxyrosmanol,C21H28O5,360.193674,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00041687,3622-84-2,N-Butylbenzenesulfonamide,C10H15NO2S,213.08234946,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00042990,834870-61-0,seco-Hinokiol,C20H28O3,316.20384476,Rosmarinus officinalis L.,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00044118,82684-06-8,Carnosic acid methyl ester,C21H30O4,346.21440945,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00046607,644-30-4,alpha-Curcumene,C15H22,202.1721507,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00046784,78-79-5,Isoprene,C5H8,68.06260026,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00050455,628-97-7,Ethyl palmitate,C18H36O2,284.27153039,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00050458,111-61-5,Ethyl octadecanoate,C20H40O2,312.30283052,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00050992,33947-58-9,Isorosmaricine,C20H27NO4,345.19400836,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00052035,,DMAPP,C5H12O7P2,246.00582572,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00052468,13837-63-3,(+)-4-Carene,C10H16,136.12520051,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00052541,68042-93-3,11-Hydroxyferruginol,C20H30O2,302.2245802,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00052580,4312-99-6,1-Octen-3-one,C8H14O,126.10446507,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00052598,80466-34-8,"2,4-Hexadienal",C6H8O,96.05751488,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00052634,4423-94-3,2-Ethylcyclohexanone,C8H14O,126.10446507,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00052637,2463-63-0,2-Heptenal,C7H12O,112.08881501,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00052656,2463-53-8,2-Nonenal,C9H16O,140.12011513,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00052726,496862-86-3,"5,5-Dimethyl-1-ethyl-1,3-cyclopentadiene",C9H14,122.10955045,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00052807,57129-54-1,alpha-Thujenal,C10H14O,150.10446507,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00053073,380429-82-3,Carnosic acid quinone,C20H26O4,330.18310932,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00053095,4872-34-8,MVAPP,C6H13O10P2,306.99839462,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00053324,20053-88-7,Hotrienol,C10H16O,152.12011513,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00053491,868784-51-4,Miltiradiene,C20H32,272.25040102,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00053718,3228-02-2,p-Thymol,C10H14O,150.10446507,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00053752,91729-95-2,Rosmaridiphenol,C20H28O3,316.20384476,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00053838,4313-03-5,"(2E,4E)-2,4-Heptadienal",C7H10O,110.07316494,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00054412,742061-44-5,"7-Chloro-11-hydroxy-7,9(11),13-abietatriene-6,12-dione",C20H25ClO3,348.14922237,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00054501,951125-99-8,"11,12-Dihydroxy-6,8,11,13-abietatetraen-20-oic acid",C20H26O4,330.18310932,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00057211,197799-63-6,Rosmic acid,C21H26O7,390.16785319,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00057371,3650-11-1,Rosmaricine,C20H27NO4,345.19400836,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00057999,197649-67-5,"11,12,14-Trihydroxy-7-methoxy-8,11,13-abietatrien-20,6-olide",C21H28O6,376.18858863,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00059829,139307-95-2,6-Isopropylidenebicyclo[3.1.0]hexane,C9H14,122.10955045,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00059993,14696-23-2,Norhydromorphone,C16H17NO3,271.12084342,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00060892,22477-85-6,Micromeric acid,C30H46O3,454.34469533,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00061055,24703-38-6,7beta-Methoxyrosmanol,C21H28O5,360.193674,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00061079,25155-15-1,Cymene,C10H14,134.10955045,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00061621,3649-86-3,exo-Isocamphanone,C10H16O,152.12011513,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00061865,472-37-7,Hinokione,C20H28O2,300.20893014,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00063038,8000-41-7,Terpineol,C10H18O,154.1357652,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00063269,87980-67-4,Epiisorosmanol,C20H26O5,346.17802394,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00063397,92519-82-9,Isocarnosol,C20H26O4,330.18310932,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00063492,951126-00-4,"(4aS,10aR)-2,3,4,4a,10,10a-Hexahydro-5,6-dihydroxy-1,1-dimethyl-7-(1-methylethyl)-9(1H)-phenanthrenone",C19H26O3,302.1881947,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus
+PLANT033,Salvia rosmarinus,C00063573,99742-08-2,[9]-Shogaol,C20H30O3,318.21949482,Rosmarinus officinalis,Rosmarinus officinalis,PLANT033,로즈마리,Rosemary,Salvia rosmarinus

@@ -1,0 +1,32 @@
+﻿# Python 가상환경 및 캐시
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# 테스트 및 개발 도구
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# 백업 파일
+backups/
+*_backup*.csv
+*_backup*.py
+*.bak
+
+# Large pipeline intermediate output exceeds GitHub's standard file limit.
+data/processed/external_plant_ai_prediction_ready.csv
+
+# 비밀 설정 및 환경 변수
+.env
+.env.*
+!.env.example
+
+# 로그 및 임시 파일
+*.log
+*.tmp
+
+# 운영체제 파일
+.DS_Store
+Thumbs.db

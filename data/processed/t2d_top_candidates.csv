@@ -1,0 +1,101 @@
+﻿Plant_ID,Scientific_Name,Common_Name_KO,Compound_Name,ChEMBL_ID,Gene_Name,Protein_Name,UniProt_ID,Predicted_pChEMBL,Plant_Count,Plant_Specific,Target_Evidence,Target_Role
+PLANT004,Glycyrrhiza uralensis,,22-Acetoxyglycyrrhizin,CHEMBL5287257,FFAR1,Free fatty acid receptor 1,O14842,7.816827777777795,1,True,Strong,Therapeutic target candidate
+PLANT004,Glycyrrhiza uralensis,,Uralsaponin T,CHEMBL3314500,FFAR1,Free fatty acid receptor 1,O14842,7.567977777777791,1,True,Strong,Therapeutic target candidate
+PLANT028,Leonurus japonicus,,5-Hydroxytryptamine,CHEMBL39,FFAR1,Free fatty acid receptor 1,O14842,7.405616666666661,9,False,Strong,Therapeutic target candidate
+PLANT004,Glycyrrhiza uralensis,,5-Hydroxytryptamine,CHEMBL39,FFAR1,Free fatty acid receptor 1,O14842,7.405616666666661,9,False,Strong,Therapeutic target candidate
+PLANT010,Ziziphus jujuba,,5-Hydroxytryptamine,CHEMBL39,FFAR1,Free fatty acid receptor 1,O14842,7.405616666666661,9,False,Strong,Therapeutic target candidate
+PLANT011,Scutellaria baicalensis,,5-Hydroxytryptamine,CHEMBL39,FFAR1,Free fatty acid receptor 1,O14842,7.405616666666661,9,False,Strong,Therapeutic target candidate
+PLANT009,Rehmannia glutinosa,,5-Hydroxytryptamine,CHEMBL39,FFAR1,Free fatty acid receptor 1,O14842,7.405616666666661,9,False,Strong,Therapeutic target candidate
+PLANT027,Polygonatum sibiricum,,5-Hydroxytryptamine,CHEMBL39,FFAR1,Free fatty acid receptor 1,O14842,7.405616666666661,9,False,Strong,Therapeutic target candidate
+PLANT015,Eucommia ulmoides,,5-Hydroxytryptamine,CHEMBL39,FFAR1,Free fatty acid receptor 1,O14842,7.405616666666661,9,False,Strong,Therapeutic target candidate
+PLANT012,Coptis chinensis,,5-Hydroxytryptamine,CHEMBL39,FFAR1,Free fatty acid receptor 1,O14842,7.405616666666661,9,False,Strong,Therapeutic target candidate
+PLANT030,Salvia miltiorrhiza,,5-Hydroxytryptamine,CHEMBL39,FFAR1,Free fatty acid receptor 1,O14842,7.405616666666661,9,False,Strong,Therapeutic target candidate
+PLANT004,Glycyrrhiza uralensis,,22-Acetoxyglycyrrhizin,CHEMBL5287257,SLC22A2,Solute carrier family 22 member 2,O15244,7.276838888888898,1,True,Contextual,Transporter-related candidate
+PLANT004,Glycyrrhiza uralensis,,22-Acetoxyglycyrrhizin,CHEMBL5287257,SLC22A1,Solute carrier family 22 member 1,O15245,7.263983968253981,1,True,Contextual,Transporter-related candidate
+PLANT030,Salvia miltiorrhiza,,5-Hydroxytryptamine,CHEMBL39,SLC22A2,Solute carrier family 22 member 2,O15244,7.154383333333315,9,False,Contextual,Transporter-related candidate
+PLANT027,Polygonatum sibiricum,,5-Hydroxytryptamine,CHEMBL39,SLC22A2,Solute carrier family 22 member 2,O15244,7.154383333333315,9,False,Contextual,Transporter-related candidate
+PLANT009,Rehmannia glutinosa,,5-Hydroxytryptamine,CHEMBL39,SLC22A2,Solute carrier family 22 member 2,O15244,7.154383333333315,9,False,Contextual,Transporter-related candidate
+PLANT010,Ziziphus jujuba,,5-Hydroxytryptamine,CHEMBL39,SLC22A2,Solute carrier family 22 member 2,O15244,7.154383333333315,9,False,Contextual,Transporter-related candidate
+PLANT004,Glycyrrhiza uralensis,,5-Hydroxytryptamine,CHEMBL39,SLC22A2,Solute carrier family 22 member 2,O15244,7.154383333333315,9,False,Contextual,Transporter-related candidate
+PLANT012,Coptis chinensis,,5-Hydroxytryptamine,CHEMBL39,SLC22A2,Solute carrier family 22 member 2,O15244,7.154383333333315,9,False,Contextual,Transporter-related candidate
+PLANT028,Leonurus japonicus,,5-Hydroxytryptamine,CHEMBL39,SLC22A2,Solute carrier family 22 member 2,O15244,7.154383333333315,9,False,Contextual,Transporter-related candidate
+PLANT011,Scutellaria baicalensis,,5-Hydroxytryptamine,CHEMBL39,SLC22A2,Solute carrier family 22 member 2,O15244,7.154383333333315,9,False,Contextual,Transporter-related candidate
+PLANT015,Eucommia ulmoides,,5-Hydroxytryptamine,CHEMBL39,SLC22A2,Solute carrier family 22 member 2,O15244,7.154383333333315,9,False,Contextual,Transporter-related candidate
+PLANT004,Glycyrrhiza uralensis,,5-Hydroxytryptamine,CHEMBL39,SLC22A1,Solute carrier family 22 member 1,O15245,7.140133333333318,9,False,Contextual,Transporter-related candidate
+PLANT015,Eucommia ulmoides,,5-Hydroxytryptamine,CHEMBL39,SLC22A1,Solute carrier family 22 member 1,O15245,7.140133333333318,9,False,Contextual,Transporter-related candidate
+PLANT012,Coptis chinensis,,5-Hydroxytryptamine,CHEMBL39,SLC22A1,Solute carrier family 22 member 1,O15245,7.140133333333318,9,False,Contextual,Transporter-related candidate
+PLANT030,Salvia miltiorrhiza,,5-Hydroxytryptamine,CHEMBL39,SLC22A1,Solute carrier family 22 member 1,O15245,7.140133333333318,9,False,Contextual,Transporter-related candidate
+PLANT010,Ziziphus jujuba,,5-Hydroxytryptamine,CHEMBL39,SLC22A1,Solute carrier family 22 member 1,O15245,7.140133333333318,9,False,Contextual,Transporter-related candidate
+PLANT011,Scutellaria baicalensis,,5-Hydroxytryptamine,CHEMBL39,SLC22A1,Solute carrier family 22 member 1,O15245,7.140133333333318,9,False,Contextual,Transporter-related candidate
+PLANT009,Rehmannia glutinosa,,5-Hydroxytryptamine,CHEMBL39,SLC22A1,Solute carrier family 22 member 1,O15245,7.140133333333318,9,False,Contextual,Transporter-related candidate
+PLANT027,Polygonatum sibiricum,,5-Hydroxytryptamine,CHEMBL39,SLC22A1,Solute carrier family 22 member 1,O15245,7.140133333333318,9,False,Contextual,Transporter-related candidate
+PLANT028,Leonurus japonicus,,5-Hydroxytryptamine,CHEMBL39,SLC22A1,Solute carrier family 22 member 1,O15245,7.140133333333318,9,False,Contextual,Transporter-related candidate
+PLANT004,Glycyrrhiza uralensis,,Uralsaponin T,CHEMBL3314500,SLC22A2,Solute carrier family 22 member 2,O15244,7.096288888888898,1,True,Contextual,Transporter-related candidate
+PLANT004,Glycyrrhiza uralensis,,Uralsaponin T,CHEMBL3314500,SLC22A1,Solute carrier family 22 member 1,O15245,7.079524444444456,1,True,Contextual,Transporter-related candidate
+PLANT004,Glycyrrhiza uralensis,,18beta-glycyrrhetinic acid,CHEMBL230006,FFAR1,Free fatty acid receptor 1,O14842,7.0695833333333455,1,True,Strong,Therapeutic target candidate
+PLANT001,Panax ginseng,,Chikusetsusaponin IVa,CHEMBL1095348,FFAR1,Free fatty acid receptor 1,O14842,6.889344444444453,1,True,Strong,Therapeutic target candidate
+PLANT017,Codonopsis lanceolata,,Asterlingulatoside D,CHEMBL446062,FFAR1,Free fatty acid receptor 1,O14842,6.860333333333344,1,True,Strong,Therapeutic target candidate
+PLANT001,Panax ginseng,,20(R)-Ginsenoside Rg3,CHEMBL1095008,FFAR1,Free fatty acid receptor 1,O14842,6.845327777777784,1,True,Strong,Therapeutic target candidate
+PLANT001,Panax ginseng,,Ginsenoside Rg3,CHEMBL398412,FFAR1,Free fatty acid receptor 1,O14842,6.845327777777784,1,True,Strong,Therapeutic target candidate
+PLANT001,Panax ginseng,,Ginsenoside Rk1,CHEMBL251235,FFAR1,Free fatty acid receptor 1,O14842,6.793650000000008,1,True,Strong,Therapeutic target candidate
+PLANT001,Panax ginseng,,4-Dimethylaminopyridine,CHEMBL3561645,FFAR1,Free fatty acid receptor 1,O14842,6.793161111111106,1,True,Strong,Therapeutic target candidate
+PLANT001,Panax ginseng,,Ginsenoside Rb3,CHEMBL507688,FFAR1,Free fatty acid receptor 1,O14842,6.767027777777785,1,True,Strong,Therapeutic target candidate
+PLANT001,Panax ginseng,,Ginsenoside Rb2,CHEMBL449303,FFAR1,Free fatty acid receptor 1,O14842,6.767027777777785,1,True,Strong,Therapeutic target candidate
+PLANT001,Panax ginseng,,Ginsenoside Rc,CHEMBL451702,FFAR1,Free fatty acid receptor 1,O14842,6.759727777777784,1,True,Strong,Therapeutic target candidate
+PLANT001,Panax ginseng,,Ginsenoside Rb1,CHEMBL501515,FFAR1,Free fatty acid receptor 1,O14842,6.759727777777784,1,True,Strong,Therapeutic target candidate
+PLANT001,Panax ginseng,,Ginsenoside Rd,CHEMBL473659,FFAR1,Free fatty acid receptor 1,O14842,6.757311111111119,1,True,Strong,Therapeutic target candidate
+PLANT004,Glycyrrhiza uralensis,,22-Acetoxyglycyrrhizin,CHEMBL5287257,DPP4,Dipeptidyl peptidase 4,P27487,6.752733333333337,1,True,Strong,Established therapeutic target
+PLANT001,Panax ginseng,,Malonylginsenoside Rc,CHEMBL4215013,FFAR1,Free fatty acid receptor 1,O14842,6.72090000000001,1,True,Strong,Therapeutic target candidate
+PLANT004,Glycyrrhiza uralensis,,22-Acetoxyglycyrrhizin,CHEMBL5287257,FTO,Alpha-ketoglutarate-dependent dioxygenase FTO,Q9C0B1,6.701667373737382,1,True,Disease-associated,Disease-associated target
+PLANT010,Ziziphus jujuba,,5-Methoxytryptamine,CHEMBL8165,FFAR1,Free fatty acid receptor 1,O14842,6.6864166666666565,8,False,Strong,Therapeutic target candidate
+PLANT027,Polygonatum sibiricum,,5-Methoxytryptamine,CHEMBL8165,FFAR1,Free fatty acid receptor 1,O14842,6.6864166666666565,8,False,Strong,Therapeutic target candidate
+PLANT012,Coptis chinensis,,5-Methoxytryptamine,CHEMBL8165,FFAR1,Free fatty acid receptor 1,O14842,6.6864166666666565,8,False,Strong,Therapeutic target candidate
+PLANT030,Salvia miltiorrhiza,,5-Methoxytryptamine,CHEMBL8165,FFAR1,Free fatty acid receptor 1,O14842,6.6864166666666565,8,False,Strong,Therapeutic target candidate
+PLANT009,Rehmannia glutinosa,,5-Methoxytryptamine,CHEMBL8165,FFAR1,Free fatty acid receptor 1,O14842,6.6864166666666565,8,False,Strong,Therapeutic target candidate
+PLANT028,Leonurus japonicus,,5-Methoxytryptamine,CHEMBL8165,FFAR1,Free fatty acid receptor 1,O14842,6.6864166666666565,8,False,Strong,Therapeutic target candidate
+PLANT011,Scutellaria baicalensis,,5-Methoxytryptamine,CHEMBL8165,FFAR1,Free fatty acid receptor 1,O14842,6.6864166666666565,8,False,Strong,Therapeutic target candidate
+PLANT015,Eucommia ulmoides,,5-Methoxytryptamine,CHEMBL8165,FFAR1,Free fatty acid receptor 1,O14842,6.6864166666666565,8,False,Strong,Therapeutic target candidate
+PLANT010,Ziziphus jujuba,,Jujuboside B,CHEMBL3109480,FFAR1,Free fatty acid receptor 1,O14842,6.683861111111118,1,True,Strong,Therapeutic target candidate
+PLANT004,Glycyrrhiza uralensis,,Uralsaponin T,CHEMBL3314500,DPP4,Dipeptidyl peptidase 4,P27487,6.669050000000002,1,True,Strong,Established therapeutic target
+PLANT009,Rehmannia glutinosa,,5-Hydroxytryptamine,CHEMBL39,DPP4,Dipeptidyl peptidase 4,P27487,6.626499999999982,9,False,Strong,Established therapeutic target
+PLANT027,Polygonatum sibiricum,,5-Hydroxytryptamine,CHEMBL39,DPP4,Dipeptidyl peptidase 4,P27487,6.626499999999982,9,False,Strong,Established therapeutic target
+PLANT011,Scutellaria baicalensis,,5-Hydroxytryptamine,CHEMBL39,DPP4,Dipeptidyl peptidase 4,P27487,6.626499999999982,9,False,Strong,Established therapeutic target
+PLANT004,Glycyrrhiza uralensis,,5-Hydroxytryptamine,CHEMBL39,DPP4,Dipeptidyl peptidase 4,P27487,6.626499999999982,9,False,Strong,Established therapeutic target
+PLANT015,Eucommia ulmoides,,5-Hydroxytryptamine,CHEMBL39,DPP4,Dipeptidyl peptidase 4,P27487,6.626499999999982,9,False,Strong,Established therapeutic target
+PLANT028,Leonurus japonicus,,5-Hydroxytryptamine,CHEMBL39,DPP4,Dipeptidyl peptidase 4,P27487,6.626499999999982,9,False,Strong,Established therapeutic target
+PLANT030,Salvia miltiorrhiza,,5-Hydroxytryptamine,CHEMBL39,DPP4,Dipeptidyl peptidase 4,P27487,6.626499999999982,9,False,Strong,Established therapeutic target
+PLANT012,Coptis chinensis,,5-Hydroxytryptamine,CHEMBL39,DPP4,Dipeptidyl peptidase 4,P27487,6.626499999999982,9,False,Strong,Established therapeutic target
+PLANT010,Ziziphus jujuba,,5-Hydroxytryptamine,CHEMBL39,DPP4,Dipeptidyl peptidase 4,P27487,6.626499999999982,9,False,Strong,Established therapeutic target
+PLANT004,Glycyrrhiza uralensis,,Uralsaponin T,CHEMBL3314500,FTO,Alpha-ketoglutarate-dependent dioxygenase FTO,Q9C0B1,6.605793564213572,1,True,Disease-associated,Disease-associated target
+PLANT012,Coptis chinensis,,Tryptamine,CHEMBL6640,FFAR1,Free fatty acid receptor 1,O14842,6.579616666666658,9,False,Strong,Therapeutic target candidate
+PLANT011,Scutellaria baicalensis,,Tryptamine,CHEMBL6640,FFAR1,Free fatty acid receptor 1,O14842,6.579616666666658,9,False,Strong,Therapeutic target candidate
+PLANT010,Ziziphus jujuba,,Tryptamine,CHEMBL6640,FFAR1,Free fatty acid receptor 1,O14842,6.579616666666658,9,False,Strong,Therapeutic target candidate
+PLANT004,Glycyrrhiza uralensis,,Tryptamine,CHEMBL6640,FFAR1,Free fatty acid receptor 1,O14842,6.579616666666658,9,False,Strong,Therapeutic target candidate
+PLANT028,Leonurus japonicus,,Tryptamine,CHEMBL6640,FFAR1,Free fatty acid receptor 1,O14842,6.579616666666658,9,False,Strong,Therapeutic target candidate
+PLANT009,Rehmannia glutinosa,,Tryptamine,CHEMBL6640,FFAR1,Free fatty acid receptor 1,O14842,6.579616666666658,9,False,Strong,Therapeutic target candidate
+PLANT027,Polygonatum sibiricum,,Tryptamine,CHEMBL6640,FFAR1,Free fatty acid receptor 1,O14842,6.579616666666658,9,False,Strong,Therapeutic target candidate
+PLANT030,Salvia miltiorrhiza,,Tryptamine,CHEMBL6640,FFAR1,Free fatty acid receptor 1,O14842,6.579616666666658,9,False,Strong,Therapeutic target candidate
+PLANT015,Eucommia ulmoides,,Tryptamine,CHEMBL6640,FFAR1,Free fatty acid receptor 1,O14842,6.579616666666658,9,False,Strong,Therapeutic target candidate
+PLANT001,Panax ginseng,,20(R)-Ginsenoside Rh2,CHEMBL1783835,FFAR1,Free fatty acid receptor 1,O14842,6.540844444444448,1,True,Strong,Therapeutic target candidate
+PLANT004,Glycyrrhiza uralensis,,22-Acetoxyglycyrrhizin,CHEMBL5287257,PPARG,Peroxisome proliferator-activated receptor gamma,P37231,6.537549278499283,1,True,Strong,Established therapeutic target
+PLANT001,Panax ginseng,,Ginsenoside Rf,CHEMBL1773987,FFAR1,Free fatty acid receptor 1,O14842,6.525861111111113,1,True,Strong,Therapeutic target candidate
+PLANT031,Houttuynia cordata,어성초,5'-Deoxy-5'-methylsulfinyladenosine,CHEMBL294920,FFAR1,Free fatty acid receptor 1,O14842,6.509150000000011,1,True,Strong,Therapeutic target candidate
+PLANT015,Eucommia ulmoides,,Melatonin,CHEMBL45,FFAR1,Free fatty acid receptor 1,O14842,6.4997333333333245,10,False,Strong,Therapeutic target candidate
+PLANT030,Salvia miltiorrhiza,,Melatonin,CHEMBL45,FFAR1,Free fatty acid receptor 1,O14842,6.4997333333333245,10,False,Strong,Therapeutic target candidate
+PLANT006,Momordica charantia,,Melatonin,CHEMBL45,FFAR1,Free fatty acid receptor 1,O14842,6.4997333333333245,10,False,Strong,Therapeutic target candidate
+PLANT010,Ziziphus jujuba,,Melatonin,CHEMBL45,FFAR1,Free fatty acid receptor 1,O14842,6.4997333333333245,10,False,Strong,Therapeutic target candidate
+PLANT029,Senna tora,,Melatonin,CHEMBL45,FFAR1,Free fatty acid receptor 1,O14842,6.4997333333333245,10,False,Strong,Therapeutic target candidate
+PLANT011,Scutellaria baicalensis,,Melatonin,CHEMBL45,FFAR1,Free fatty acid receptor 1,O14842,6.4997333333333245,10,False,Strong,Therapeutic target candidate
+PLANT028,Leonurus japonicus,,Melatonin,CHEMBL45,FFAR1,Free fatty acid receptor 1,O14842,6.4997333333333245,10,False,Strong,Therapeutic target candidate
+PLANT009,Rehmannia glutinosa,,Melatonin,CHEMBL45,FFAR1,Free fatty acid receptor 1,O14842,6.4997333333333245,10,False,Strong,Therapeutic target candidate
+PLANT027,Polygonatum sibiricum,,Melatonin,CHEMBL45,FFAR1,Free fatty acid receptor 1,O14842,6.4997333333333245,10,False,Strong,Therapeutic target candidate
+PLANT012,Coptis chinensis,,Melatonin,CHEMBL45,FFAR1,Free fatty acid receptor 1,O14842,6.4997333333333245,10,False,Strong,Therapeutic target candidate
+PLANT001,Panax ginseng,,20(R)-Ginsenoside Rg2,CHEMBL3357159,FFAR1,Free fatty acid receptor 1,O14842,6.491094444444446,1,True,Strong,Therapeutic target candidate
+PLANT001,Panax ginseng,,Ginsenoside Rg2,CHEMBL505747,FFAR1,Free fatty acid receptor 1,O14842,6.491094444444446,1,True,Strong,Therapeutic target candidate
+PLANT030,Salvia miltiorrhiza,,Acetyl-CoA,CHEMBL1230809,FFAR1,Free fatty acid receptor 1,O14842,6.486255555555568,3,False,Strong,Therapeutic target candidate
+PLANT033,Salvia rosmarinus,로즈마리,Acetyl-CoA,CHEMBL1230809,FFAR1,Free fatty acid receptor 1,O14842,6.486255555555568,3,False,Strong,Therapeutic target candidate
+PLANT001,Panax ginseng,,Acetyl-CoA,CHEMBL1230809,FFAR1,Free fatty acid receptor 1,O14842,6.486255555555568,3,False,Strong,Therapeutic target candidate
+PLANT001,Panax ginseng,,HMG-CoA,CHEMBL1794644,FFAR1,Free fatty acid receptor 1,O14842,6.477488888888901,3,False,Strong,Therapeutic target candidate
+PLANT030,Salvia miltiorrhiza,,HMG-CoA,CHEMBL1794644,FFAR1,Free fatty acid receptor 1,O14842,6.477488888888901,3,False,Strong,Therapeutic target candidate
+PLANT033,Salvia rosmarinus,로즈마리,HMG-CoA,CHEMBL1794644,FFAR1,Free fatty acid receptor 1,O14842,6.477488888888901,3,False,Strong,Therapeutic target candidate
+PLANT004,Glycyrrhiza uralensis,,Uralsaponin T,CHEMBL3314500,PPARG,Peroxisome proliferator-activated receptor gamma,P37231,6.475664252044254,1,True,Strong,Established therapeutic target

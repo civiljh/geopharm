@@ -1,0 +1,7 @@
+﻿Gene_Name,UniProt_ID,Protein_Name,Disease,Target_Evidence,Target_Role,Evidence_Note
+DPP4,P27487,Dipeptidyl peptidase 4,Type 2 diabetes mellitus,Strong,Established therapeutic target,DPP4 is a well-established therapeutic target in type 2 diabetes.
+FFAR1,O14842,Free fatty acid receptor 1,Type 2 diabetes mellitus,Strong,Therapeutic target candidate,FFAR1 has been investigated as a therapeutic target for type 2 diabetes and insulin secretion.
+PPARG,P37231,Peroxisome proliferator-activated receptor gamma,Type 2 diabetes mellitus,Strong,Established therapeutic target,PPAR-gamma is an established pharmacological target related to insulin sensitivity and type 2 diabetes.
+FTO,Q9C0B1,Alpha-ketoglutarate-dependent dioxygenase FTO,Type 2 diabetes mellitus,Disease-associated,Disease-associated target,"FTO has genetic and disease-association evidence related to type 2 diabetes, but it should not be treated as an established therapeutic target in this analysis."
+SLC22A1,O15245,Solute carrier family 22 member 1,Type 2 diabetes mellitus,Contextual,Transporter-related candidate,"SLC22A1 is included as a diabetes-relevant transporter candidate for exploratory screening, not as a confirmed therapeutic target."
+SLC22A2,O15244,Solute carrier family 22 member 2,Type 2 diabetes mellitus,Contextual,Transporter-related candidate,"SLC22A2 is included as a diabetes-relevant transporter candidate for exploratory screening, not as a confirmed therapeutic target."

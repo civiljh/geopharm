@@ -1,0 +1,192 @@
+﻿Plant_ID,Scientific_Name,KNApSAcK_ID,CAS,Compound_Name,Molecular_Formula,Molecular_Weight,KNApSAcK_Organism
+PLANT006,Momordica charantia,C00000152,7400-08-0,p-Coumaric acid,C9H8O3,164.04734412,Momordica charantia
+PLANT006,Momordica charantia,C00000170,140-10-3,Cinnamate,C9H8O2,148.0524295,Momordica charantia
+PLANT006,Momordica charantia,C00000207,65-85-0,Benzoic acid,C7H6O2,122.03677944,Momordica charantia
+PLANT006,Momordica charantia,C00000615,501-16-6,Caffeic acid,C9H8O4,180.04225874,Momordica charantia
+PLANT006,Momordica charantia,C00000677,480-18-2,Dihydroquercetin,C15H12O7,304.05830274,Momordica charantia
+PLANT006,Momordica charantia,C00000848,358-71-4,Isopentenyl diphosphate,C5H12O7P2,246.00582572,Momordica charantia
+PLANT006,Momordica charantia,C00000856,99-96-7,4-Hydroxybenzoic acid,C7H6O3,138.03169406,Momordica charantia
+PLANT006,Momordica charantia,C00000905,13920-14-4,"15,15'-cis-Phytoene",C40H64,544.50080204,Momordica charantia
+PLANT006,Momordica charantia,C00000908,6699-20-3,Geranylgeranyl diphosphate,C20H36O7P2,450.19362648,Momordica charantia
+PLANT006,Momordica charantia,C00000911,502-65-8,Lycopene,C40H56,536.43820179,Momordica charantia
+PLANT006,Momordica charantia,C00000919,7235-40-7,beta-Carotene,C40H56,536.43820179,Momordica charantia
+PLANT006,Momordica charantia,C00000920,472-70-8,beta-Cryptoxanthin,C40H56O,552.43311641,Momordica charantia
+PLANT006,Momordica charantia,C00000931,144-68-3,Zeaxanthin,C40H56O2,568.42803103,Momordica charantia
+PLANT006,Momordica charantia,C00000934,72746-33-9,zehta-carotene,C40H60,540.46950191,Momordica charantia
+PLANT006,Momordica charantia,C00000947,154-23-4,(+)-Catechin,C15H14O6,290.07903818,Momordica charantia
+PLANT006,Momordica charantia,C00000956,490-46-0,(-)-Epicatechin,C15H14O6,290.07903818,Momordica charantia
+PLANT006,Momordica charantia,C00000970,520-26-3,Hesperidin,C28H34O15,610.18977042,Momordica charantia
+PLANT006,Momordica charantia,C00000982,480-41-1,Naringenin,C15H12O5,272.06847349,Momordica charantia
+PLANT006,Momordica charantia,C00000983,10236-47-2,Naringin,C27H32O14,580.17920573,Momordica charantia
+PLANT006,Momordica charantia,C00001071,529-44-2,Myricetin,C15H10O8,318.0375673,Momordica charantia
+PLANT006,Momordica charantia,C00001195,150-97-0,Mevalonic acid,C6H12O4,148.07355887,Momordica charantia
+PLANT006,Momordica charantia,C00001216,506-23-0,alpha-Eleostearic acid,C18H30O2,278.2245802,Momordica charantia
+PLANT006,Momordica charantia,C00001515,152-93-2,Vicine,C10H16N4O7,304.1018989,Momordica charantia
+PLANT006,Momordica charantia,C00002510,491-80-5,Biochanin A,C16H12O5,284.06847349,Momordica charantia
+PLANT006,Momordica charantia,C00002647,149-91-7,Gallic acid,C7H6O5,170.0215233,Momordica charantia
+PLANT006,Momordica charantia,C00002648,490-79-9,Gentisic acid,C7H6O4,154.02660868,Momordica charantia
+PLANT006,Momordica charantia,C00002668,99-50-3,"3,4-Dihydroxybenzoic acid",C7H6O4,154.02660868,Momordica charantia
+PLANT006,Momordica charantia,C00002674,530-57-4,Syringic acid,C9H10O5,198.05282343,Momordica charantia
+PLANT006,Momordica charantia,C00002682,121-34-6,Vanillic acid,C8H8O4,168.04225874,Momordica charantia
+PLANT006,Momordica charantia,C00002683,5463-22-9,Vanillin,C8H8O3,152.04734412,Momordica charantia
+PLANT006,Momordica charantia,C00002724,327-97-9,3-Caffeoylquinic acid,C16H18O9,354.09508217,Momordica charantia
+PLANT006,Momordica charantia,C00002729,583-17-5,2-Hydroxycinnamic acid,C9H8O3,164.04734412,Momordica charantia
+PLANT006,Momordica charantia,C00002743,1135-24-6,Ferulic acid,C10H10O4,194.05790881,Momordica charantia
+PLANT006,Momordica charantia,C00003650,469-38-5,Cycloartenol,C30H50O,426.38616622,Momordica charantia
+PLANT006,Momordica charantia,C00003672,83-46-5,(-)-beta-Sitosterol,C29H50O,414.38616622,Momordica charantia
+PLANT006,Momordica charantia,C00003674,83-48-7,beta-Stigmasterol,C29H48O,412.37051615,Momordica charantia
+PLANT006,Momordica charantia,C00003686,18444-66-1,Cucurbitacin E,C32H44O8,556.30361838,Momordica charantia
+PLANT006,Momordica charantia,C00003687,5939-57-1,Cucurbitacin F,C30H46O7,518.32435382,Momordica charantia
+PLANT006,Momordica charantia,C00003738,559-70-6,beta-Amyrin,C30H50O,426.38616622,Momordica charantia
+PLANT006,Momordica charantia,C00003755,111-02-4,All-trans-squalene,C30H50,410.39125159,Momordica charantia
+PLANT006,Momordica charantia,C00003760,640-03-9,Antheraxanthin,C40H56O3,584.42294565,Momordica charantia
+PLANT006,Momordica charantia,C00003765,7488-99-5,alpha-Carotene,C40H56,536.43820179,Momordica charantia
+PLANT006,Momordica charantia,C00003776,127-40-2,Lutein,C40H56O2,568.42803103,Momordica charantia
+PLANT006,Momordica charantia,C00003787,126-29-4,Violaxanthin,C40H56O4,600.41786028,Momordica charantia
+PLANT006,Momordica charantia,C00004565,520-18-3,Kaempferol,C15H10O6,286.04773805,Momordica charantia
+PLANT006,Momordica charantia,C00004631,117-39-5,Quercetin,C15H10O7,302.04265268,Momordica charantia
+PLANT006,Momordica charantia,C00005373,482-35-9,Hirsutrin,C21H20O12,464.09547611,Momordica charantia
+PLANT006,Momordica charantia,C00005413,153-18-4,Quercetin 3-rutinoside,C27H30O16,610.15338491,Momordica charantia
+PLANT006,Momordica charantia,C00007233,25515-46-2,Naringenin chalcone,C15H12O5,272.06847349,Momordica charantia
+PLANT006,Momordica charantia,C00007234,480-20-6,(+)-Dihydrokaempferol,C15H12O6,288.06338812,Momordica charantia
+PLANT006,Momordica charantia,C00007235,480-17-1,Leucocyanidin,C15H14O7,306.0739528,Momordica charantia
+PLANT006,Momordica charantia,C00007259,72-89-9,Acetyl-CoA,C23H38N7O17P3S,809.12577304,Momordica charantia
+PLANT006,Momordica charantia,C00007268,372-97-4,"(2E,6E)-Farnesyl diphosphate",C15H28O7P2,382.13102623,Momordica charantia
+PLANT006,Momordica charantia,C00007269,1420-36-6,Acetoacetyl-CoA,C25H40N7O18P3S,851.13633773,Momordica charantia
+PLANT006,Momordica charantia,C00007270,1553-55-5,HMG-CoA,C27H44N7O20P3S,911.1574671,Momordica charantia
+PLANT006,Momordica charantia,C00007280,30802-00-7,p-Coumaroyl CoA,C30H42N7O18P3S,913.15198779,Momordica charantia
+PLANT006,Momordica charantia,C00007282,7200-26-2,"(S)-2,3-Epoxysqualene",C30H50O,426.38616622,Momordica charantia
+PLANT006,Momordica charantia,C00007294,358-72-5,Dimethylallyl diphosphate,C5H12O7P2,246.00582572,Momordica charantia
+PLANT006,Momordica charantia,C00007309,451-13-8,Homogentisate,C8H8O4,168.04225874,Momordica charantia
+PLANT006,Momordica charantia,C00029479,93-07-2,"3,4-dimethoxybenzoic acid",C9H10O4,182.05790881,Momordica charantia
+PLANT006,Momordica charantia,C00029549,81910-41-0,"5,19-Epoxycucurbita-6,23-diene-3,25-diol",C30H48O3,456.3603454,Momordica charantia L.
+PLANT006,Momordica charantia,C00029557,332950-28-4,"19(R)-Methoxy-5beta,19-epoxycucurbita-6,23-dien-3beta,25-diol",C31H50O4,486.37091008,Momordica charantia
+PLANT006,Momordica charantia,C00029961,621-82-9,Cinnamic acid,C9H8O2,148.0524295,Momordica charantia
+PLANT006,Momordica charantia,C00030200,2061-64-5,"5alpha,8alpha-Epidioxyergosta-6,22-dien-3beta-ol",C28H44O3,428.32904527,Momordica charantia
+PLANT006,Momordica charantia,C00030424,333332-48-2,Goyaglycoside-b,C37H60O9,648.42373351,Momordica charantia L.
+PLANT006,Momordica charantia,C00030425,333332-49-3,Goyaglycoside-c,C38H62O9,662.43938358,Momordica charantia L.
+PLANT006,Momordica charantia,C00030426,333332-50-6,Goyaglycoside-d,C38H62O9,662.43938358,Momordica charantia L.
+PLANT006,Momordica charantia,C00030596,912329-03-4,Karavilagenin A,C32H54O3,486.40729559,Momordica charantia L.
+PLANT006,Momordica charantia,C00030597,912329-02-3,Karavilagenin B,C31H52O3,472.39164553,Momordica charantia L.
+PLANT006,Momordica charantia,C00030598,922192-67-4,Karavilagenin C,C31H52O3,472.39164553,Momordica charantia L.
+PLANT006,Momordica charantia,C00030599,922192-68-5,Karaviloside I,C38H64O8,648.46011902,Momordica charantia L.
+PLANT006,Momordica charantia,C00030600,922192-69-6,Karaviloside II,C38H64O8,648.46011902,Momordica charantia L.
+PLANT006,Momordica charantia,C00030601,922192-70-9,Karaviloside III,C37H62O8,634.44446896,Momordica charantia L.
+PLANT006,Momordica charantia,C00030602,922192-71-0,Karaviloside IV,C37H52O9,640.36113326,Momordica charantia L.
+PLANT006,Momordica charantia,C00030603,922192-72-1,Karaviloside V,C43H72O14,812.49220701,Momordica charantia L.
+PLANT006,Momordica charantia,C00030782,81348-81-4,Momordicoside F1,C37H60O8,632.42881889,Momordica charantia L.
+PLANT006,Momordica charantia,C00030783,81348-82-5,Momordicoside F2,C36H58O8,618.41316883,Momordica charantia L.
+PLANT006,Momordica charantia,C00030784,81371-54-2,Momordicoside G,C37H60O8,632.42881889,Momordica charantia L.
+PLANT006,Momordica charantia,C00030785,81371-55-3,Momordicoside I,C36H58O8,618.41316883,Momordica charantia L.
+PLANT006,Momordica charantia,C00030786,81348-84-7,Momordicoside K,C37H60O9,648.42373351,Momordica charantia L.
+PLANT006,Momordica charantia,C00030787,81348-83-6,Momordicoside L,C36H58O9,634.40808345,Momordica charantia L.
+PLANT006,Momordica charantia,C00032645,200942-18-3,"3beta-Hydroxy-(22E,24R)-ergosta-5,8,22-trien-7-one",C28H42O2,410.31848058,Momordica charantia
+PLANT006,Momordica charantia,C00033727,2364-23-0,Clerosterol,C29H48O,412.37051615,Momordica charantia
+PLANT006,Momordica charantia,C00034000,1009343-97-8,Kuguacin A,C30H46O4,470.33960996,Momordica charantia
+PLANT006,Momordica charantia,C00034001,1009344-00-6,Kuguacin B,C30H48O3,456.3603454,Momordica charantia
+PLANT006,Momordica charantia,C00034002,1009344-01-7,Kuguacin C,C27H42O3,414.31339521,Momordica charantia
+PLANT006,Momordica charantia,C00034003,1009344-04-0,Kuguacin D,C27H40O4,428.29265977,Momordica charantia
+PLANT006,Momordica charantia,C00034004,1009344-06-2,Kuguacin E,C27H42O4,430.30830983,Momordica charantia
+PLANT006,Momordica charantia,C00034061,91590-76-0,Momordicine I,C30H48O4,472.35526002,Momordica charantia
+PLANT006,Momordica charantia,C00038088,85372-72-1,"(19R,23E)-5beta,19-Epoxy-19,25-dimethoxycucurbita-6,23-dien-3beta-ol",C32H52O4,500.38656015,Momordica charantia
+PLANT006,Momordica charantia,C00038089,857028-20-7,"(19R,23E)-5beta,19-Epoxy-19-methoxycucurbita-6,23,25-trien-3beta-ol",C31H48O3,468.3603454,Momordica charantia
+PLANT006,Momordica charantia,C00038733,951646-19-8,Charantoside III,C36H56O7,600.40260414,Momordica charantia
+PLANT006,Momordica charantia,C00038734,951646-20-1,Charantoside IV,C36H56O7,600.40260414,Momordica charantia
+PLANT006,Momordica charantia,C00038735,951646-21-2,Charantoside V,C37H60O8,632.42881889,Momordica charantia
+PLANT006,Momordica charantia,C00038736,951646-22-3,Charantoside VI,C37H60O8,632.42881889,Momordica charantia
+PLANT006,Momordica charantia,C00038737,951646-23-4,Charantoside VII,C36H54O8,614.3818687,Momordica charantia
+PLANT006,Momordica charantia,C00038738,951646-24-5,Charantoside VIII,C38H62O9,662.43938358,Momordica charantia
+PLANT006,Momordica charantia,C00047944,877603-72-0,Karavilagenin E,C30H48O3,456.3603454,Momordica charantia
+PLANT006,Momordica charantia,C00048450,934739-29-4,Karavilagenin D,C30H46O4,470.33960996,Momordica charantia
+PLANT006,Momordica charantia,C00048456,1141453-57-7,Kuguacin F,C30H42O5,482.30322445,Momordica charantia
+PLANT006,Momordica charantia,C00048457,1141453-59-9,Kuguacin G,C30H44O6,500.31378914,Momordica charantia
+PLANT006,Momordica charantia,C00048458,1141453-61-3,Kuguacin H,C30H44O5,484.31887452,Momordica charantia
+PLANT006,Momordica charantia,C00048459,1141453-65-7,Kuguacin J,C30H46O3,454.34469533,Momordica charantia
+PLANT006,Momordica charantia,C00048460,1141453-67-9,Kuguacin K,C25H34O6,430.23553882,Momordica charantia
+PLANT006,Momordica charantia,C00048461,1141453-69-1,Kuguacin L,C25H36O4,400.26135964,Momordica charantia
+PLANT006,Momordica charantia,C00048462,1141453-71-5,Kuguacin M,C22H28O4,356.19875938,Momordica charantia
+PLANT006,Momordica charantia,C00048463,1141453-73-7,Kuguacin N,C30H46O4,470.33960996,Momordica charantia
+PLANT006,Momordica charantia,C00048464,1141453-75-9,Kuguacin O,C30H42O4,466.30830983,Momordica charantia
+PLANT006,Momordica charantia,C00048465,1141453-77-1,Kuguacin P,C27H40O4,428.29265977,Momordica charantia
+PLANT006,Momordica charantia,C00048466,1141453-79-3,Kuguacin Q,C29H44O5,472.31887452,Momordica charantia
+PLANT006,Momordica charantia,C00048467,191097-54-8,Kuguacin R,C30H48O4,472.35526002,Momordica charantia
+PLANT006,Momordica charantia,C00048468,1141453-81-7,Kuguacin S,C30H44O4,468.32395989,Momordica charantia
+PLANT006,Momordica charantia,C00051623,135126-59-9,Momorcharaside A,C42H72O15,816.48712163,Momordica charantia
+PLANT006,Momordica charantia,C00051624,134886-64-9,Momorcharaside B,C36H62O10,654.4342982,Momordica charantia
+PLANT006,Momordica charantia,C00051725,333332-41-5,Goyaglycoside-a,C37H60O9,648.42373351,Momordica charantia
+PLANT006,Momordica charantia,C00051726,333333-12-3,Goyaglycoside-e,C42H68O13,780.46599226,Momordica charantia
+PLANT006,Momordica charantia,C00051727,333333-13-4,Goyaglycoside-f,C42H68O13,780.46599226,Momordica charantia
+PLANT006,Momordica charantia,C00051728,333333-14-5,Goyaglycoside-g,C43H70O16,842.46638619,Momordica charantia
+PLANT006,Momordica charantia,C00051729,333333-19-0,Goyaglycoside-h,C42H70O15,814.47147157,Momordica charantia
+PLANT006,Momordica charantia,C00051730,333333-20-3,Goyasaponin I,C63H102O31,1354.64050655,Momordica charantia
+PLANT006,Momordica charantia,C00051731,333333-23-6,Goyasaponin II,C70H110O35,1510.68276529,Momordica charantia
+PLANT006,Momordica charantia,C00051732,333333-27-0,Goyasaponin III,C49H76O19,968.49808025,Momordica charantia
+PLANT006,Momordica charantia,C00051733,75801-95-5,Momordicoside A,C42H72O15,816.48712163,Momordica charantia
+PLANT006,Momordica charantia,C00051734,78887-72-6,Momordicoside C,C42H72O14,800.49220701,Momordica charantia
+PLANT006,Momordica charantia,C00052006,73-31-4,Melatonin,C13H16N2O2,232.12117777,Momordica charantia
+PLANT006,Momordica charantia,C00052039,,IPP,C5H12O7P2,246.00582572,Momordica charantia
+PLANT006,Momordica charantia,C00052344,588-30-7,3-Hydroxycinnamic acid,C9H8O3,164.04734412,Momordica charantia
+PLANT006,Momordica charantia,C00052681,577-85-5,3-Hydroxyflavone,C15H10O3,238.06299419,Momordica charantia
+PLANT006,Momordica charantia,C00053051,25429-38-3,Coumaric acid,C9H8O3,164.04734412,Momordica charantia
+PLANT006,Momordica charantia,C00053063,35012-08-9,Cucurbitadienol,C30H50O,426.38616622,Momordica charantia
+PLANT006,Momordica charantia,C00053410,1041631-92-8,Kuguaglycoside A,C37H62O8,634.44446896,Momordica charantia
+PLANT006,Momordica charantia,C00053941,951646-18-7,Charantoside II,C38H62O9,662.43938358,Momordica charantia
+PLANT006,Momordica charantia,C00054283,911054-47-2,"Cucurbita-5,23,25-triene-3,7-dione",C30H44O2,436.33413065,Momordica charantia
+PLANT006,Momordica charantia,C00054426,1039502-32-3,"Cucurbita-5,24-diene-3,7,23-trione",C30H44O3,452.32904527,Momordica charantia
+PLANT006,Momordica charantia,C00054728,1220890-23-2,Charantadiol A,C30H46O3,454.34469533,Momordica charantia
+PLANT006,Momordica charantia,C00054729,951646-17-6,Charantoside I,C37H58O8,630.41316883,Momordica charantia
+PLANT006,Momordica charantia,C00056380,1040903-38-5,Kuguaglycoside B,C37H62O8,634.44446896,Momordica charantia
+PLANT006,Momordica charantia,C00056381,1041631-93-9,Kuguaglycoside C,C36H56O8,616.39751876,Momordica charantia
+PLANT006,Momordica charantia,C00056382,1041631-94-0,Kuguaglycoside D,C30H50O4,474.37091008,Momordica charantia
+PLANT006,Momordica charantia,C00056383,1041631-95-1,Kuguaglycoside E,C42H70O14,798.47655695,Momordica charantia
+PLANT006,Momordica charantia,C00056384,1041631-96-2,Kuguaglycoside F,C43H72O13,796.49729239,Momordica charantia
+PLANT006,Momordica charantia,C00056385,1041631-97-3,Kuguaglycoside G,C42H70O13,782.48164232,Momordica charantia
+PLANT006,Momordica charantia,C00056386,1041631-98-4,Kuguaglycoside H,C48H80O18,944.53446575,Momordica charantia
+PLANT006,Momordica charantia,C00056500,1141453-63-5,Kuguacin I,C31H46O5,498.33452458,Momordica charantia
+PLANT006,Momordica charantia,C00056601,119674-15-6,MCTI I,C137H225N47O40S7,3392.50619053,Momordica charantia
+PLANT006,Momordica charantia,C00056602,119674-18-9,MCTI II,C129H210N42O39S8,3227.35060112,Momordica charantia
+PLANT006,Momordica charantia,C00056711,1244028-19-0,"7-Methoxycucurbita-5,23,25-trien-3-ol",C31H50O2,454.38108084,Momordica charantia
+PLANT006,Momordica charantia,C00056718,1246441-35-9,"5,19-Epoxy-19-methoxy-20,21,22,23,24,25,26,27-octanorcucurbitane-3,7,17-trione",C23H32O5,388.22497413,Momordica charantia
+PLANT006,Momordica charantia,C00056784,128529-78-2,"13beta,28-Epoxy-11-ursen-3-one",C30H46O2,438.34978071,Momordica charantia
+PLANT006,Momordica charantia,C00056802,1011726-62-7,Momordicoside P,C36H58O9,634.40808345,Momordica charantia
+PLANT006,Momordica charantia,C00056803,1012315-36-4,Momordicin V,C39H60O12,720.40847738,Momordica charantia
+PLANT006,Momordica charantia,C00056874,1143464-94-1,Momordicoside W,C36H58O9,634.40808345,Momordica charantia
+PLANT006,Momordica charantia,C00056961,1228785-48-5,Momordicoside U,C37H60O9,648.42373351,Momordica charantia
+PLANT006,Momordica charantia,C00056962,1228785-49-6,Momordicoside V,C36H58O8,618.41316883,Momordica charantia
+PLANT006,Momordica charantia,C00056975,1246441-32-6,"20,21,22,23,24,25,26,27-Octanorcucurbit-5-ene-3,7,17-trione",C22H30O3,342.21949482,Momordica charantia
+PLANT006,Momordica charantia,C00056976,1246441-33-7,"20,21,22,23,24,25,26,27-Octanorcucurbit-5-ene-3,7,16-trione",C22H30O3,342.21949482,Momordica charantia
+PLANT006,Momordica charantia,C00057007,1289117-58-3,"23,24,25,26,27-Pentanor-3,7-dioxocucurbit-5-en-22-oic acid",C25H36O4,400.26135964,Momordica charantia
+PLANT006,Momordica charantia,C00057186,189156-40-9,Momordicilin,C36H60O3,540.45424578,Momordica charantia
+PLANT006,Momordica charantia,C00057187,189156-41-0,Momordenol,C29H46O2,426.34978071,Momordica charantia
+PLANT006,Momordica charantia,C00057188,189156-42-1,Momordol,C26H48O5,440.35017464,Momordica charantia
+PLANT006,Momordica charantia,C00057466,606125-07-9,Momorcerebroside I,C48H93NO10,843.6799482,Momordica charantia
+PLANT006,Momordica charantia,C00057539,75799-04-1,Momordicoside B,C47H80O19,948.52938038,Momordica charantia
+PLANT006,Momordica charantia,C00057552,78887-73-7,Momordicoside D,C42H70O13,782.48164232,Momordica charantia
+PLANT006,Momordica charantia,C00057553,78887-74-8,Momordicoside E,C37H60O12,696.40847738,Momordica charantia
+PLANT006,Momordica charantia,C00057632,894412-35-2,Momordicin IV,C36H58O9,634.40808345,Momordica charantia
+PLANT006,Momordica charantia,C00057653,91590-75-9,Momordicin II,C36H58O9,634.40808345,Momordica charantia
+PLANT006,Momordica charantia,C00057676,944711-20-0,Momordicoside M,C42H68O14,796.46090688,Momordica charantia
+PLANT006,Momordica charantia,C00057677,944711-21-1,Momordicoside N,C42H68O14,796.46090688,Momordica charantia
+PLANT006,Momordica charantia,C00057678,944711-22-2,Momordicoside O,C42H68O15,812.4558215,Momordica charantia
+PLANT006,Momordica charantia,C00057942,159099-33-9,Trieleostearin,C57H92O6,872.68939067,Momordica charantia
+PLANT006,Momordica charantia,C00057951,165337-39-3,Momordica charantia Trypsin inhibitor III,C132H206N42O41S7,3259.33705951,Momordica charantia
+PLANT006,Momordica charantia,C00059263,1141453-83-9,19-epi-Kuguacin R,C30H48O4,472.35526002,Momordica charantia
+PLANT006,Momordica charantia,C00059293,115758-72-0,"(3beta,5alpha,6alpha,22E)-5,6-Epoxy-3-hydroxyergosta-8,22-dien-7-one",C28H42O3,426.31339521,Momordica charantia
+PLANT006,Momordica charantia,C00059659,132587-67-8,"3,7-Dihydroxy-25-methoxycucurbita-5,23-dien-19-al",C31H50O4,486.37091008,Momordica charantia
+PLANT006,Momordica charantia,C00060059,151345-06-1,Decortinol,C29H48O2,428.36543078,Momordica charantia
+PLANT006,Momordica charantia,C00060060,151345-08-3,Decortinone,C29H46O2,426.34978071,Momordica charantia
+PLANT006,Momordica charantia,C00060222,16250-61-6,Melithasterol B,C28H44O3,428.32904527,Momordica charantia
+PLANT006,Momordica charantia,C00060844,22259-18-3,"5alpha,6alpha-Epoxyergosta-8(14),22-diene-3beta,7alpha-diol",C28H44O3,428.32904527,Momordica charantia
+PLANT006,Momordica charantia,C00061033,243449-53-8,"5alpha,6alpha-Epoxy-(22E,24R)-ergosta-8,22-diene-3beta,7beta-diol",C28H44O3,428.32904527,Momordica charantia
+PLANT006,Momordica charantia,C00061193,27138-57-4,Resorcylic acid,C7H6O4,154.02660868,Momordica charantia
+PLANT006,Momordica charantia,C00061319,29656-58-4,Hydroxybenzoic acid,C7H6O3,138.03169406,Momordica charantia
+PLANT006,Momordica charantia,C00063076,81910-39-6,"5,19-Epoxy-25-methoxycucurbita-6,23-dien-3-ol",C31H50O3,470.37599546,Momordica charantia
+PLANT006,Momordica charantia,C00063155,85372-65-2,"(3S,7S,8S,9R,10R,13R,14S,17R)-3,7-Dihydroxy-17-[(E,2R)-6-hydroxy-6-methylhept-4-en-2-yl]-4,4,13,14-tetramethyl-2,3,7,8,10,11,12,15,16,17-decahydro-1H-cyclopenta[a]phenanthrene-9-carbaldehyde",C30H48O4,472.35526002,Momordica charantia
+PLANT006,Momordica charantia,C00063156,85372-69-6,"(23E)-3beta-Hydroxy-7beta,25-dimethoxycucurbita-5,23-dien-19-al",C32H52O4,500.38656015,Momordica charantia
+PLANT006,Momordica charantia,C00063165,857028-21-8,"(23E)-3beta-Hydroxy-7beta-methoxycucurbita-5,23,25-trien-19-al",C31H48O3,468.3603454,Momordica charantia
+PLANT006,Momordica charantia,C00063358,912329-04-5,"7beta,25-Dihydrocucurbita-5,23(E)-dien-19-al 3-O-beta-D-allopyranoside",C36H58O9,634.40808345,Momordica charantia
+PLANT006,Momordica charantia,C00063642,1095846-99-3,Momordicoside S,C48H82O20,978.53994506,Momordica charantia
+PLANT006,Momordica charantia,C00063643,1096710-49-4,Momordicoside Q,C36H60O10,652.41864814,Momordica charantia
+PLANT006,Momordica charantia,C00063644,1096710-50-7,Momordicoside R,C42H70O15,814.47147157,Momordica charantia
+PLANT006,Momordica charantia,C00063838,1392-51-4,Momordicin,C31H50O3,470.37599546,Momordica charantia
+PLANT006,Momordica charantia,C00064626,934739-35-2,Karaviloside XI,C36H60O10,652.41864814,Momordica charantia

@@ -1,5 +1,6 @@
 import pandas as pd
 from pathlib import Path
+from compound_identity import compound_keys
 
 
 # ============================================================
@@ -69,6 +70,8 @@ plant_data = pd.read_csv(
     PLANT_DATA_FILE,
     low_memory=False
 )
+t2d["Compound_Key"] = compound_keys(t2d)
+plant_data["Compound_Key"] = compound_keys(plant_data)
 
 print(f"전체 AI 행: {len(plant_data):,}")
 print(f"전체 식물 수: {plant_data['Plant_ID'].nunique()}")
@@ -84,8 +87,8 @@ print("[3] 화합물별 식물 수 계산")
 
 compound_plant_count = (
     plant_data
-    .dropna(subset=["ChEMBL_ID"])
-    .groupby("ChEMBL_ID")["Plant_ID"]
+    .loc[lambda frame: frame["Compound_Key"] != ""]
+    .groupby("Compound_Key")["Plant_ID"]
     .nunique()
     .reset_index(name="Plant_Count")
 )
@@ -93,7 +96,7 @@ compound_plant_count = (
 
 t2d = t2d.merge(
     compound_plant_count,
-    on="ChEMBL_ID",
+    on="Compound_Key",
     how="left"
 )
 
@@ -113,7 +116,7 @@ t2d["Plant_Specific"] = (
 
 print(
     f"화합물 종류: "
-    f"{compound_plant_count['ChEMBL_ID'].nunique():,}"
+    f"{compound_plant_count['Compound_Key'].nunique():,}"
 )
 
 
@@ -132,10 +135,7 @@ summary = (
         as_index=False
     )
     .agg(
-        T2D_Compound_Count=(
-            "ChEMBL_ID",
-            "nunique"
-        ),
+        T2D_Compound_Count=("Compound_Key", "nunique"),
         T2D_Target_Count=(
             "UniProt_ID",
             "nunique"
@@ -218,10 +218,7 @@ if len(specific) > 0:
             as_index=False
         )
         .agg(
-            Plant_Specific_Compound_Count=(
-                "ChEMBL_ID",
-                "nunique"
-            ),
+            Plant_Specific_Compound_Count=("Compound_Key", "nunique"),
             Plant_Specific_Target_Count=(
                 "UniProt_ID",
                 "nunique"

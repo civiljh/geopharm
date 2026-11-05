@@ -1,7 +1,7 @@
 ﻿Plant_ID,Scientific_Name,Candidate_Rank,Compound_Name,ChEMBL_ID,UniProt_ID,Predicted_pChEMBL,Target_Evidence,Target_Role
 PLANT001,Panax ginseng,1,Chikusetsusaponin IVa,CHEMBL1095348,O14842,6.889344444444453,Strong,Therapeutic target candidate
-PLANT001,Panax ginseng,2,Ginsenoside Rg3,CHEMBL398412,O14842,6.845327777777784,Strong,Therapeutic target candidate
-PLANT001,Panax ginseng,3,20(R)-Ginsenoside Rg3,CHEMBL1095008,O14842,6.845327777777784,Strong,Therapeutic target candidate
+PLANT001,Panax ginseng,2,20(R)-Ginsenoside Rg3,CHEMBL1095008,O14842,6.845327777777784,Strong,Therapeutic target candidate
+PLANT001,Panax ginseng,3,Ginsenoside Rg3,CHEMBL398412,O14842,6.845327777777784,Strong,Therapeutic target candidate
 PLANT001,Panax ginseng,4,Ginsenoside Rk1,CHEMBL251235,O14842,6.793650000000008,Strong,Therapeutic target candidate
 PLANT001,Panax ginseng,5,4-Dimethylaminopyridine,CHEMBL3561645,O14842,6.793161111111106,Strong,Therapeutic target candidate
 PLANT001,Panax ginseng,6,Ginsenoside Rb2,CHEMBL449303,O14842,6.767027777777785,Strong,Therapeutic target candidate
@@ -34,25 +34,25 @@ PLANT006,Momordica charantia,4,Momordicoside M,CHEMBL2335925,O14842,6.1946944444
 PLANT006,Momordica charantia,5,Charantoside V,CHEMBL266062,O14842,6.134127777777783,Strong,Therapeutic target candidate
 PLANT006,Momordica charantia,6,Charantoside II,CHEMBL255021,O14842,6.129811111111118,Strong,Therapeutic target candidate
 PLANT006,Momordica charantia,7,"3beta-Hydroxy-(22E,24R)-ergosta-5,8,22-trien-7-one",CHEMBL5183110,O14842,6.119799999999995,Strong,Therapeutic target candidate
-PLANT006,Momordica charantia,8,Charantoside III,CHEMBL409789,O14842,6.117966666666667,Strong,Therapeutic target candidate
-PLANT006,Momordica charantia,9,Charantoside IV,CHEMBL409790,O14842,6.117966666666667,Strong,Therapeutic target candidate
+PLANT006,Momordica charantia,8,Charantoside IV,CHEMBL409790,O14842,6.117966666666667,Strong,Therapeutic target candidate
+PLANT006,Momordica charantia,9,Charantoside III,CHEMBL409789,O14842,6.117966666666667,Strong,Therapeutic target candidate
 PLANT006,Momordica charantia,10,Charantoside I,CHEMBL411796,O14842,6.106633333333335,Strong,Therapeutic target candidate
-PLANT007,Schisandra chinensis,1,Gomisin L1 methyl ether,CHEMBL513752,O14842,6.288654761904762,Strong,Therapeutic target candidate
-PLANT007,Schisandra chinensis,2,Schizandrin B,CHEMBL479488,O14842,6.288654761904762,Strong,Therapeutic target candidate
-PLANT007,Schisandra chinensis,3,Deoxygomisin A,CHEMBL402435,O14842,6.288654761904762,Strong,Therapeutic target candidate
+PLANT007,Schisandra chinensis,1,Schizandrin B,CHEMBL479488,O14842,6.288654761904762,Strong,Therapeutic target candidate
+PLANT007,Schisandra chinensis,2,Deoxygomisin A,CHEMBL402435,O14842,6.288654761904762,Strong,Therapeutic target candidate
+PLANT007,Schisandra chinensis,3,Gomisin L1 methyl ether,CHEMBL513752,O14842,6.288654761904762,Strong,Therapeutic target candidate
 PLANT007,Schisandra chinensis,4,Wuweizisu C,CHEMBL437412,O14842,6.209407539682538,Strong,Therapeutic target candidate
 PLANT007,Schisandra chinensis,5,Gomisin A,CHEMBL1159658,O14842,6.201363095238095,Strong,Therapeutic target candidate
 PLANT007,Schisandra chinensis,6,Nordihydroguaiaretic acid,CHEMBL52,O14842,6.173666666666669,Strong,Therapeutic target candidate
-PLANT007,Schisandra chinensis,7,Gomisin B,CHEMBL253687,O14842,6.153446428571429,Strong,Therapeutic target candidate
-PLANT007,Schisandra chinensis,8,Tigloylgomisin P,CHEMBL253907,O14842,6.153446428571429,Strong,Therapeutic target candidate
+PLANT007,Schisandra chinensis,7,Tigloylgomisin P,CHEMBL253907,O14842,6.153446428571429,Strong,Therapeutic target candidate
+PLANT007,Schisandra chinensis,8,Gomisin B,CHEMBL253687,O14842,6.153446428571429,Strong,Therapeutic target candidate
 PLANT007,Schisandra chinensis,9,Deoxyschisandrin,CHEMBL253908,O14842,6.148538888888885,Strong,Therapeutic target candidate
 PLANT007,Schisandra chinensis,10,Gomisin R,CHEMBL1237139,O14842,6.144043650793648,Strong,Therapeutic target candidate
 PLANT008,Lycium chinense,1,(+)-Lyoniresinol 3alpha-O-beta-D-glucopyranoside,CHEMBL464198,O14842,6.046405555555554,Strong,Therapeutic target candidate
 PLANT008,Lycium chinense,2,Hyoscyamine,CHEMBL2449003,O14842,6.015416666666664,Strong,Therapeutic target candidate
 PLANT008,Lycium chinense,3,Withanolide A,CHEMBL445041,O14842,6.000349999999998,Strong,Therapeutic target candidate
 PLANT008,Lycium chinense,4,Hypoxanthine,CHEMBL1427,O14842,5.983144444444441,Strong,Therapeutic target candidate
-PLANT008,Lycium chinense,5,Calystegine B4,CHEMBL3233945,O14842,5.965272222222222,Strong,Therapeutic target candidate
-PLANT008,Lycium chinense,6,Calystegine B3,CHEMBL3233944,O14842,5.965272222222222,Strong,Therapeutic target candidate
+PLANT008,Lycium chinense,5,Calystegine B3,CHEMBL3233944,O14842,5.965272222222222,Strong,Therapeutic target candidate
+PLANT008,Lycium chinense,6,Calystegine B4,CHEMBL3233945,O14842,5.965272222222222,Strong,Therapeutic target candidate
 PLANT008,Lycium chinense,7,Obtusifoliol,CHEMBL481434,O14842,5.960577777777777,Strong,Therapeutic target candidate
 PLANT008,Lycium chinense,8,Calystegine A5,CHEMBL3233943,O14842,5.954294444444441,Strong,Therapeutic target candidate
 PLANT008,Lycium chinense,9,Safranal,CHEMBL3183495,O14842,5.949044444444442,Strong,Therapeutic target candidate
@@ -65,8 +65,8 @@ PLANT009,Rehmannia glutinosa,5,Genameside C,CHEMBL2311862,O14842,6.1549944444444
 PLANT009,Rehmannia glutinosa,6,Decaffeoylacteoside,CHEMBL1779146,O14842,6.122633333333334,Strong,Therapeutic target candidate
 PLANT009,Rehmannia glutinosa,7,Rehmannioside A,CHEMBL3810015,O14842,6.0861888888888895,Strong,Therapeutic target candidate
 PLANT009,Rehmannia glutinosa,8,Strictosidine,CHEMBL402211,O14842,6.08131666666667,Strong,Therapeutic target candidate
-PLANT009,Rehmannia glutinosa,9,2-(4-Hydroxyphenyl)ethanol,CHEMBL53566,O14842,6.0760666666666685,Strong,Therapeutic target candidate
-PLANT009,Rehmannia glutinosa,10,Catalpol,CHEMBL513223,O14842,6.046405555555557,Strong,Therapeutic target candidate
+PLANT009,Rehmannia glutinosa,9,8-Epiloganic acid,CHEMBL1079678,O14842,6.026511111111117,Strong,Therapeutic target candidate
+PLANT009,Rehmannia glutinosa,10,"1-Methyl-1,2,3,4-tetrahydro-beta-carboline-3-carboxylic acid",CHEMBL491388,O14842,6.024533333333332,Strong,Therapeutic target candidate
 PLANT010,Ziziphus jujuba,1,Jujuboside B,CHEMBL3109480,O14842,6.683861111111118,Strong,Therapeutic target candidate
 PLANT010,Ziziphus jujuba,2,Sanjoinine D,CHEMBL463694,O14842,6.146716666666668,Strong,Therapeutic target candidate
 PLANT010,Ziziphus jujuba,3,Sanjoinine G1,CHEMBL463693,O14842,6.139050000000001,Strong,Therapeutic target candidate
@@ -101,12 +101,12 @@ PLANT013,Gardenia jasminoides,1,Shanzhiside,CHEMBL518392,O14842,6.08574444444444
 PLANT013,Gardenia jasminoides,2,Jasminoside A,CHEMBL4643962,O14842,6.076694444444444,Strong,Therapeutic target candidate
 PLANT013,Gardenia jasminoides,3,Galioside,CHEMBL485798,O14842,5.981350000000003,Strong,Therapeutic target candidate
 PLANT013,Gardenia jasminoides,4,Gardenoside,CHEMBL1079679,O14842,5.981350000000003,Strong,Therapeutic target candidate
-PLANT013,Gardenia jasminoides,5,6alpha-Hydroxygeniposide,CHEMBL463096,O14842,5.980161111111116,Strong,Therapeutic target candidate
-PLANT013,Gardenia jasminoides,6,6beta-Hydroxygeniposide,CHEMBL516850,O14842,5.980161111111116,Strong,Therapeutic target candidate
+PLANT013,Gardenia jasminoides,5,6beta-Hydroxygeniposide,CHEMBL516850,O14842,5.980161111111116,Strong,Therapeutic target candidate
+PLANT013,Gardenia jasminoides,6,6alpha-Hydroxygeniposide,CHEMBL463096,O14842,5.980161111111116,Strong,Therapeutic target candidate
 PLANT013,Gardenia jasminoides,7,Jasminodiol,CHEMBL444130,O14842,5.971694444444441,Strong,Therapeutic target candidate
 PLANT013,Gardenia jasminoides,8,Crocusatin C,CHEMBL4643017,O14842,5.962844444444441,Strong,Therapeutic target candidate
-PLANT013,Gardenia jasminoides,9,Crocin 2,CHEMBL2311863,O14842,5.94755277777778,Strong,Therapeutic target candidate
-PLANT013,Gardenia jasminoides,10,Crocin,CHEMBL446785,O14842,5.94755277777778,Strong,Therapeutic target candidate
+PLANT013,Gardenia jasminoides,9,Crocin,CHEMBL446785,O14842,5.94755277777778,Strong,Therapeutic target candidate
+PLANT013,Gardenia jasminoides,10,Crocin 2,CHEMBL2311863,O14842,5.94755277777778,Strong,Therapeutic target candidate
 PLANT014,Cornus officinalis,1,Aristolone,CHEMBL512374,O14842,6.139102777777776,Strong,Therapeutic target candidate
 PLANT014,Cornus officinalis,2,"1,2,3,6-Tetra-O-galloyl-beta-D-glucose",CHEMBL449947,O14842,6.069977777777776,Strong,Therapeutic target candidate
 PLANT014,Cornus officinalis,3,"1,2,3-Tri-O-galloyl-beta-D-glucose",CHEMBL5278137,O14842,6.044394444444442,Strong,Therapeutic target candidate
@@ -142,12 +142,12 @@ PLANT019,Curcuma longa,1,Procurcumadiol,CHEMBL2386512,O14842,6.141961111111108,S
 PLANT019,Curcuma longa,2,Cyclocurcumin,CHEMBL4098368,O14842,6.076533333333327,Strong,Therapeutic target candidate
 PLANT019,Curcuma longa,3,Cholesterol sulfate,CHEMBL1231592,O14842,6.058319444444439,Strong,Therapeutic target candidate
 PLANT019,Curcuma longa,4,Procurcumenol,CHEMBL2332430,O14842,6.025961111111108,Strong,Therapeutic target candidate
-PLANT019,Curcuma longa,5,Isoborneol,CHEMBL3560760,O14842,6.010877777777779,Strong,Therapeutic target candidate
-PLANT019,Curcuma longa,6,Cholesterol,CHEMBL112570,O14842,6.004136111111105,Strong,Therapeutic target candidate
-PLANT019,Curcuma longa,7,Germacrone,CHEMBL116810,O14842,5.9745,Strong,Therapeutic target candidate
-PLANT019,Curcuma longa,8,p-Methoxycinnamic acid,CHEMBL95770,O14842,5.972633333333331,Strong,Therapeutic target candidate
-PLANT019,Curcuma longa,9,Letestuianin A,CHEMBL478742,O14842,5.9685833333333305,Strong,Therapeutic target candidate
-PLANT019,Curcuma longa,10,"1,7-Bis(4-hydroxyphenyl)-1-heptene-3,5-dione",CHEMBL489150,O14842,5.958405555555556,Strong,Therapeutic target candidate
+PLANT019,Curcuma longa,5,Cholesterol,CHEMBL112570,O14842,6.004136111111105,Strong,Therapeutic target candidate
+PLANT019,Curcuma longa,6,Germacrone,CHEMBL116810,O14842,5.9745,Strong,Therapeutic target candidate
+PLANT019,Curcuma longa,7,p-Methoxycinnamic acid,CHEMBL95770,O14842,5.972633333333331,Strong,Therapeutic target candidate
+PLANT019,Curcuma longa,8,Letestuianin A,CHEMBL478742,O14842,5.9685833333333305,Strong,Therapeutic target candidate
+PLANT019,Curcuma longa,9,"1,7-Bis(4-hydroxyphenyl)-1-heptene-3,5-dione",CHEMBL489150,O14842,5.958405555555556,Strong,Therapeutic target candidate
+PLANT019,Curcuma longa,10,Turmerone,CHEMBL2272665,O14842,5.945627777777776,Strong,Therapeutic target candidate
 PLANT021,Paeonia suffruticosa,1,Mudanpioside F,CHEMBL2205293,O14842,6.087977777777778,Strong,Therapeutic target candidate
 PLANT021,Paeonia suffruticosa,2,Galloylpaeoniflorin,CHEMBL1077642,O14842,5.965199999999998,Strong,Therapeutic target candidate
 PLANT021,Paeonia suffruticosa,3,Mudanpioside B,CHEMBL2205292,O14842,5.930633333333335,Strong,Therapeutic target candidate
@@ -184,11 +184,11 @@ PLANT030,Salvia miltiorrhiza,2,Salvianan,CHEMBL4173119,O14842,6.136344444444443,
 PLANT030,Salvia miltiorrhiza,3,Neosalvianen,CHEMBL520209,O14842,6.128427777777777,Strong,Therapeutic target candidate
 PLANT030,Salvia miltiorrhiza,4,Salvianolic acid C,CHEMBL4077922,O14842,5.997883333333332,Strong,Therapeutic target candidate
 PLANT030,Salvia miltiorrhiza,5,Tanshinone II,CHEMBL187266,O14842,5.993433333333331,Strong,Therapeutic target candidate
-PLANT030,Salvia miltiorrhiza,6,Salvianolic acid A,CHEMBL457077,O14842,5.979216666666667,Strong,Therapeutic target candidate
-PLANT030,Salvia miltiorrhiza,7,Miltipolone,CHEMBL1761193,O14842,5.973261111111111,Strong,Therapeutic target candidate
-PLANT030,Salvia miltiorrhiza,8,Methyl tanshinonate,CHEMBL2146517,O14842,5.9673333333333325,Strong,Therapeutic target candidate
-PLANT030,Salvia miltiorrhiza,9,Dihydrotanshinone I,CHEMBL227075,O14842,5.955874999999996,Strong,Therapeutic target candidate
-PLANT030,Salvia miltiorrhiza,10,Isoferulic acid,CHEMBL233295,O14842,5.952016666666665,Strong,Therapeutic target candidate
+PLANT030,Salvia miltiorrhiza,6,Miltipolone,CHEMBL1761193,O14842,5.973261111111111,Strong,Therapeutic target candidate
+PLANT030,Salvia miltiorrhiza,7,Methyl tanshinonate,CHEMBL2146517,O14842,5.9673333333333325,Strong,Therapeutic target candidate
+PLANT030,Salvia miltiorrhiza,8,Dihydrotanshinone I,CHEMBL227075,O14842,5.955874999999996,Strong,Therapeutic target candidate
+PLANT030,Salvia miltiorrhiza,9,Isoferulic acid,CHEMBL233295,O14842,5.952016666666665,Strong,Therapeutic target candidate
+PLANT030,Salvia miltiorrhiza,10,Magnesium lithospermate B,CHEMBL39993,O14842,5.9515333333333285,Strong,Therapeutic target candidate
 PLANT031,Houttuynia cordata,1,5'-Deoxy-5'-methylsulfinyladenosine,CHEMBL294920,O14842,6.509150000000011,Strong,Therapeutic target candidate
 PLANT031,Houttuynia cordata,2,(+)-N-Methyllaurotetanine,CHEMBL464099,O14842,6.081044444444444,Strong,Therapeutic target candidate
 PLANT031,Houttuynia cordata,3,4-Pyridinamine,CHEMBL284348,O14842,6.060411111111108,Strong,Therapeutic target candidate
@@ -199,16 +199,16 @@ PLANT031,Houttuynia cordata,7,(-)-Borneol,CHEMBL3186705,O14842,6.010877777777779
 PLANT031,Houttuynia cordata,8,Manassantin A,CHEMBL550919,O14842,5.97869444444444,Strong,Therapeutic target candidate
 PLANT031,Houttuynia cordata,9,2-Ethylpyrazine,CHEMBL97525,O14842,5.978377777777777,Strong,Therapeutic target candidate
 PLANT031,Houttuynia cordata,10,"2,6-Dimethyl-2,4,6-octatriene",CHEMBL2268552,O14842,5.971380555555554,Strong,Therapeutic target candidate
-PLANT032,Ginkgo biloba,1,Chrysoeriol,CHEMBL214321,P27487,6.208299999999996,Strong,Established therapeutic target
-PLANT032,Ginkgo biloba,2,Amentoflavone,CHEMBL63354,P27487,6.196616666666663,Strong,Established therapeutic target
-PLANT032,Ginkgo biloba,3,Spinasterol,CHEMBL487783,O14842,6.148511111111111,Strong,Therapeutic target candidate
-PLANT032,Ginkgo biloba,4,Diosmetin,CHEMBL90568,P27487,6.142016666666664,Strong,Established therapeutic target
-PLANT032,Ginkgo biloba,5,Typhaneoside,CHEMBL450526,O14842,6.126599999999999,Strong,Therapeutic target candidate
-PLANT032,Ginkgo biloba,6,(-)-Lycorine,CHEMBL400092,O14842,6.105922222222223,Strong,Therapeutic target candidate
-PLANT032,Ginkgo biloba,7,(+)-Cedrol,CHEMBL1974890,O14842,6.0827777777777765,Strong,Therapeutic target candidate
-PLANT032,Ginkgo biloba,8,Peonidin,CHEMBL589665,O14842,6.07276111111111,Strong,Therapeutic target candidate
-PLANT032,Ginkgo biloba,9,Abscisic acid,CHEMBL288040,O14842,6.072577777777775,Strong,Therapeutic target candidate
-PLANT032,Ginkgo biloba,10,Bilobetin,CHEMBL378188,P27487,6.066833333333327,Strong,Established therapeutic target
+PLANT032,Ginkgo biloba,1,Amentoflavone,CHEMBL63354,P27487,6.196616666666663,Strong,Established therapeutic target
+PLANT032,Ginkgo biloba,2,Spinasterol,CHEMBL487783,O14842,6.148511111111111,Strong,Therapeutic target candidate
+PLANT032,Ginkgo biloba,3,Typhaneoside,CHEMBL450526,O14842,6.126599999999999,Strong,Therapeutic target candidate
+PLANT032,Ginkgo biloba,4,(-)-Lycorine,CHEMBL400092,O14842,6.105922222222223,Strong,Therapeutic target candidate
+PLANT032,Ginkgo biloba,5,(+)-Cedrol,CHEMBL1974890,O14842,6.0827777777777765,Strong,Therapeutic target candidate
+PLANT032,Ginkgo biloba,6,Peonidin,CHEMBL589665,O14842,6.07276111111111,Strong,Therapeutic target candidate
+PLANT032,Ginkgo biloba,7,Abscisic acid,CHEMBL288040,O14842,6.072577777777775,Strong,Therapeutic target candidate
+PLANT032,Ginkgo biloba,8,Bilobetin,CHEMBL378188,P27487,6.066833333333327,Strong,Established therapeutic target
+PLANT032,Ginkgo biloba,9,Ginkgolide A,CHEMBL465161,O14842,6.052483333333328,Strong,Therapeutic target candidate
+PLANT032,Ginkgo biloba,10,Hinokiflavone,CHEMBL291426,P27487,6.050299999999991,Strong,Established therapeutic target
 PLANT033,Salvia rosmarinus,1,Pomolic acid,CHEMBL486986,O14842,6.38241666666667,Strong,Therapeutic target candidate
 PLANT033,Salvia rosmarinus,2,"2beta,3beta-Dihydroxyolean-12-en-28-oic acid",CHEMBL482673,O14842,6.321494444444446,Strong,Therapeutic target candidate
 PLANT033,Salvia rosmarinus,3,Luteolin 7-glucuronide,CHEMBL464224,P27487,6.266550000000003,Strong,Established therapeutic target
@@ -239,3 +239,51 @@ PLANT035,Laurus nobilis,7,(+)-Reynosin,CHEMBL272178,O14842,5.945991666666665,Str
 PLANT035,Laurus nobilis,8,(-)-Secoisolariciresinol,CHEMBL368347,O14842,5.941666666666666,Strong,Therapeutic target candidate
 PLANT035,Laurus nobilis,9,Zaluzanin D,CHEMBL371402,O14842,5.933886111111112,Strong,Therapeutic target candidate
 PLANT035,Laurus nobilis,10,"Kaempferol 3-(2'',4''-di-(E)-p-coumarylrhamnoside)",CHEMBL1642586,O14842,5.9285,Strong,Therapeutic target candidate
+PLANT036,Origanum vulgare,1,Luteolin 7-methyl ether,CHEMBL183745,P27487,6.155433333333339,Strong,Established therapeutic target
+PLANT036,Origanum vulgare,2,Globoidnan A,CHEMBL5198157,O14842,6.132783333333332,Strong,Therapeutic target candidate
+PLANT036,Origanum vulgare,3,"5,4'-Dihidroxy-6,7,8,3'-tetramethoxyflavone",CHEMBL74272,P27487,5.968133333333326,Strong,Established therapeutic target
+PLANT036,Origanum vulgare,4,"5,6,4'-Trihydroxy-7,3'-dimethoxyflavone",CHEMBL4460471,P27487,5.961249999999995,Strong,Established therapeutic target
+PLANT036,Origanum vulgare,5,Cirsilineol,CHEMBL487213,P27487,5.957366666666661,Strong,Established therapeutic target
+PLANT036,Origanum vulgare,6,Thymonin,CHEMBL478416,P27487,5.951149999999992,Strong,Established therapeutic target
+PLANT036,Origanum vulgare,7,Axillarin,CHEMBL487810,O14842,5.889399999999999,Strong,Therapeutic target candidate
+PLANT036,Origanum vulgare,8,Caprolactam,CHEMBL276218,O14842,5.855877777777777,Strong,Therapeutic target candidate
+PLANT036,Origanum vulgare,9,Penduletin,CHEMBL165509,O14842,5.8419,Strong,Therapeutic target candidate
+PLANT036,Origanum vulgare,10,Thymusin,CHEMBL478426,P27487,5.800016666666656,Strong,Established therapeutic target
+PLANT038,Plantago lanceolata,1,Plantainoside D,CHEMBL452413,O14842,6.066199999999999,Strong,Therapeutic target candidate
+PLANT038,Plantago lanceolata,2,2-Methylbutanoic acid,CHEMBL1160012,O14842,6.000875000000001,Strong,Therapeutic target candidate
+PLANT038,Plantago lanceolata,3,(-)-Loliolide,CHEMBL227113,O14842,5.9508999999999945,Strong,Therapeutic target candidate
+PLANT038,Plantago lanceolata,4,Asperuloside,CHEMBL461910,O14842,5.923544444444445,Strong,Therapeutic target candidate
+PLANT038,Plantago lanceolata,5,Benzaldehyde,CHEMBL15972,O14842,5.8665999999999965,Strong,Therapeutic target candidate
+PLANT038,Plantago lanceolata,6,"(2E,4E)-Deca-2,4-dienal",CHEMBL443949,O14842,5.7068861111111095,Strong,Therapeutic target candidate
+PLANT040,Achillea millefolium,1,Vulgarone B,CHEMBL2272434,O14842,6.127161111111111,Strong,Therapeutic target candidate
+PLANT040,Achillea millefolium,2,Camazulene,CHEMBL495665,O14842,5.955105555555552,Strong,Therapeutic target candidate
+PLANT040,Achillea millefolium,3,Trigonelline,CHEMBL350675,O14842,5.910299999999999,Strong,Therapeutic target candidate
+PLANT040,Achillea millefolium,4,Artemetin,CHEMBL225700,O14842,5.889783333333332,Strong,Therapeutic target candidate
+PLANT040,Achillea millefolium,5,Chamazulene carboxylic acid,CHEMBL497088,O14842,5.888466666666669,Strong,Therapeutic target candidate
+PLANT040,Achillea millefolium,6,"5-Hydroxy-3,6,7,4'-tetramethoxyflavone",CHEMBL521934,O14842,5.863716666666666,Strong,Therapeutic target candidate
+PLANT040,Achillea millefolium,7,Casticin,CHEMBL452767,O14842,5.8353,Strong,Therapeutic target candidate
+PLANT041,Melissa officinalis,1,Quadranoside III,CHEMBL507590,O14842,6.227044444444449,Strong,Therapeutic target candidate
+PLANT041,Melissa officinalis,2,Clinopodic acid A,CHEMBL1079231,O14842,6.043316666666666,Strong,Therapeutic target candidate
+PLANT041,Melissa officinalis,3,Lithospermic acid,CHEMBL518243,O14842,6.012766666666662,Strong,Therapeutic target candidate
+PLANT041,Melissa officinalis,4,Salvianic acid A,CHEMBL4218391,O14842,5.922483333333335,Strong,Therapeutic target candidate
+PLANT041,Melissa officinalis,5,"3-(3,4-Dihydroxyphenyl)-2-hydroxypropanoic acid",CHEMBL3392011,O14842,5.922483333333335,Strong,Therapeutic target candidate
+PLANT041,Melissa officinalis,6,(R)-Citronellal,CHEMBL1081721,O14842,5.884591666666668,Strong,Therapeutic target candidate
+PLANT042,Onopordum acanthium,1,Onopordin,CHEMBL476730,P27487,6.062233333333336,Strong,Established therapeutic target
+PLANT042,Onopordum acanthium,2,Onopordopicrin,CHEMBL522604,O14842,6.006277777777776,Strong,Therapeutic target candidate
+PLANT042,Onopordum acanthium,3,Arctigenin,CHEMBL435734,O14842,5.829966666666661,Strong,Therapeutic target candidate
+PLANT043,Cytisus scoparius,1,Dopamine,CHEMBL59,O14842,6.08968333333333,Strong,Therapeutic target candidate
+PLANT043,Cytisus scoparius,2,Tyramine,CHEMBL11608,O14842,6.034883333333332,Strong,Therapeutic target candidate
+PLANT043,Cytisus scoparius,3,Lupanine,CHEMBL459396,O14842,5.993119444444448,Strong,Therapeutic target candidate
+PLANT043,Cytisus scoparius,4,alpha-Isosparteine,CHEMBL1328708,O14842,5.961944444444443,Strong,Therapeutic target candidate
+PLANT043,Cytisus scoparius,5,Sparteine,CHEMBL1908847,O14842,5.961944444444443,Strong,Therapeutic target candidate
+PLANT044,Filipendula ulmaria,1,Eugeniin,CHEMBL450745,O14842,5.987777777777777,Strong,Therapeutic target candidate
+PLANT044,Filipendula ulmaria,2,Rugosin D,CHEMBL454004,O14842,5.987233333333332,Strong,Therapeutic target candidate
+PLANT044,Filipendula ulmaria,3,Spiraein,CHEMBL402947,O14842,5.764083333333337,Strong,Therapeutic target candidate
+PLANT045,Malva sylvestris,1,Oenin,CHEMBL403236,O14842,6.033955555555555,Strong,Therapeutic target candidate
+PLANT045,Malva sylvestris,2,Malvone A,CHEMBL1915229,O14842,5.829633333333332,Strong,Therapeutic target candidate
+PLANT046,Cynara scolymus,1,"3,5-Dicaffeoylquinic acid",CHEMBL4289566,O14842,6.073433333333331,Strong,Therapeutic target candidate
+PLANT046,Cynara scolymus,2,"1,3-Dicaffeoylquinic acid",CHEMBL478574,O14842,6.072949999999998,Strong,Therapeutic target candidate
+PLANT046,Cynara scolymus,3,Cynaropicrin,CHEMBL374146,O14842,5.998344444444443,Strong,Therapeutic target candidate
+PLANT046,Cynara scolymus,4,Grosshemin,CHEMBL271958,O14842,5.991311111111108,Strong,Therapeutic target candidate
+PLANT046,Cynara scolymus,5,Luteolin 7-O-rutinoside,CHEMBL1714943,P27487,5.79121111111111,Strong,Established therapeutic target
+PLANT046,Cynara scolymus,6,Narirutin,CHEMBL446246,O14842,5.790999999999992,Strong,Therapeutic target candidate

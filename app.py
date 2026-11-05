@@ -2,6 +2,17 @@
 import pandas as pd
 import os
 import subprocess
+import json
+import math
+import sys
+import tempfile
+from urllib.error import URLError, HTTPError
+from urllib.request import Request, urlopen
+
+try:
+    from src.compound_identity import compound_keys
+except ImportError:
+    from compound_identity import compound_keys
 
 
 app = Flask(__name__)
@@ -10,6 +21,9 @@ app = Flask(__name__)
 # Keep it opt-in so an anonymous public visitor cannot start that pipeline.
 ENABLE_PLANT_PIPELINE = os.environ.get(
     "GEOPHARM_ENABLE_PLANT_PIPELINE", "true"
+).strip().lower() in {"1", "true", "yes", "on"}
+ENABLE_DISEASE_PREDICTIONS = os.environ.get(
+    "GEOPHARM_ENABLE_DISEASE_PREDICTIONS", "true"
 ).strip().lower() in {"1", "true", "yes", "on"}
 
 
@@ -73,6 +87,20 @@ T2D_TARGET_LIST_FILE = os.path.join(
     "data",
     "processed",
     "t2d_target_list.csv"
+)
+
+DISEASE_CATALOG_FILE = os.path.join(
+    BASE_DIR,
+    "data",
+    "processed",
+    "disease_catalog.csv"
+)
+
+PLANT_AI_HUMAN_PREDICTION_FILE = os.path.join(
+    BASE_DIR,
+    "data",
+    "processed",
+    "plant_ai_human_predictions.csv"
 )
 
 
@@ -444,29 +472,367 @@ T2D_PLANTS, T2D_TARGETS, T2D_CANDIDATES = load_t2d_data()
 # ============================================================
 
 def load_disease_target_list():
+    return load_disease_catalog()
 
-    if not os.path.exists(
-        T2D_TARGET_LIST_FILE
-    ):
+
+DISEASE_CATALOG_COLUMNS = [
+    "Disease", "OpenTargets_ID", "UniProt_ID", "Gene_Name",
+    "Protein_Name", "Target_Evidence", "Target_Role", "Evidence_Note",
+    "Association_Score", "Source", "Prediction_Status", "Prediction_Rows"
+]
+
+
+def _read_csv_or_empty(path):
+    if not os.path.exists(path):
         return pd.DataFrame()
-
-
     try:
-
-        return pd.read_csv(
-            T2D_TARGET_LIST_FILE,
-            encoding="utf-8-sig"
-        )
-
+        return pd.read_csv(path, encoding="utf-8-sig", low_memory=False)
     except Exception:
+        try:
+            return pd.read_csv(path, encoding="utf-8", low_memory=False)
+        except Exception:
+            return pd.DataFrame()
 
-        return pd.read_csv(
-            T2D_TARGET_LIST_FILE,
-            encoding="utf-8"
+
+def _atomic_write_csv(frame, path, columns=None):
+    directory = os.path.dirname(path)
+    os.makedirs(directory, exist_ok=True)
+    descriptor, temp_path = tempfile.mkstemp(prefix="geopharm_", suffix=".tmp", dir=directory)
+    os.close(descriptor)
+    try:
+        frame.to_csv(temp_path, index=False, encoding="utf-8-sig", columns=columns)
+        os.replace(temp_path, path)
+    finally:
+        if os.path.exists(temp_path):
+            os.remove(temp_path)
+
+
+def _normalize_disease_name(value):
+    return " ".join(str(value or "").strip().split()).casefold()
+
+
+def load_disease_catalog():
+    """Combine built-in T2D targets with user-registered diseases."""
+    frames = []
+    base = _read_csv_or_empty(T2D_TARGET_LIST_FILE)
+    saved = _read_csv_or_empty(DISEASE_CATALOG_FILE)
+    for frame, default_source in ((base, "GeoPharm"), (saved, "Open Targets / user")):
+        if frame.empty or "Disease" not in frame.columns:
+            continue
+        frame = frame.copy()
+        for column in DISEASE_CATALOG_COLUMNS:
+            if column not in frame.columns:
+                frame[column] = ""
+        frame["Disease"] = frame["Disease"].fillna("").astype(str).str.strip()
+        frame["Source"] = frame["Source"].replace("", default_source).fillna(default_source)
+        frames.append(frame[DISEASE_CATALOG_COLUMNS])
+    if not frames:
+        return pd.DataFrame(columns=DISEASE_CATALOG_COLUMNS)
+    catalog = pd.concat(frames, ignore_index=True)
+    catalog = catalog[catalog["Disease"] != ""].copy()
+    catalog["_disease_key"] = catalog["Disease"].map(_normalize_disease_name)
+    catalog["_target_key"] = catalog["UniProt_ID"].fillna("").astype(str).str.strip().str.upper()
+    catalog.loc[catalog["_target_key"] == "", "_target_key"] = (
+        catalog.loc[catalog["_target_key"] == "", "Gene_Name"]
+        .fillna("").astype(str).str.strip().str.upper()
+    )
+    return catalog.drop_duplicates(["_disease_key", "_target_key"], keep="last").drop(
+        columns=["_disease_key", "_target_key"]
+    ).reset_index(drop=True)
+
+
+def list_diseases():
+    catalog = load_disease_catalog()
+    if catalog.empty:
+        return []
+    return [
+        {"name": name, "display": name}
+        for name in sorted(catalog["Disease"].dropna().astype(str).str.strip().unique(), key=str.casefold)
+        if name
+    ]
+
+
+_GENE_UNIPROT_LOOKUP = None
+
+
+def map_gene_to_uniprot(gene_symbol):
+    global _GENE_UNIPROT_LOOKUP
+    gene_symbol = str(gene_symbol or "").strip().upper()
+    if not gene_symbol:
+        return ""
+    if _GENE_UNIPROT_LOOKUP is None:
+        _GENE_UNIPROT_LOOKUP = {}
+        for path in (
+            os.path.join(BASE_DIR, "data", "processed", "human_target_list.csv"),
+            PLANT_AI_HUMAN_PREDICTION_FILE
+        ):
+            targets = _read_csv_or_empty(path)
+            if targets.empty or not {"Gene_Name", "UniProt_ID"}.issubset(targets.columns):
+                continue
+            for _, row in targets[["Gene_Name", "UniProt_ID"]].dropna().iterrows():
+                _GENE_UNIPROT_LOOKUP.setdefault(str(row["Gene_Name"]).strip().upper(), str(row["UniProt_ID"]).strip())
+    return _GENE_UNIPROT_LOOKUP.get(gene_symbol, "")
+
+
+def save_disease(name, targets):
+    name = " ".join(str(name or "").strip().split())
+    if not name or len(name) > 120:
+        raise ValueError("Disease name must be between 1 and 120 characters.")
+    cleaned = []
+    seen_target_keys = set()
+    for target in targets[:20]:
+        if not isinstance(target, dict):
+            continue
+        gene = str(target.get("gene_symbol") or target.get("Gene_Name") or "").strip().upper()[:40]
+        uniprot = str(target.get("uniprot_id") or target.get("UniProt_ID") or "").strip()[:24]
+        if not uniprot and gene:
+            uniprot = map_gene_to_uniprot(gene)
+        if not gene and not uniprot:
+            continue
+        target_key = uniprot.upper() or gene
+        if target_key in seen_target_keys:
+            continue
+        seen_target_keys.add(target_key)
+        score = pd.to_numeric(target.get("association_score", target.get("Association_Score")), errors="coerce")
+        if pd.isna(score):
+            score = ""
+        cleaned.append({
+            "Disease": name,
+            "OpenTargets_ID": str(target.get("open_targets_id") or target.get("OpenTargets_ID") or "").strip()[:40],
+            "UniProt_ID": uniprot,
+            "Gene_Name": gene,
+            "Protein_Name": str(target.get("protein_name") or target.get("Protein_Name") or "").strip()[:200],
+            "Target_Evidence": "Open Targets" if target.get("association_score") is not None else "User selected",
+            "Target_Role": "Disease-associated target",
+            "Evidence_Note": "Target source: " + str(target.get("source") or "user selection") + "; plant score is an exploratory AI prediction.",
+            "Association_Score": score,
+            "Source": str(target.get("source") or "Open Targets / user").strip()[:80],
+            "Prediction_Status": "Pending",
+            "Prediction_Rows": 0
+        })
+    if not cleaned:
+        raise ValueError("Add at least one disease target before saving.")
+    current = _read_csv_or_empty(DISEASE_CATALOG_FILE)
+    if not current.empty and "Disease" in current.columns:
+        current = current[current["Disease"].map(_normalize_disease_name) != _normalize_disease_name(name)]
+    updated = pd.concat([current, pd.DataFrame(cleaned)], ignore_index=True)
+    os.makedirs(os.path.dirname(DISEASE_CATALOG_FILE), exist_ok=True)
+    _atomic_write_csv(updated, DISEASE_CATALOG_FILE, columns=DISEASE_CATALOG_COLUMNS)
+    return {"name": name, "targets": cleaned}
+
+
+def update_disease_pipeline_results(name, result):
+    current = _read_csv_or_empty(DISEASE_CATALOG_FILE)
+    if current.empty or "Disease" not in current.columns:
+        return
+    for column in DISEASE_CATALOG_COLUMNS:
+        if column not in current.columns:
+            current[column] = ""
+    normalized = _normalize_disease_name(name)
+    disease_mask = current["Disease"].map(_normalize_disease_name) == normalized
+    statuses = {}
+    for item in result.get("targets", []):
+        for key in (str(item.get("gene_symbol", "")).strip().upper(), str(item.get("uniprot_id", "")).strip().upper()):
+            if key:
+                statuses.setdefault(key, item)
+    if not statuses:
+        overall = str(result.get("status", "failed")).replace("_", " ").title()
+        current.loc[disease_mask, "Prediction_Status"] = overall
+        current.loc[disease_mask, "Prediction_Rows"] = 0
+    else:
+        for index in current.index[disease_mask]:
+            gene = str(current.at[index, "Gene_Name"] or "").strip().upper()
+            accession = str(current.at[index, "UniProt_ID"] or "").strip().upper()
+            status = statuses.get(gene) or statuses.get(accession)
+            if not status:
+                continue
+            if status.get("uniprot_id"):
+                current.at[index, "UniProt_ID"] = status["uniprot_id"]
+            if status.get("protein_name"):
+                current.at[index, "Protein_Name"] = status["protein_name"]
+            current.at[index, "Prediction_Status"] = str(status.get("status", "unknown")).replace("_", " ").title()
+            current.at[index, "Prediction_Rows"] = int(status.get("generated_rows", 0) or 0)
+    directory = os.path.dirname(DISEASE_CATALOG_FILE)
+    os.makedirs(directory, exist_ok=True)
+    _atomic_write_csv(current, DISEASE_CATALOG_FILE, columns=DISEASE_CATALOG_COLUMNS)
+
+
+def registered_disease_prediction_targets():
+    catalog = load_disease_catalog()
+    if catalog.empty:
+        return []
+    targets = {}
+    for _, row in catalog.iterrows():
+        gene_value = row.get("Gene_Name")
+        uniprot_value = row.get("UniProt_ID")
+        gene = "" if pd.isna(gene_value) else str(gene_value).strip().upper()
+        uniprot = "" if pd.isna(uniprot_value) else str(uniprot_value).strip()
+        key = uniprot.upper() or gene
+        if not key:
+            continue
+        targets.setdefault(key, {
+            "gene_symbol": gene,
+            "uniprot_id": uniprot,
+            "protein_name": "" if pd.isna(row.get("Protein_Name")) else str(row.get("Protein_Name")).strip(),
+        })
+    return list(targets.values())
+
+
+def generate_registered_disease_predictions_for_plant(plant_id):
+    targets = registered_disease_prediction_targets()
+    if not targets:
+        return {"status": "no_targets", "generated_rows": 0, "targets": []}
+    script = os.path.join(BASE_DIR, "src", "disease_prediction_pipeline.py")
+    completed = subprocess.run(
+        [sys.executable, script],
+        input=json.dumps({"plant_id": str(plant_id), "targets": targets}),
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        cwd=BASE_DIR,
+        timeout=105,
+        check=False,
+    )
+    result = json.loads(completed.stdout) if completed.stdout.strip() else {
+        "status": "failed",
+        "generated_rows": 0,
+        "targets": [],
+        "error": completed.stderr.strip()[-500:] or "Prediction process returned no result.",
+    }
+    if completed.returncode and result.get("status") not in {"partial", "no_targets_resolved", "resources_unavailable"}:
+        result.setdefault("status", "failed")
+    return result
+
+
+def new_plant_disease_prediction_notice(result):
+    status = str(result.get("status", "failed"))
+    count = int(result.get("generated_rows", 0) or 0)
+    if status == "complete":
+        return (
+            f"Generated {count:,} AI predictions for registered disease targets."
+            if count else "Registered disease target predictions are up to date."
         )
+    if status == "partial":
+        return f"Generated {count:,} AI predictions. Some registered disease targets could not be analyzed."
+    if status == "no_targets":
+        return "The plant was added, but no registered disease targets were available for analysis."
+    return "The plant was added, but AI predictions could not be generated for all registered diseases."
 
 
 DISEASE_TARGET_LIST = load_disease_target_list()
+
+
+def load_plant_target_predictions():
+    return _read_csv_or_empty(PLANT_AI_HUMAN_PREDICTION_FILE)
+
+
+def rank_plants_for_disease(disease, limit=5):
+    if _normalize_disease_name(disease) == _normalize_disease_name("Type 2 diabetes mellitus") and not T2D_PLANTS.empty:
+        ranked = T2D_PLANTS.copy()
+        if "Priority_Rank" in ranked.columns:
+            ranked = ranked.sort_values("Priority_Rank", ascending=True, na_position="last")
+        if "Mean_pChEMBL" in ranked.columns and "Mean_Predicted_pChEMBL" not in ranked.columns:
+            ranked["Mean_Predicted_pChEMBL"] = ranked["Mean_pChEMBL"]
+        plants = load_data()
+        if not plants.empty and "Plant_ID" in plants.columns:
+            names = plants[[column for column in ("Plant_ID", "Common_Name_KO", "English_Name", "Scientific_Name") if column in plants.columns]]
+            ranked = ranked.merge(names, on="Plant_ID", how="left", suffixes=("", "_plant"))
+            for column in ("Common_Name_KO", "English_Name", "Scientific_Name"):
+                plant_column = column + "_plant"
+                if plant_column in ranked.columns:
+                    if column in ranked.columns:
+                        ranked[column] = ranked[column].fillna(ranked[plant_column])
+                    else:
+                        ranked[column] = ranked[plant_column]
+                    ranked = ranked.drop(columns=[plant_column])
+        for column, default in (("Compound_Count", 0), ("Target_Count", 0), ("Common_Name_KO", ""), ("English_Name", "")):
+            if column not in ranked.columns:
+                ranked[column] = default
+        return ranked.head(max(0, int(limit))).to_dict(orient="records")
+    catalog = load_disease_catalog()
+    if catalog.empty:
+        return []
+    predictions = load_plant_target_predictions()
+    required = {"Plant_ID", "UniProt_ID", "Predicted_pChEMBL"}
+    if predictions.empty or not required.issubset(predictions.columns):
+        return []
+    matched = filter_predictions_for_disease(predictions, disease)
+    if matched.empty:
+        return []
+    matched["Predicted_pChEMBL"] = pd.to_numeric(matched["Predicted_pChEMBL"], errors="coerce")
+    matched = matched.dropna(subset=["Predicted_pChEMBL"])
+    if matched.empty:
+        return []
+    matched["_Compound_Key"] = compound_keys(matched).replace("", pd.NA)
+    matched["_Target_Key"] = matched["UniProt_ID"].fillna("").astype(str).str.strip()
+    if "Gene_Name" in matched.columns:
+        empty_target = matched["_Target_Key"] == ""
+        matched.loc[empty_target, "_Target_Key"] = matched.loc[empty_target, "Gene_Name"].fillna("").astype(str).str.strip().str.upper()
+    matched.loc[matched["_Target_Key"].isin(["", "nan", "None"]), "_Target_Key"] = pd.NA
+    names = [column for column in ("Common_Name_KO", "English_Name", "Scientific_Name") if column in matched.columns]
+    aggregations = {
+        "Max_pChEMBL": ("Predicted_pChEMBL", "max"),
+        "Mean_Predicted_pChEMBL": ("Predicted_pChEMBL", "mean"),
+        "Median_pChEMBL": ("Predicted_pChEMBL", "median"),
+        "Compound_Count": ("_Compound_Key", "nunique"),
+        "Target_Count": ("_Target_Key", "nunique")
+    }
+    aggregations.update({column: (column, "first") for column in names})
+    grouped = matched.groupby("Plant_ID", dropna=False).agg(**aggregations).reset_index()
+    grouped["Compound_Log"] = grouped["Compound_Count"].apply(math.log1p)
+    for column in ("Max_pChEMBL", "Mean_Predicted_pChEMBL", "Compound_Log"):
+        minimum = grouped[column].min()
+        maximum = grouped[column].max()
+        normalized_column = column + "_Normalized"
+        grouped[normalized_column] = 1.0 if maximum == minimum else (grouped[column] - minimum) / (maximum - minimum)
+    grouped["Compound_Evidence_Score"] = grouped["Compound_Log_Normalized"]
+    grouped["Raw_Priority_Score"] = (
+        grouped["Max_pChEMBL_Normalized"] * 0.30
+        + grouped["Mean_Predicted_pChEMBL_Normalized"] * 0.40
+        + grouped["Compound_Evidence_Score"] * 0.30
+    ) * 100
+    grouped["Reliability_Factor"] = (
+        grouped["Compound_Count"] / (grouped["Compound_Count"] + 10)
+    ) ** 0.5
+    grouped["Priority_Score"] = grouped["Raw_Priority_Score"] * grouped["Reliability_Factor"]
+    grouped["Compound_Evidence_Level"] = grouped["Compound_Count"].apply(
+        lambda count: "High" if count >= 30 else "Medium" if count >= 10 else "Low"
+    )
+    grouped["Reliability_Category"] = grouped["Compound_Count"].apply(
+        lambda count: "High" if count >= 30 else "Medium" if count >= 10 else "Low" if count >= 3 else "Very Low"
+    )
+    grouped = grouped.sort_values(["Priority_Score", "Mean_Predicted_pChEMBL", "Max_pChEMBL", "Plant_ID"], ascending=[False, False, False, True])
+    grouped["Priority_Rank"] = range(1, len(grouped) + 1)
+    return grouped.head(max(0, int(limit))).to_dict(orient="records")
+
+
+def get_disease_target_ids(disease):
+    catalog = load_disease_catalog()
+    if catalog.empty:
+        return set()
+    rows = catalog[catalog["Disease"].map(_normalize_disease_name) == _normalize_disease_name(disease)]
+    return set(rows["UniProt_ID"].dropna().astype(str).str.strip()) - {"", "nan", "None"}
+
+
+def get_disease_target_symbols(disease):
+    catalog = load_disease_catalog()
+    if catalog.empty:
+        return set()
+    rows = catalog[catalog["Disease"].map(_normalize_disease_name) == _normalize_disease_name(disease)]
+    return set(rows["Gene_Name"].dropna().astype(str).str.strip().str.upper()) - {"", "NAN", "NONE"}
+
+
+def filter_predictions_for_disease(predictions, disease):
+    if predictions.empty:
+        return predictions
+    mask = pd.Series(False, index=predictions.index)
+    target_ids = get_disease_target_ids(disease)
+    target_symbols = get_disease_target_symbols(disease)
+    if target_ids and "UniProt_ID" in predictions.columns:
+        mask |= predictions["UniProt_ID"].fillna("").astype(str).str.strip().isin(target_ids)
+    if target_symbols and "Gene_Name" in predictions.columns:
+        mask |= predictions["Gene_Name"].fillna("").astype(str).str.strip().str.upper().isin(target_symbols)
+    return predictions[mask].copy()
 
 
 # ============================================================
@@ -645,39 +1011,143 @@ def plant_name_resolve_api():
 
 
 # ============================================================
-# 질병 자동완성 검색
+# Disease lookup, registration, and autocomplete
 # ============================================================
 
-@app.route(
-    "/api/disease-search"
-)
+OPENTARGETS_GRAPHQL_URL = "https://api.platform.opentargets.org/api/v4/graphql"
+
+
+def _opentargets_graphql(query, variables):
+    body = json.dumps({"query": query, "variables": variables}).encode("utf-8")
+    req = Request(
+        OPENTARGETS_GRAPHQL_URL,
+        data=body,
+        headers={"Content-Type": "application/json", "Accept": "application/json"},
+        method="POST"
+    )
+    with urlopen(req, timeout=8) as response:
+        payload = json.loads(response.read().decode("utf-8"))
+    if payload.get("errors"):
+        raise ValueError("Open Targets returned a GraphQL error.")
+    return payload.get("data") or {}
+
+
+def lookup_disease_names(query):
+    graphql = """
+    query DiseaseSearch($queryString: String!) {
+      search(queryString: $queryString, entityNames: [\"disease\"]) {
+        hits { id name entity }
+      }
+    }
+    """
+    data = _opentargets_graphql(graphql, {"queryString": query})
+    hits = (data.get("search") or {}).get("hits") or []
+    return [
+        {"id": item.get("id", ""), "name": item.get("name", ""), "entity": item.get("entity", "disease")}
+        for item in hits[:10] if item.get("id") and item.get("name")
+    ]
+
+
+def lookup_disease_targets(disease_id):
+    graphql = """
+    query DiseaseTargets($efoId: String!) {
+      disease(efoId: $efoId) {
+        id name
+        associatedTargets(page: {index: 0, size: 20}) {
+          rows { score target { id approvedSymbol approvedName } }
+        }
+      }
+    }
+    """
+    data = _opentargets_graphql(graphql, {"efoId": disease_id})
+    disease = data.get("disease") or {}
+    rows = ((disease.get("associatedTargets") or {}).get("rows")) or []
+    targets = []
+    for row in rows[:20]:
+        target = row.get("target") or {}
+        gene = str(target.get("approvedSymbol") or "").strip()
+        if not gene:
+            continue
+        targets.append({
+            "gene_symbol": gene,
+            "uniprot_id": map_gene_to_uniprot(gene),
+            "protein_name": target.get("approvedName") or "",
+            "association_score": row.get("score"),
+            "open_targets_id": target.get("id", ""),
+            "source": "Open Targets"
+        })
+    return {"id": disease.get("id", disease_id), "name": disease.get("name", ""), "targets": targets}
+
+
+@app.route("/api/disease-lookup")
+def disease_lookup_api():
+    query = request.args.get("q", "").strip()
+    disease_id = request.args.get("disease_id", "").strip()
+    if disease_id and len(disease_id) > 80:
+        return jsonify({"error": "Invalid disease identifier."}), 400
+    try:
+        if disease_id:
+            return jsonify(lookup_disease_targets(disease_id))
+        if len(query) < 2 or len(query) > 120:
+            return jsonify([])
+        return jsonify(lookup_disease_names(query))
+    except (HTTPError, URLError, TimeoutError, ValueError, json.JSONDecodeError):
+        app.logger.exception("Open Targets disease lookup failed")
+        return jsonify({"error": "Disease target lookup is unavailable. Enter target gene symbols manually."}), 502
+
+
+@app.route("/api/diseases", methods=["POST"])
+def register_disease_api():
+    payload = request.get_json(silent=True) or {}
+    name = str(payload.get("name") or "").strip()
+    targets = payload.get("targets") or []
+    if not name or len(name) > 120 or not isinstance(targets, list) or len(targets) > 20:
+        return jsonify({"error": "Provide a disease name and no more than 20 targets."}), 400
+    try:
+        result = save_disease(name, targets)
+    except ValueError as error:
+        return jsonify({"error": str(error)}), 400
+    except OSError:
+        app.logger.exception("Disease registration failed for %r", name)
+        return jsonify({"error": "Disease could not be saved."}), 500
+    pipeline_result = {"status": "disabled", "generated_rows": 0, "targets": []}
+    if ENABLE_DISEASE_PREDICTIONS:
+        script = os.path.join(BASE_DIR, "src", "disease_prediction_pipeline.py")
+        try:
+            completed = subprocess.run(
+                [sys.executable, script],
+                input=json.dumps({"targets": result["targets"]}),
+                capture_output=True,
+                text=True,
+                encoding="utf-8",
+                cwd=BASE_DIR,
+                timeout=105,
+                check=False
+            )
+            pipeline_result = json.loads(completed.stdout) if completed.stdout.strip() else {
+                "status": "failed", "generated_rows": 0, "targets": [],
+                "error": completed.stderr.strip()[-500:] or "Prediction process returned no result."
+            }
+            if completed.returncode and pipeline_result.get("status") not in {"partial", "resources_unavailable", "no_targets_resolved"}:
+                pipeline_result.setdefault("status", "failed")
+        except subprocess.TimeoutExpired:
+            pipeline_result = {"status": "timeout", "generated_rows": 0, "targets": [], "error": "Prediction exceeded the 105-second request limit."}
+        except Exception as error:
+            app.logger.exception("Disease prediction failed for %r", name)
+            pipeline_result = {"status": "failed", "generated_rows": 0, "targets": [], "error": str(error)[:300]}
+        try:
+            update_disease_pipeline_results(name, pipeline_result)
+        except OSError:
+            app.logger.exception("Could not save disease prediction statuses for %r", name)
+    else:
+        pipeline_result["error"] = "Automatic disease predictions are disabled on this server."
+    result["prediction_pipeline"] = pipeline_result
+    return jsonify(result), 201
+
+
+@app.route("/api/disease-search")
 def disease_search_api():
-
-    keyword = request.args.get(
-        "q",
-        ""
-    ).strip().lower()
-
-
-    if not keyword:
-
-        return jsonify([])
-
-
-    disease_names = []
-
-    if not DISEASE_TARGET_LIST.empty and "Disease" in DISEASE_TARGET_LIST.columns:
-
-        disease_names = sorted(
-            DISEASE_TARGET_LIST["Disease"]
-            .dropna()
-            .astype(str)
-            .str.strip()
-            .unique()
-            .tolist()
-        )
-
-
+    keyword = request.args.get("q", "").strip().casefold()
     aliases = {
         "당뇨병": "Type 2 diabetes mellitus",
         "제2형 당뇨병": "Type 2 diabetes mellitus",
@@ -685,40 +1155,14 @@ def disease_search_api():
         "type 2 diabetes": "Type 2 diabetes mellitus",
         "type 2 diabetes mellitus": "Type 2 diabetes mellitus"
     }
-
-
-    results = []
-
-    for disease in disease_names:
-
-        disease_lower = disease.lower()
-
-        if keyword in disease_lower:
-
-            results.append({
-                "name": disease,
-                "display": disease
-            })
-
-
+    results = list_diseases()
+    if not keyword:
+        return jsonify(results)
+    results = [item for item in results if keyword in item["name"].casefold()]
     for alias, disease in aliases.items():
-
-        if keyword in alias.lower():
-
-            if not any(
-                item["name"] == disease
-                for item in results
-            ):
-
-                results.append({
-                    "name": disease,
-                    "display": alias
-                })
-
-
-    return jsonify(
-        results[:10]
-    )
+        if keyword in alias.casefold() and not any(item["name"] == disease for item in results):
+            results.append({"name": disease, "display": alias})
+    return jsonify(results[:10])
 
 
 # ============================================================
@@ -730,196 +1174,83 @@ def disease_search_api():
     methods=["GET"]
 )
 def disease_search():
-
-    keyword = request.args.get(
-        "disease",
-        ""
-    ).strip()
-
-
+    keyword = request.args.get("disease", "").strip()
+    catalog = load_disease_catalog()
+    aliases = {
+        "당뇨병": "Type 2 diabetes mellitus",
+        "제2형 당뇨병": "Type 2 diabetes mellitus",
+        "제 2형 당뇨병": "Type 2 diabetes mellitus",
+        "type 2 diabetes": "Type 2 diabetes mellitus",
+        "type 2 diabetes mellitus": "Type 2 diabetes mellitus"
+    }
+    normalized = aliases.get(keyword.casefold(), keyword)
     disease_name = ""
+    target_df = pd.DataFrame(columns=DISEASE_CATALOG_COLUMNS)
+    if keyword and not catalog.empty:
+        exact = catalog[catalog["Disease"].map(_normalize_disease_name) == _normalize_disease_name(normalized)]
+        if exact.empty:
+            exact = catalog[catalog["Disease"].astype(str).str.casefold().str.contains(normalized.casefold(), regex=False)]
+        if not exact.empty:
+            disease_name = str(exact.iloc[0]["Disease"])
+        target_df = exact.drop_duplicates(["UniProt_ID", "Gene_Name"]).copy()
 
-    target_df = pd.DataFrame()
+    targets = [
+        {
+            "Gene_Name": safe_value(row.get("Gene_Name")),
+            "UniProt_ID": safe_value(row.get("UniProt_ID")),
+            "Protein_Name": safe_value(row.get("Protein_Name")),
+            "Target_Evidence": safe_value(row.get("Target_Evidence")),
+            "Target_Role": safe_value(row.get("Target_Role")),
+            "Evidence_Note": safe_value(row.get("Evidence_Note")),
+            "Association_Score": safe_value(row.get("Association_Score")),
+            "Prediction_Status": safe_value(row.get("Prediction_Status")),
+            "Prediction_Rows": safe_value(row.get("Prediction_Rows"))
+        }
+        for _, row in target_df.iterrows()
+        if safe_value(row.get("Gene_Name")) or safe_value(row.get("UniProt_ID"))
+    ]
 
-
-    if not DISEASE_TARGET_LIST.empty and keyword:
-
-        if "Disease" in DISEASE_TARGET_LIST.columns:
-
-            disease_values = (
-                DISEASE_TARGET_LIST["Disease"]
-                .dropna()
-                .astype(str)
-                .str.strip()
-            )
-
-            # 현재 데이터의 영문 질병명과
-            # 사용자가 입력하기 쉬운 한글 이름을 함께 지원합니다.
-            keyword_lower = keyword.lower()
-
-            korean_aliases = {
-                "당뇨병": "Type 2 diabetes mellitus",
-                "제2형 당뇨병": "Type 2 diabetes mellitus",
-                "제 2형 당뇨병": "Type 2 diabetes mellitus",
-                "type 2 diabetes": "Type 2 diabetes mellitus",
-                "type 2 diabetes mellitus": "Type 2 diabetes mellitus"
-            }
-
-            normalized_keyword = korean_aliases.get(
-                keyword_lower,
-                keyword
-            )
-
-            matched = disease_values[
-                disease_values.str.lower()
-                == normalized_keyword.lower()
-            ]
-
-            if matched.empty:
-
-                matched = disease_values[
-                    disease_values.str.lower().str.contains(
-                        normalized_keyword.lower(),
-                        na=False
-                    )
-                ]
-
-
-            if not matched.empty:
-
-                disease_name = matched.iloc[0]
-
-                target_df = DISEASE_TARGET_LIST[
-                    DISEASE_TARGET_LIST["Disease"].astype(str).str.strip()
-                    == disease_name
-                ].copy()
-
-
-    targets = []
-
-    for _, row in target_df.iterrows():
-
-        targets.append({
-
-            "Gene_Name": safe_value(
-                row.get("Gene_Name")
-            ),
-
-            "UniProt_ID": safe_value(
-                row.get("UniProt_ID")
-            ),
-
-            "Protein_Name": safe_value(
-                row.get("Protein_Name")
-            ),
-
-            "Target_Evidence": safe_value(
-                row.get("Target_Evidence")
-            ),
-
-            "Target_Role": safe_value(
-                row.get("Target_Role")
-            ),
-
-            "Evidence_Note": safe_value(
-                row.get("Evidence_Note")
-            )
-
-        })
-
-
+    top_plants = rank_plants_for_disease(disease_name, 5) if disease_name else []
     candidates = []
+    predictions = load_plant_target_predictions()
+    if targets and not predictions.empty:
+        candidate_df = filter_predictions_for_disease(predictions, disease_name)
+        if "Predicted_pChEMBL" in candidate_df.columns:
+            candidate_df["Predicted_pChEMBL"] = pd.to_numeric(candidate_df["Predicted_pChEMBL"], errors="coerce")
+            candidate_df = candidate_df.sort_values("Predicted_pChEMBL", ascending=False, na_position="last")
+        for _, row in candidate_df.drop_duplicates([column for column in ("Plant_ID", "Compound_Name", "UniProt_ID") if column in candidate_df.columns]).head(20).iterrows():
+            candidates.append({column: safe_value(row.get(column)) for column in (
+                "Plant_ID", "Common_Name_KO", "English_Name", "Scientific_Name",
+                "Compound_Name", "ChEMBL_ID", "UniProt_ID", "Protein_Name", "Gene_Name", "Predicted_pChEMBL", "Prediction_Source"
+            )})
 
-    if (
-        disease_name
-        and not T2D_FULL_PREDICTIONS.empty
-        and "UniProt_ID" in T2D_FULL_PREDICTIONS.columns
-    ):
-
-        target_ids = set(
-            target_df["UniProt_ID"]
-            .dropna()
-            .astype(str)
+    pipeline_notice = ""
+    pipeline_state = request.args.get("pipeline", "")
+    generated_count = request.args.get("generated", "0")
+    try:
+        generated_count = max(0, min(int(generated_count), 10000000))
+    except (TypeError, ValueError):
+        generated_count = 0
+    if pipeline_state == "complete":
+        pipeline_notice = (
+            f"Generated {generated_count:,} AI prediction records for the selected disease targets."
+            if generated_count else "Prediction analysis finished. Existing target predictions were reused."
         )
-
-        candidate_df = T2D_FULL_PREDICTIONS[
-            T2D_FULL_PREDICTIONS["UniProt_ID"].astype(str)
-            .isin(target_ids)
-        ].copy()
-
-        if not candidate_df.empty:
-
-            candidate_df["Predicted_pChEMBL"] = pd.to_numeric(
-                candidate_df["Predicted_pChEMBL"],
-                errors="coerce"
-            )
-
-            candidate_df = candidate_df.sort_values(
-                "Predicted_pChEMBL",
-                ascending=False,
-                na_position="last"
-            )
-
-            plant_df = load_data()
-
-            if not plant_df.empty and "Plant_ID" in plant_df.columns:
-
-                plant_names = plant_df[[
-                    "Plant_ID",
-                    "Common_Name_KO",
-                    "English_Name",
-                    "Scientific_Name"
-                ]].copy()
-
-                candidate_df = candidate_df.merge(
-                    plant_names,
-                    on="Plant_ID",
-                    how="left"
-                )
-
-            seen = set()
-
-            for _, row in candidate_df.iterrows():
-
-                key = (
-                    str(row.get("Plant_ID", "")),
-                    str(row.get("Compound_Name", "")),
-                    str(row.get("UniProt_ID", ""))
-                )
-
-                if key in seen:
-                    continue
-
-                seen.add(key)
-
-                candidates.append({
-
-                    "Plant_ID": safe_value(row.get("Plant_ID")),
-                    "Common_Name_KO": safe_value(row.get("Common_Name_KO")),
-                    "English_Name": safe_value(row.get("English_Name")),
-                    "Scientific_Name": safe_value(row.get("Scientific_Name")),
-                    "Compound_Name": safe_value(row.get("Compound_Name")),
-                    "ChEMBL_ID": safe_value(row.get("ChEMBL_ID")),
-                    "UniProt_ID": safe_value(row.get("UniProt_ID")),
-                    "Protein_Name": safe_value(row.get("Protein_Name")),
-                    "Gene_Name": safe_value(row.get("Gene_Name")),
-                    "Predicted_pChEMBL": safe_value(row.get("Predicted_pChEMBL"))
-
-                })
-
-                if len(candidates) >= 20:
-                    break
-
+    elif pipeline_state == "partial":
+        pipeline_notice = f"Generated {generated_count:,} AI prediction records. Some targets could not be analyzed; see each target's status below."
+    elif pipeline_state in {"failed", "timeout", "resources_unavailable", "no_targets_resolved"}:
+        pipeline_notice = "The disease was saved, but automatic plant prediction could not finish. See target statuses below."
+    elif pipeline_state == "disabled":
+        pipeline_notice = "The disease was saved. Automatic plant prediction is disabled on this server."
 
     return render_template_string(
-
         DISEASE_HTML,
-
         disease_keyword=keyword,
         disease_name=disease_name,
         targets=targets,
-        candidates=candidates
-
+        top_plants=top_plants,
+        candidates=candidates,
+        pipeline_notice=pipeline_notice
     )
 
 
@@ -934,8 +1265,11 @@ def api_ai_detail(
     plant_id
 ):
 
-    # 최신 전체 T2D 예측 데이터를 사용합니다.
-    prediction_df = load_all_t2d_predictions()
+    disease = request.args.get("disease", "Type 2 diabetes mellitus").strip()
+    if disease == "Type 2 diabetes mellitus":
+        prediction_df = load_all_t2d_predictions()
+    else:
+        prediction_df = filter_predictions_for_disease(load_plant_target_predictions(), disease)
 
 
     if prediction_df.empty:
@@ -1216,8 +1550,11 @@ def api_ai_full(
     plant_id
 ):
 
-    # 최신 전체 T2D 예측 데이터를 사용합니다.
-    prediction_df = load_all_t2d_predictions()
+    disease = request.args.get("disease", "Type 2 diabetes mellitus").strip()
+    if disease == "Type 2 diabetes mellitus":
+        prediction_df = load_all_t2d_predictions()
+    else:
+        prediction_df = filter_predictions_for_disease(load_plant_target_predictions(), disease)
 
 
     if prediction_df.empty:
@@ -1380,11 +1717,8 @@ def api_ai_full(
 
 
     if "Compound_Name" in plant_df.columns:
-
-        compound_count = int(
-            plant_df["Compound_Name"]
-            .nunique()
-        )
+        plant_df["Compound_Key"] = compound_keys(plant_df)
+        compound_count = int(plant_df.loc[plant_df["Compound_Key"] != "", "Compound_Key"].nunique())
 
 
     if "UniProt_ID" in plant_df.columns:
@@ -1589,6 +1923,28 @@ DISEASE_HTML = r"""
         .score {
             font-weight: bold;
         }
+        .autocomplete {
+            display: none;
+            position: absolute;
+            z-index: 20;
+            width: min(100%, 700px);
+            max-height: 260px;
+            overflow-y: auto;
+            background: #fffaf0;
+            border: 1px solid #ded4bf;
+            border-radius: 8px;
+            box-shadow: 0 8px 22px rgba(30, 50, 32, .14);
+        }
+        .autocomplete-item, .lookup-item {
+            padding: 10px 12px;
+            cursor: pointer;
+            border-bottom: 1px solid #eee6d8;
+        }
+        .autocomplete-item:hover, .lookup-item:hover { background: #f3eddf; }
+        .search-input-wrap { position: relative; }
+        .target-choice { display: block; padding: 6px 0; }
+        .target-picker { max-height: 300px; overflow: auto; margin: 10px 0; }
+        .plant-link { color: #31543b; font-weight: bold; }
         @media (max-width: 700px) {
             .search-form {
                 flex-direction: column;
@@ -1613,10 +1969,13 @@ DISEASE_HTML = r"""
                 <div class="search-input-wrap">
                     <input
                         type="text"
+                        id="disease-search"
                         name="disease"
                         value="{{ disease_keyword }}"
                         placeholder="Enter a disease name (e.g., Type 2 Diabetes)"
+                        autocomplete="off"
                     >
+                    <div id="disease-autocomplete" class="autocomplete"></div>
                 </div>
                 <button type="submit">Search Disease</button>
             </form>
@@ -1625,9 +1984,37 @@ DISEASE_HTML = r"""
         {% if disease_name %}
         <div class="card">
             <h1>{{ disease_name }}</h1>
+            {% if pipeline_notice %}<p class="muted" role="status">{{ pipeline_notice }}</p>{% endif %}
             <div class="muted">
                 Displays disease-related targets and AI-predicted candidates currently available in the database.
             </div>
+        </div>
+
+        <div class="card">
+            <h2>Top 5 Candidate Plants</h2>
+            <div class="muted">Ranked by {{ disease_name }} Priority Score using target-linked prediction strength, compound coverage, and a data-volume reliability factor. This is a screening priority, not evidence of confirmed treatment effects.</div>
+            {% if top_plants %}
+            <table>
+                <thead><tr><th>Rank</th><th>Plant</th><th>Compound Count</th><th>Target Count</th><th>Maximum Predicted Value</th><th>Average Predicted Value</th><th>{{ disease_name }} Priority Score</th><th>Evidence Level</th><th>Reliability</th></tr></thead>
+                <tbody>
+                {% for plant in top_plants %}
+                <tr>
+                    <td>{{ plant.Priority_Rank }}</td>
+                    <td><a class="plant-link" href="/?plant={{ plant.Plant_ID|urlencode }}&disease={{ disease_name|urlencode }}">{{ plant.English_Name or plant.Scientific_Name or plant.Plant_ID }}</a><br><span class="muted">{{ plant.Scientific_Name or "" }}</span></td>
+                    <td>{{ plant.Compound_Count }}</td>
+                    <td>{{ plant.Target_Count }}</td>
+                    <td>{{ "%.3f"|format(plant.Max_pChEMBL|float) }}</td>
+                    <td>{% if disease_name == "Type 2 diabetes mellitus" %}{{ "%.3f"|format(plant.Mean_pChEMBL|float) }}{% else %}{{ "%.3f"|format(plant.Mean_Predicted_pChEMBL|float) }}{% endif %}</td>
+                    <td class="score">{{ "%.3f"|format(plant.Priority_Score|float) }}</td>
+                    <td>{{ plant.Compound_Evidence_Level or "-" }}</td>
+                    <td>{{ plant.Reliability_Category or "-" }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p class="muted">No existing plant compound predictions overlap the registered targets for this disease. The current plant and target prediction data do not provide a candidate match.</p>
+            {% endif %}
         </div>
 
         <div class="card">
@@ -1639,6 +2026,7 @@ DISEASE_HTML = r"""
                         <th>UniProt</th>
                         <th>Evidence</th>
                         <th>Target Role</th>
+                        <th>Prediction Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -1648,6 +2036,7 @@ DISEASE_HTML = r"""
                         <td>{{ target.UniProt_ID or "-" }}</td>
                         <td>{{ target.Target_Evidence or "-" }}</td>
                         <td>{{ target.Target_Role or "-" }}</td>
+                        <td>{{ target.Prediction_Status or "Not analyzed" }}{% if target.Prediction_Rows %}<br><span class="muted">{{ target.Prediction_Rows }} records</span>{% endif %}</td>
                     </tr>
                 {% endfor %}
                 </tbody>
@@ -1667,13 +2056,14 @@ DISEASE_HTML = r"""
                         <th>Compound</th>
                         <th>Target</th>
                         <th>AI-Predicted pChEMBL</th>
+                        <th>Prediction Source</th>
                     </tr>
                 </thead>
                 <tbody>
                 {% for candidate in candidates %}
                     <tr>
                         <td>
-                            {{ candidate.Common_Name_KO or "-" }}<br>
+                            {{ candidate.English_Name or candidate.Scientific_Name or "-" }}<br>
                             <span class="muted">{{ candidate.Scientific_Name or "-" }}</span>
                         </td>
                         <td>
@@ -1685,6 +2075,7 @@ DISEASE_HTML = r"""
                             <span class="muted">{{ candidate.Protein_Name or "-" }}</span>
                         </td>
                         <td class="score">{{ "%.3f"|format(candidate.Predicted_pChEMBL|float) }}</td>
+                        <td>{{ candidate.Prediction_Source or "Existing AI prediction" }}</td>
                     </tr>
                 {% endfor %}
                 </tbody>
@@ -1696,10 +2087,125 @@ DISEASE_HTML = r"""
         {% elif disease_keyword %}
         <div class="card">
             <h2>No Search Results</h2>
-            <p class="muted">Currently, Type 2 Diabetes is the primary disease connected in the database.</p>
+            <p class="muted">This disease is not registered yet. Look up disease targets, review them, and add the disease to analyze existing plant predictions.</p>
+            <button type="button" id="start-disease-registration">Add this disease</button>
+            <div id="disease-registration" style="display:none; margin-top:18px;">
+                <p id="lookup-status" class="muted"></p>
+                <div id="disease-candidates"></div>
+                <h3 id="target-heading" style="display:none;">Review associated targets</h3>
+                <div id="target-picker" class="target-picker"></div>
+                <label for="manual-targets">Add target gene symbols manually (comma separated)</label>
+                <input id="manual-targets" type="text" placeholder="e.g., IL6, TNF, PTGS2" style="margin:8px 0 12px;">
+                <button type="button" id="save-disease">Save disease and generate plant predictions</button>
+            </div>
         </div>
         {% endif %}
     </main>
+    <script>
+    (function() {
+        const search = document.getElementById('disease-search');
+        const suggestions = document.getElementById('disease-autocomplete');
+        let timer;
+        function showDiseases(items) {
+            suggestions.innerHTML = '';
+            if (!items || !items.length) { suggestions.style.display = 'none'; return; }
+            items.forEach(function(item) {
+                const row = document.createElement('div');
+                row.className = 'autocomplete-item';
+                row.textContent = item.display || item.name;
+                row.addEventListener('mousedown', function(event) {
+                    event.preventDefault(); search.value = item.name; search.closest('form').submit();
+                });
+                suggestions.appendChild(row);
+            });
+            suggestions.style.display = 'block';
+        }
+        if (search) {
+            search.addEventListener('focus', function() {
+                fetch('/api/disease-search?q=' + encodeURIComponent(search.value.trim()))
+                    .then(function(response) { return response.json(); }).then(showDiseases).catch(function() {});
+            });
+            search.addEventListener('input', function() {
+                clearTimeout(timer);
+                timer = setTimeout(function() {
+                    fetch('/api/disease-search?q=' + encodeURIComponent(search.value.trim()))
+                        .then(function(response) { return response.json(); }).then(showDiseases).catch(function() {});
+                }, 150);
+            });
+            document.addEventListener('click', function(event) {
+                if (!suggestions.contains(event.target) && event.target !== search) suggestions.style.display = 'none';
+            });
+        }
+
+        const start = document.getElementById('start-disease-registration');
+        const panel = document.getElementById('disease-registration');
+        if (!start) return;
+        const candidateList = document.getElementById('disease-candidates');
+        const targetPicker = document.getElementById('target-picker');
+        const targetHeading = document.getElementById('target-heading');
+        const status = document.getElementById('lookup-status');
+        const diseaseNameInput = search;
+        let selectedDisease = {name: diseaseNameInput.value.trim(), id: ''};
+        let selectedTargets = [];
+        function renderTargets(targets) {
+            selectedTargets = targets || [];
+            targetPicker.innerHTML = '';
+            targetHeading.style.display = selectedTargets.length ? 'block' : 'none';
+            selectedTargets.forEach(function(target, index) {
+                const label = document.createElement('label');
+                label.className = 'target-choice';
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox'; checkbox.checked = true; checkbox.dataset.index = index;
+                const info = document.createTextNode(' ' + (target.gene_symbol || 'Unknown') + ' — ' + (target.protein_name || '') + (target.uniprot_id ? ' (' + target.uniprot_id + ')' : ' — no local UniProt match') + (target.association_score != null ? ' · association ' + Number(target.association_score).toFixed(3) : ''));
+                label.appendChild(checkbox); label.appendChild(info); targetPicker.appendChild(label);
+            });
+        }
+        start.addEventListener('click', function() {
+            panel.style.display = 'block'; start.disabled = true;
+            status.textContent = 'Looking up disease candidates…';
+            fetch('/api/disease-lookup?q=' + encodeURIComponent(selectedDisease.name))
+                .then(function(response) { if (!response.ok) throw new Error('lookup'); return response.json(); })
+                .then(function(items) {
+                    candidateList.innerHTML = '';
+                    if (!items.length) { status.textContent = 'No matching disease found. Enter at least one target gene symbol below to analyze the existing plant data.'; return; }
+                    status.textContent = 'Select the matching disease to load its suggested targets.';
+                    items.forEach(function(item) {
+                        const button = document.createElement('button'); button.type = 'button'; button.className = 'lookup-item';
+                        button.textContent = item.name + ' (' + item.id + ')';
+                        button.addEventListener('click', function() {
+                            selectedDisease = {name: item.name, id: item.id};
+                            status.textContent = 'Loading target suggestions…'; candidateList.innerHTML = '';
+                            fetch('/api/disease-lookup?disease_id=' + encodeURIComponent(item.id))
+                                .then(function(response) { if (!response.ok) throw new Error('targets'); return response.json(); })
+                                .then(function(result) { selectedDisease.name = result.name || item.name; renderTargets(result.targets); status.textContent = selectedTargets.length ? 'Review or uncheck the suggested targets, then save.' : 'No target suggestions found. You can enter gene symbols manually.'; })
+                                .catch(function() { status.textContent = 'Target lookup is unavailable. Enter gene symbols manually.'; });
+                        });
+                        candidateList.appendChild(button);
+                    });
+                })
+                .catch(function() { status.textContent = 'Disease lookup is unavailable. Enter gene symbols manually.'; });
+        });
+        const saveButton = document.getElementById('save-disease');
+        saveButton.addEventListener('click', function() {
+            const checked = Array.from(targetPicker.querySelectorAll('input[type=checkbox]:checked'))
+                .map(function(box) { return selectedTargets[Number(box.dataset.index)]; });
+            const manual = document.getElementById('manual-targets').value.split(',').map(function(value) { return value.trim(); }).filter(Boolean);
+            manual.forEach(function(gene) { checked.push({gene_symbol: gene, source: 'User'}); });
+            const name = selectedDisease.name || diseaseNameInput.value.trim();
+            if (!name) { status.textContent = 'Enter a disease name first.'; return; }
+            saveButton.disabled = true;
+            status.textContent = 'Saving the disease and generating plant predictions. This may take a few minutes…';
+            fetch('/api/diseases', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({name:name, open_targets_id:selectedDisease.id, targets:checked})})
+                .then(function(response) { return response.json().then(function(data) { if (!response.ok) throw new Error(data.error || 'Could not save disease.'); return data; }); })
+                .then(function(data) {
+                    const pipeline = data.prediction_pipeline || {status:'failed', generated_rows:0};
+                    const params = new URLSearchParams({disease:data.name, pipeline:pipeline.status || 'failed', generated:String(pipeline.generated_rows || 0)});
+                    window.location.href = '/disease?' + params.toString();
+                })
+                .catch(function(error) { status.textContent = error.message; saveButton.disabled = false; });
+        });
+    })();
+    </script>
 </body>
 </html>
 """
@@ -1808,6 +2314,8 @@ body {
     line-height: 1.2;
 
     font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
 }
 
 
@@ -3190,7 +3698,7 @@ th {
 
     <div class="header-inner">
 
-        <div class="logo">GeoPharm</div>
+        <a class="logo" href="/" aria-label="GeoPharm home">GeoPharm</a>
 
         <div class="subtitle">
 
@@ -3291,6 +3799,9 @@ th {
 {% if pipeline_error %}
 <p class="notice" role="alert">{{ pipeline_error }}</p>
 {% endif %}
+{% if pipeline_notice %}
+<p class="notice" role="status">{{ pipeline_notice }}</p>
+{% endif %}
 
 
 <div class="search-box" style="margin-top:16px;">
@@ -3368,7 +3879,7 @@ th {
     <div class="card-header">
 
         <h2>
-            Diabetes-Related AI Analysis
+            {{ selected_disease }}-Related AI Analysis
         </h2>
 
         <p>
@@ -3426,14 +3937,26 @@ th {
          T2D Priority Score for the Selected Plant
          =================================================== -->
 
-    {% if selected_t2d_score %}
+    <form method="get" action="/" class="result-grid" style="margin:18px 0; align-items:end;">
+        <input type="hidden" name="plant" value="{{ plant.get('English_Name') or plant.get('Scientific_Name') or keyword }}">
+        <label class="result-box" for="disease-select">
+            <span class="result-label">Analysis disease</span>
+            <select id="disease-select" name="disease" onchange="this.form.submit()" style="width:100%; padding:10px; border:1px solid #ded4bf; border-radius:8px; background:#fffaf0; color:#31543b;">
+                {% for disease in disease_options %}
+                <option value="{{ disease.name }}" {% if disease.name == selected_disease %}selected{% endif %}>{{ disease.name }}</option>
+                {% endfor %}
+            </select>
+        </label>
+    </form>
+
+    {% if selected_disease == "Type 2 diabetes mellitus" and selected_t2d_score %}
 
     <div class="result-grid">
 
         <div class="result-box">
 
             <div class="result-label">
-                T2D Priority Score
+                {{ selected_disease }} Priority Score
             </div>
 
             <div class="result-value">
@@ -3521,10 +4044,19 @@ th {
 
     <div class="ai-detail-note">
 
-        <strong>About the T2D Priority Score:</strong>
-        This internal screening score compares candidate plants for Type 2 Diabetes. A higher score does not mean that therapeutic effects have been confirmed.
+        <strong>About the {{ selected_disease }} Priority Score:</strong>
+        This internal screening score ranks plants for the selected disease using prediction strength, compound coverage, and a data-volume reliability factor. It does not confirm therapeutic effects.
     </div>
 
+    {% elif selected_disease_score %}
+    <div class="result-grid">
+        <div class="result-box"><div class="result-label">{{ selected_disease }} Priority Score</div><div class="result-value">{{ "%.3f"|format(selected_disease_score.Priority_Score|float) }}</div></div>
+        <div class="result-box"><div class="result-label">Priority Rank</div><div class="result-value">Rank {{ selected_disease_score.Priority_Rank }}</div></div>
+        <div class="result-box"><div class="result-label">Evidence Level · Reliability</div><div class="result-value" style="font-size:17px;">{{ selected_disease_score.Compound_Evidence_Level }} · {{ selected_disease_score.Reliability_Category }}</div></div>
+    </div>
+    <div class="ai-detail-note"><strong>About the {{ selected_disease }} Priority Score:</strong> It combines normalized prediction strength and compound coverage, then adjusts for data volume. It does not confirm therapeutic effects.</div>
+    {% else %}
+    <p class="ai-detail-note">No plant predictions are linked to the selected disease targets yet.</p>
     {% endif %}
 
 
@@ -3535,7 +4067,7 @@ th {
     <div class="t2d-table-wrap">
 
 
-        {% if not T2D_PLANTS.empty %}
+        {% if selected_disease == "Type 2 diabetes mellitus" and not T2D_PLANTS.empty %}
 
 
         <table>
@@ -3569,7 +4101,7 @@ th {
                     </th>
 
                     <th>
-                        Priority Score
+                        {{ selected_disease }} Priority Score
                     </th>
 
                     <th>
@@ -3740,16 +4272,27 @@ th {
         </table>
 
 
+        {% elif disease_ranked_plants %}
+        <table>
+            <thead><tr><th>Rank</th><th>Plant</th><th>Compound Count</th><th>Target Count</th><th>Maximum Predicted Value</th><th>Average Predicted Value</th><th>{{ selected_disease }} Priority Score</th><th>Evidence Level</th><th>Reliability</th></tr></thead>
+            <tbody>
+            {% for row in disease_ranked_plants[:10] %}
+            <tr>
+                <td>{{ row.Priority_Rank }}</td>
+                <td>{{ row.English_Name or row.Scientific_Name or row.Plant_ID }}</td>
+                <td>{{ row.Compound_Count }}</td>
+                <td>{{ row.Target_Count }}</td>
+                <td>{{ "%.3f"|format(row.Max_pChEMBL|float) }}</td>
+                <td>{{ "%.3f"|format(row.Mean_Predicted_pChEMBL|float) }}</td>
+                <td>{{ "%.3f"|format(row.Priority_Score|float) }}</td>
+                <td>{{ row.Compound_Evidence_Level }}</td>
+                <td>{{ row.Reliability_Category }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
         {% else %}
-
-
-        <p>
-
-            T2D analysis data could not be found.
-
-        </p>
-
-
+        <p>No plant prediction data could be found for {{ selected_disease }}.</p>
         {% endif %}
 
 
@@ -3888,9 +4431,7 @@ All AI Candidate Compound Analysis
 
             <p>
 
-Compounds associated with this plant
-AI predictions for six diabetes-related targets per compound
-are available below.
+Compounds associated with this plant and AI predictions for targets related to {{ selected_disease }} are available below.
 
             </p>
 
@@ -4250,6 +4791,8 @@ const plantId =
         ""
     ) if plant else "")|tojson }};
 
+const selectedDisease = {{ selected_disease|tojson }};
+
 
 // ==========================================================
 // 자동완성
@@ -4434,12 +4977,13 @@ if (diseaseSearchInput) {
 
 
             if (keyword.length === 0) {
-
-                diseaseAutocomplete.style.display =
-                    "none";
-
+                diseaseSearchTimer = setTimeout(function() {
+                    fetch("/api/disease-search?q=")
+                        .then(function(response) { return response.json(); })
+                        .then(function(data) { showDiseaseSuggestions(data); })
+                        .catch(function() { diseaseAutocomplete.style.display = "none"; });
+                }, 100);
                 return;
-
             }
 
 
@@ -4478,6 +5022,24 @@ if (diseaseSearchInput) {
         }
     );
 
+}
+
+if (diseaseSearchInput) {
+    diseaseSearchInput.addEventListener("focus", function() {
+        fetch("/api/disease-search?q=" + encodeURIComponent(diseaseSearchInput.value.trim()))
+            .then(function(response) { return response.json(); })
+            .then(function(data) { showDiseaseSuggestions(data); })
+            .catch(function() {});
+    });
+}
+
+if (diseaseSearchInput) {
+    diseaseSearchInput.addEventListener("focus", function() {
+        fetch("/api/disease-search?q=" + encodeURIComponent(diseaseSearchInput.value.trim()))
+            .then(function(response) { return response.json(); })
+            .then(function(data) { showDiseaseSuggestions(data); })
+            .catch(function() {});
+    });
 }
 
 
@@ -4914,7 +5476,7 @@ function loadAIDetail() {
         "/api/ai-detail/" +
         encodeURIComponent(
             plantId
-        )
+        ) + "?disease=" + encodeURIComponent(selectedDisease || "Type 2 diabetes mellitus")
     )
 
     .then(
@@ -5096,7 +5658,7 @@ function loadFullAIData() {
         "/api/ai-full/" +
         encodeURIComponent(
             plantId
-        )
+        ) + "?disease=" + encodeURIComponent(selectedDisease || "Type 2 diabetes mellitus")
     )
 
     .then(
@@ -6471,12 +7033,28 @@ def index():
         ""
     ).strip()
 
+    disease_options = list_diseases()
+    selected_disease = request.args.get(
+        "disease",
+        "Type 2 diabetes mellitus"
+    ).strip()
+    available_diseases = {item["name"] for item in disease_options}
+    if selected_disease not in available_diseases:
+        selected_disease = "Type 2 diabetes mellitus" if "Type 2 diabetes mellitus" in available_diseases else (disease_options[0]["name"] if disease_options else "")
+
     plant = None
 
     name_candidates = []
 
     selected_t2d_score = None
+    selected_disease_score = None
+    disease_ranked_plants = (
+        rank_plants_for_disease(selected_disease, 10000)
+        if selected_disease and selected_disease != "Type 2 diabetes mellitus"
+        else []
+    )
     pipeline_error = ""
+    pipeline_notice = ""
 
 
     if keyword and plant is None:
@@ -6503,6 +7081,17 @@ def index():
 
             if plant_id:
                 T2D_PLANTS, T2D_TARGETS, T2D_CANDIDATES = load_t2d_data()
+                try:
+                    disease_result = generate_registered_disease_predictions_for_plant(plant_id)
+                    pipeline_notice = new_plant_disease_prediction_notice(disease_result)
+                except Exception:
+                    app.logger.exception("Registered-disease predictions failed for new plant %r", plant_id)
+                    pipeline_notice = new_plant_disease_prediction_notice({"status": "failed"})
+                disease_ranked_plants = (
+                    rank_plants_for_disease(selected_disease, 10000)
+                    if selected_disease and selected_disease != "Type 2 diabetes mellitus"
+                    else []
+                )
                 plant = {
                     "Plant_ID": plant_id,
                     "Common_Name_KO": "",
@@ -6570,6 +7159,17 @@ def index():
 
                  if plant_id:
                     T2D_PLANTS, T2D_TARGETS, T2D_CANDIDATES = load_t2d_data()
+                    try:
+                        disease_result = generate_registered_disease_predictions_for_plant(plant_id)
+                        pipeline_notice = new_plant_disease_prediction_notice(disease_result)
+                    except Exception:
+                        app.logger.exception("Registered-disease predictions failed for new plant %r", plant_id)
+                        pipeline_notice = new_plant_disease_prediction_notice({"status": "failed"})
+                    disease_ranked_plants = (
+                        rank_plants_for_disease(selected_disease, 10000)
+                        if selected_disease and selected_disease != "Type 2 diabetes mellitus"
+                        else []
+                    )
                     plant = {
                         "Plant_ID": plant_id,
                         "Common_Name_KO": "",
@@ -6583,6 +7183,8 @@ def index():
     # 검색한 Plant의 T2D 우선Rank 점수를 찾아서
     # 메인 화면에 표시합니다.
     if (
+        selected_disease == "Type 2 diabetes mellitus"
+        and
         plant
         and not T2D_PLANTS.empty
         and "Plant_ID" in T2D_PLANTS.columns
@@ -6606,6 +7208,13 @@ def index():
                 selected_rows.iloc[0].to_dict()
             )
 
+    if plant and selected_disease != "Type 2 diabetes mellitus":
+        plant_id = str(plant.get("Plant_ID", ""))
+        selected_disease_score = next(
+            (row for row in disease_ranked_plants if str(row.get("Plant_ID", "")) == plant_id),
+            None
+        )
+
 
     return render_template_string(
 
@@ -6620,6 +7229,7 @@ def index():
         pipeline_enabled=ENABLE_PLANT_PIPELINE,
 
         pipeline_error=pipeline_error,
+        pipeline_notice=pipeline_notice,
 
         disease_keyword="",
 
@@ -6629,7 +7239,11 @@ def index():
 
         T2D_CANDIDATES=T2D_CANDIDATES,
 
-        selected_t2d_score=selected_t2d_score
+        selected_t2d_score=selected_t2d_score,
+        disease_options=disease_options,
+        selected_disease=selected_disease,
+        selected_disease_score=selected_disease_score,
+        disease_ranked_plants=disease_ranked_plants
 
     )
 

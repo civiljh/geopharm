@@ -193,22 +193,26 @@ def find_registered_plant(english_name):
 
     df = pd.read_csv(PLANT_FILE)
 
-    if "English_Name" not in df.columns:
-        return None
-
     keyword = str(english_name).strip().lower()
 
     if not keyword:
         return None
 
-    matches = df[
-        df["English_Name"]
-        .fillna("")
-        .astype(str)
-        .str.strip()
-        .str.lower()
-        == keyword
+    search_columns = [
+        column for column in
+        ("Plant_ID", "English_Name", "Scientific_Name", "Common_Name_KO")
+        if column in df.columns
     ]
+    if not search_columns:
+        return None
+
+    matches = pd.Series(False, index=df.index)
+    for column in search_columns:
+        matches |= (
+            df[column].fillna("").astype(str).str.strip().str.lower()
+            == keyword
+        )
+    matches = df[matches]
 
     if matches.empty:
         return None

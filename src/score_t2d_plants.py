@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from pathlib import Path
+from compound_identity import compound_keys
 
 
 INPUT_FILE = Path(
@@ -14,6 +15,7 @@ OUTPUT_FILE = Path(
 
 print("Loading all T2D plant predictions...")
 df = pd.read_csv(INPUT_FILE)
+df["Compound_Key"] = compound_keys(df)
 
 
 # --------------------------------------------------
@@ -55,10 +57,7 @@ summary = (
         as_index=False,
     )
     .agg(
-        Compound_Count=(
-            "ChEMBL_ID",
-            "nunique",
-        ),
+        Compound_Count=("Compound_Key", "nunique"),
         Target_Count=(
             "UniProt_ID",
             "nunique",

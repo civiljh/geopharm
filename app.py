@@ -3784,6 +3784,23 @@ html.dark-mode .ai-detail-note {
     color: #d6e0d8 !important;
 }
 
+html.dark-mode #top-target-summary {
+    background: #303a32 !important;
+    border-color: #465348 !important;
+}
+
+html.dark-mode #top-target-summary > div:first-child {
+    color: #b9d9c0 !important;
+}
+
+html.dark-mode #top-target-summary > div:nth-child(2) {
+    color: #f1f5f1 !important;
+}
+
+html.dark-mode #top-target-summary > div:nth-child(3) {
+    color: #bdc9be !important;
+}
+
 html.dark-mode .theme-toggle {
     color: #e5ebe6 !important;
 }

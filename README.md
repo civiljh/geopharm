@@ -131,7 +131,37 @@ If an authenticated external service is added later, read its key from a local e
 
 ## Models, AI Use, and Limitations
 
-The repository contains RDKit-based molecular features, scikit-learn Random Forest training and prediction code, scripts using IC50 data and protein features, and precomputed candidate scores and results. The app displays precomputed prediction files to support candidate prioritization. This does not mean that a new large generative AI model was trained or that the results have been experimentally validated. No calls to an external generative AI service were found in the app code at the time this README was written. If generative AI or AI-assisted tools were used during development, disclose their actual scope and contribution in this section before final submission.
+The repository contains RDKit-based molecular features, scikit-learn Random Forest training and prediction code, scripts using IC50 data and protein features, and precomputed candidate scores and results. The app displays precomputed prediction files to support candidate prioritization. This does not mean that a new large generative AI model was trained or that the results have been experimentally validated. The prediction models in the repository are machine-learning models, not generative AI models. The development team's use of generative AI and AI-assisted tools is described below. These tools supported development work; no generative AI model is part of the app's deployed prediction pipeline.
+
+### AI Usage Disclosure
+
+#### 1. AI Tools Used
+
+We used **ChatGPT with the GitHub plugin connected** as our primary AI-assisted development tool throughout the development of GeoPharm. AI was incorporated into nearly every stage of development, including project planning, system architecture, coding, debugging, data processing, and feature development. OpenAI Codex was also used to help review the repository and draft and translate this README.
+
+#### 2. How We Used AI
+
+We used ChatGPT to support a wide range of development tasks:
+
+- **Project planning:** Exploring ideas, defining features, and designing the overall system architecture.
+- **Code development:** Generating Python code, improving existing code, and implementing new features.
+- **GitHub integration:** Connecting ChatGPT to our GitHub repository to work with project files and code.
+- **Debugging:** Investigating errors, understanding their causes, and finding possible solutions.
+- **Data processing:** Developing workflows for collecting, organizing, and connecting medicinal plant, compound, protein, and disease-related data.
+- **Feature improvement:** Reviewing existing implementations and planning improvements to the GeoPharm platform.
+
+#### 3. AI-Assisted Coding and Execution
+
+AI played an active role in the coding process. We worked with AI in two main ways:
+
+1. **Human-led coding:** ChatGPT suggested or generated code, which we reviewed, modified, and executed ourselves.
+2. **AI-assisted direct development:** We used ChatGPT with GitHub integration to help directly modify project code and carry out execution-related tasks.
+
+This allowed us to use AI not only as a source of information but also as an active development assistant.
+
+#### 4. Human Contribution and Responsibility
+
+Although AI contributed significantly to development, human involvement remained essential. We determined the project's goals and features, evaluated AI suggestions, reviewed changes, and made decisions about how the system should work. We also modified and executed code ourselves, checked results, and addressed problems that arose during development. AI-generated code and suggestions were not assumed to be correct; they required human review and validation.
 
 Predicted pChEMBL values and ranking scores are computational candidate-screening results. They do not demonstrate actual binding, in-vivo efficacy, safety, or clinical effect. Consider data bias and missingness, uncertainty in structure-to-target links, and model generalizability; further experiments and expert review are needed. Do not use this project for diagnosis, treatment decisions, or medical advice.
 
@@ -288,7 +318,37 @@ export GEOPHARM_ENABLE_PLANT_PIPELINE=true
 
 ## 모델, AI 사용 및 한계
 
-저장소에는 RDKit 기반 분자 특징, scikit-learn Random Forest 학습·예측 코드, IC50 자료 및 단백질 특징을 사용하는 스크립트, 사전 계산된 후보 점수와 결과 파일이 있습니다. 앱은 사전 계산된 예측 파일을 표시하고 우선순위 탐색을 돕습니다. 이는 새로 학습된 대규모 생성형 AI 모델이나 실험 검증 결과를 뜻하지 않습니다. 이 README 작성 시점에 외부 생성형 AI 서비스 호출은 앱 코드에서 확인되지 않았습니다. 개발 과정에서 생성형 AI 또는 AI 보조 도구를 사용했다면 실제 사용 범위와 기여를 최종 제출 전에 이 절에 구체적으로 공개하세요.
+저장소에는 RDKit 기반 분자 특징, scikit-learn Random Forest 학습·예측 코드, IC50 자료 및 단백질 특징을 사용하는 스크립트, 사전 계산된 후보 점수와 결과 파일이 있습니다. 앱은 사전 계산된 예측 파일을 표시하고 우선순위 탐색을 돕습니다. 이는 새로 학습된 대규모 생성형 AI 모델이나 실험 검증 결과를 뜻하지 않습니다. 저장소의 예측 모델은 머신러닝 모델이며 생성형 AI 모델은 아닙니다. 개발 과정에서 생성형 AI와 AI 보조 도구를 활용한 범위는 아래에 공개합니다. 이 도구들은 개발 작업을 보조했으며, 배포 앱의 예측 파이프라인에는 생성형 AI 모델이 포함되어 있지 않습니다.
+
+### AI 활용 공개
+
+#### 1. 사용한 AI 도구
+
+GeoPharm 개발 전반에서 GitHub 플러그인을 연결한 **ChatGPT**를 주요 AI 보조 개발 도구로 사용했습니다. 프로젝트 기획, 시스템 설계, 코딩, 디버깅, 데이터 처리, 기능 개발 등 개발의 거의 모든 단계에서 AI를 활용했습니다. OpenAI Codex도 저장소 검토와 이 README의 초안 작성 및 번역을 지원하는 데 사용했습니다.
+
+#### 2. AI 활용 방법
+
+ChatGPT는 다음과 같은 여러 개발 작업을 지원했습니다.
+
+- **프로젝트 기획:** 아이디어 탐색, 기능 정의, 전체 시스템 아키텍처 설계
+- **코드 개발:** Python 코드 생성, 기존 코드 개선, 새 기능 구현
+- **GitHub 연동:** GitHub 저장소에 ChatGPT를 연결해 프로젝트 파일과 코드를 다루는 작업
+- **디버깅:** 오류 조사, 원인 파악, 해결 방법 탐색
+- **데이터 처리:** 약용식물, 화합물, 단백질, 질병 관련 데이터를 수집·정리·연결하는 작업 흐름 개발
+- **기능 개선:** 기존 구현 검토 및 GeoPharm 플랫폼 개선 사항 계획
+
+#### 3. AI 보조 코딩 및 실행
+
+AI는 코딩 과정에 적극적으로 참여했습니다. 두 가지 주요 방식으로 AI를 활용했습니다.
+
+1. **사람 주도 코딩:** ChatGPT가 제안하거나 생성한 코드를 사람이 검토·수정한 뒤 직접 실행했습니다.
+2. **AI 보조 직접 개발:** GitHub 연동 ChatGPT를 이용해 프로젝트 코드를 직접 수정하고 실행 관련 작업을 지원받았습니다.
+
+이를 통해 AI를 정보 검색 수단뿐 아니라 개발을 돕는 능동적인 보조 도구로 활용했습니다.
+
+#### 4. 사람의 기여와 책임
+
+AI가 개발에 크게 기여했지만 사람의 참여는 필수적이었습니다. 프로젝트 목표와 기능을 정하고, AI 제안을 평가하고, 변경 사항을 검토하며, 시스템 동작 방식을 결정했습니다. 코드도 직접 수정·실행하고 결과를 확인했으며, 개발 중 발생한 문제를 해결했습니다. AI가 생성한 코드와 제안을 자동으로 정확하다고 간주하지 않았으며, 사람의 검토와 검증을 거쳤습니다.
 
 예측 pChEMBL 및 순위 점수는 계산상 후보 선별 결과입니다. 실제 결합, 생체 내 효능, 안전성 또는 임상 효과를 입증하지 않습니다. 데이터의 편향·누락, 구조와 표적 연결의 불확실성, 모델 일반화 성능을 고려하고 후속 실험과 전문가 검토가 필요합니다. 이 프로젝트를 진단·치료 결정이나 의료 조언에 사용하지 마세요.
 
@@ -308,6 +368,10 @@ export GEOPHARM_ENABLE_PLANT_PIPELINE=true
 ## 기여 및 개발 기록
 
 개발 시 목적이 분명한 브랜치와 설명적인 커밋 메시지를 사용하고, 의미 있는 변경 단위로 자주 커밋하는 방식을 권장합니다. 현재 저장소의 Git 이력과 팀 정보는 README만으로 검증할 수 없으므로, 해커톤 중 작성·수정한 부분과 기존 코드·라이브러리·자료를 구분해 제출 페이지 또는 별도 기여 기록에 공개하세요.
+
+## 라이선스
+
+프로젝트 자체의 라이선스와 포함 데이터의 개별 라이선스는 아직 이 README에서 확정하지 않았습니다. 재배포 조건을 확인한 뒤 저장소에 적절한 라이선스 파일과 데이터별 출처 정보를 추가하세요.
 
 ## 라이선스
 

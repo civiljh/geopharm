@@ -3761,10 +3761,27 @@ html.dark-mode .notice {
 
 html.dark-mode .search-form input,
 html.dark-mode .compound-selector select,
+html.dark-mode #disease-select,
 html.dark-mode .theme-toggle,
 html.dark-mode #analysis-loading > div {
     background-color: #171d19 !important;
     border-color: #465348 !important;
+}
+
+html.dark-mode #disease-select {
+    color: #e5ebe6 !important;
+    color-scheme: dark;
+}
+
+html.dark-mode #disease-select option {
+    background: #171d19;
+    color: #e5ebe6;
+}
+
+html.dark-mode .ai-detail-note {
+    background: #303a32 !important;
+    border-color: #465348 !important;
+    color: #d6e0d8 !important;
 }
 
 html.dark-mode .theme-toggle {

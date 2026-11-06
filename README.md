@@ -141,10 +141,10 @@ Connect the repository to Render to use the root `render.yaml` Blueprint configu
 
 ## Presentation and Submission Materials
 
-- Demo video (up to 10 minutes): **Add link before submission**
+- Demo video (up to 10 minutes): **(https://www.youtube.com/watch?v=kjiLTRrmioU)**
 - Presentation slides (up to 10 slides): **Add link before submission**
-- Devpost project page: **Add link before submission**
-- Public GitHub repository: **Add link after creating the public repository**
+- Devpost project page: **(https://geopharm.onrender.com/)**
+- Public GitHub repository: **(https://github.com/civiljh/makeathon-2026-geopharm-Natural-Products-and-Drug-Discovery)**
 
 Before submission, check repository visibility, team-member listing, the links above, and data licenses and sources. The EthnoHack rules also require a pitch video of no more than 10 minutes and a presentation of no more than 10 slides.
 
@@ -298,10 +298,10 @@ export GEOPHARM_ENABLE_PLANT_PIPELINE=true
 
 ## 발표 및 제출 자료
 
-- 데모 영상 (10분 이내): **제출 전 링크 추가**
+- 데모 영상 (10분 이내): **(https://www.youtube.com/watch?v=kjiLTRrmioU)**
 - 발표 자료 (10장 이내): **제출 전 링크 추가**
-- Devpost 프로젝트 페이지: **제출 전 링크 추가**
-- 공개 GitHub 저장소: **공개 저장소 생성 후 링크 추가**
+- Devpost 프로젝트 페이지: **(https://geopharm.onrender.com/)**
+- 공개 GitHub 저장소: **(https://github.com/civiljh/makeathon-2026-geopharm-Natural-Products-and-Drug-Discovery)**
 
 제출 전 저장소 공개 여부, 팀원 등록, 위 링크, 데이터 라이선스와 출처를 확인하세요. EthnoHack 룰북은 최대 10분 피치 영상과 최대 10장 발표 자료도 요구합니다.
 

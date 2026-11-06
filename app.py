@@ -904,15 +904,20 @@ def plant_search():
     ).strip().lower()
 
 
+    # The plant pipeline updates medicinal_plants.csv while the web process
+    # stays alive. Do not use the import-time snapshot here: it hides newly
+    # registered plants until the server is restarted.
+    plant_search_list = make_plant_search_list()
+
     if not keyword:
 
-        return jsonify(PLANT_SEARCH_LIST)
+        return jsonify(plant_search_list)
 
 
     matches = []
 
 
-    for plant in PLANT_SEARCH_LIST:
+    for plant in plant_search_list:
 
         values = [
 
@@ -5152,6 +5157,15 @@ function showDiseaseSuggestions(
         return;
     }
 
+    // A late response from the other search must not reopen its menu.
+    if (document.activeElement !== diseaseSearchInput) {
+        return;
+    }
+
+    if (autocomplete) {
+        autocomplete.style.display = "none";
+    }
+
 
     diseaseAutocomplete.innerHTML = "";
 
@@ -5292,26 +5306,26 @@ if (diseaseSearchInput) {
 
 if (diseaseSearchInput) {
     diseaseSearchInput.addEventListener("focus", function() {
+        if (autocomplete) autocomplete.style.display = "none";
         fetch("/api/disease-search?q=" + encodeURIComponent(diseaseSearchInput.value.trim()))
             .then(function(response) { return response.json(); })
             .then(function(data) { showDiseaseSuggestions(data); })
             .catch(function() {});
     });
 }
-
-if (diseaseSearchInput) {
-    diseaseSearchInput.addEventListener("focus", function() {
-        fetch("/api/disease-search?q=" + encodeURIComponent(diseaseSearchInput.value.trim()))
-            .then(function(response) { return response.json(); })
-            .then(function(data) { showDiseaseSuggestions(data); })
-            .catch(function() {});
-    });
-}
-
 
 function showSuggestions(
     plants
 ) {
+
+    // A late response from the disease search must not reopen its menu.
+    if (document.activeElement !== searchInput) {
+        return;
+    }
+
+    if (diseaseAutocomplete) {
+        diseaseAutocomplete.style.display = "none";
+    }
 
     autocomplete.innerHTML = "";
 
@@ -5548,6 +5562,10 @@ if (searchInput) {
     searchInput.addEventListener(
         "focus",
         function() {
+
+            if (diseaseAutocomplete) {
+                diseaseAutocomplete.style.display = "none";
+            }
 
             const keyword =
                 searchInput.value.trim();

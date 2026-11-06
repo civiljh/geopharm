@@ -690,7 +690,6 @@ def generate_registered_disease_predictions_for_plant(plant_id):
         text=True,
         encoding="utf-8",
         cwd=BASE_DIR,
-        timeout=105,
         check=False,
     )
     result = json.loads(completed.stdout) if completed.stdout.strip() else {
@@ -1121,7 +1120,6 @@ def register_disease_api():
                 text=True,
                 encoding="utf-8",
                 cwd=BASE_DIR,
-                timeout=105,
                 check=False
             )
             pipeline_result = json.loads(completed.stdout) if completed.stdout.strip() else {
@@ -1130,8 +1128,6 @@ def register_disease_api():
             }
             if completed.returncode and pipeline_result.get("status") not in {"partial", "resources_unavailable", "no_targets_resolved"}:
                 pipeline_result.setdefault("status", "failed")
-        except subprocess.TimeoutExpired:
-            pipeline_result = {"status": "timeout", "generated_rows": 0, "targets": [], "error": "Prediction exceeded the 105-second request limit."}
         except Exception as error:
             app.logger.exception("Disease prediction failed for %r", name)
             pipeline_result = {"status": "failed", "generated_rows": 0, "targets": [], "error": str(error)[:300]}

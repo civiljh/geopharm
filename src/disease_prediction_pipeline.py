@@ -33,6 +33,7 @@ PLANT_FILE = ROOT / "data" / "raw" / "medicinal_plants.csv"
 MODEL_FILE = DATA / "random_forest_ic50_protein.joblib"
 LOCK_FILE = DATA / ".disease_prediction.lock"
 PREDICTION_BATCH_SIZE = 256
+_LOCK_DESCRIPTOR = None
 
 AMINO_ACIDS = "ACDEFGHIKLMNPQRSTVWY"
 AMINO_GROUPS = {
@@ -59,31 +60,59 @@ def clean_text(value):
     return str(value).strip()
 
 
-def acquire_lock(timeout=20):
+def acquire_lock(timeout=1800):
+    """Serialize prediction writers with an OS lock that is released on process exit."""
+    global _LOCK_DESCRIPTOR
+    if _LOCK_DESCRIPTOR is not None:
+        raise RuntimeError("This process already holds the disease prediction lock.")
+    LOCK_FILE.parent.mkdir(parents=True, exist_ok=True)
+    descriptor = os.open(str(LOCK_FILE), os.O_CREAT | os.O_RDWR)
+    if os.name == "nt":
+        import msvcrt
+
+        if os.fstat(descriptor).st_size == 0:
+            os.write(descriptor, b"\0")
+    else:
+        import fcntl
+
     deadline = time.monotonic() + timeout
     while True:
         try:
-            descriptor = os.open(str(LOCK_FILE), os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+            if os.name == "nt":
+                os.lseek(descriptor, 0, os.SEEK_SET)
+                msvcrt.locking(descriptor, msvcrt.LK_NBLCK, 1)
+            else:
+                fcntl.flock(descriptor, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            os.ftruncate(descriptor, 0)
+            os.lseek(descriptor, 0, os.SEEK_SET)
             os.write(descriptor, str(os.getpid()).encode("ascii"))
-            os.close(descriptor)
+            _LOCK_DESCRIPTOR = descriptor
             return
-        except FileExistsError:
-            try:
-                if time.time() - LOCK_FILE.stat().st_mtime > 300:
-                    LOCK_FILE.unlink()
-                    continue
-            except FileNotFoundError:
-                continue
+        except (BlockingIOError, OSError):
             if time.monotonic() >= deadline:
+                os.close(descriptor)
                 raise TimeoutError("Another disease prediction job is still running.")
             time.sleep(0.25)
 
 
 def release_lock():
+    global _LOCK_DESCRIPTOR
+    if _LOCK_DESCRIPTOR is None:
+        return
+    descriptor = _LOCK_DESCRIPTOR
+    _LOCK_DESCRIPTOR = None
     try:
-        LOCK_FILE.unlink()
-    except FileNotFoundError:
-        pass
+        if os.name == "nt":
+            import msvcrt
+
+            os.lseek(descriptor, 0, os.SEEK_SET)
+            msvcrt.locking(descriptor, msvcrt.LK_UNLCK, 1)
+        else:
+            import fcntl
+
+            fcntl.flock(descriptor, fcntl.LOCK_UN)
+    finally:
+        os.close(descriptor)
 
 
 def atomic_write_csv(frame, path):

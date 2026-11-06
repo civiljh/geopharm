@@ -27,6 +27,7 @@ data/processed/external_plant_ai_prediction_ready.csv
 # 로그 및 임시 파일
 *.log
 *.tmp
+data/processed/.disease_prediction.lock
 
 # 운영체제 파일
 .DS_Store

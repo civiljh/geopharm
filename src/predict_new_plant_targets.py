@@ -234,6 +234,8 @@ result_cols = [
     "KNApSAcK_ID",
     "Compound_Name",
     "ChEMBL_ID",
+    "InChIKey",
+    "PubChem_CID",
     "UniProt_ID",
     "Predicted_pChEMBL",
 ]

@@ -2,6 +2,8 @@ import os
 import shutil
 import pandas as pd
 
+from compound_identity import compound_keys
+
 
 BASE_DIR = os.path.dirname(
     os.path.dirname(
@@ -137,6 +139,14 @@ def main():
 
     ]
 
+    identity_columns = ["InChIKey", "PubChem_CID"]
+    for column in identity_columns:
+        if column not in main_df.columns:
+            main_df[column] = ""
+        if column not in new_df.columns:
+            new_df[column] = ""
+    output_columns = required_columns + identity_columns
+
 
     missing_main = [
         column
@@ -178,14 +188,8 @@ def main():
     # 5. 컬럼 순서 통일
     # --------------------------------------------------------
 
-    main_df = main_df[
-        required_columns
-    ].copy()
-
-
-    new_df = new_df[
-        required_columns
-    ].copy()
+    main_df = main_df[output_columns].copy()
+    new_df = new_df[output_columns].copy()
 
 
     # --------------------------------------------------------
@@ -288,6 +292,8 @@ def main():
         ignore_index=True
     )
 
+    merged_df["Compound_Key"] = compound_keys(merged_df)
+
 
     # --------------------------------------------------------
     # 10. 완전 동일한 중복 행 제거
@@ -301,9 +307,10 @@ def main():
     merged_df = merged_df.drop_duplicates(
         subset=[
             "Plant_ID",
-            "ChEMBL_ID",
+            "Compound_Key",
             "UniProt_ID"
-        ]
+        ],
+        keep="last"
     ).reset_index(
         drop=True
     )

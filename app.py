@@ -1831,6 +1831,7 @@ DISEASE_HTML = r"""
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GeoPharm - Search Disease</title>
+    <script>try { if (localStorage.getItem('geopharm-theme') === 'dark') document.documentElement.classList.add('dark-mode'); } catch (error) {}</script>
     <style>
         body {
             margin: 0;
@@ -1839,9 +1840,22 @@ DISEASE_HTML = r"""
             color: #31543b;
         }
         .header {
+            position: relative;
             padding: 24px;
             background: #f7f0df;
             border-bottom: 1px solid #ded4bf;
+        }
+        .theme-toggle {
+            position: absolute;
+            top: 18px;
+            right: 24px;
+            padding: 9px 13px;
+            border: 1px solid #ded4bf;
+            border-radius: 9px;
+            background: #fffaf0;
+            color: #31543b;
+            font-weight: 700;
+            cursor: pointer;
         }
         .header-inner {
             max-width: 1400px;
@@ -1945,6 +1959,44 @@ DISEASE_HTML = r"""
         .target-choice { display: block; padding: 6px 0; }
         .target-picker { max-height: 300px; overflow: auto; margin: 10px 0; }
         .plant-link { color: #31543b; font-weight: bold; }
+        .disease-footer {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 22px 24px;
+            color: #788071;
+            font-size: 12px;
+            text-align: center;
+        }
+        .disease-footer-sources {
+            margin-top: 8px;
+            line-height: 1.8;
+        }
+        .disease-footer-sources a {
+            color: #788071;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+        .disease-footer-sources a:hover { color: #355e3b; }
+        html.dark-mode body { background: #171c19; color: #e5ebe6; }
+        html.dark-mode .header { background: #202722; border-color: #3b473e; }
+        html.dark-mode .disease-logo, html.dark-mode .header a { color: #b5d2bb; }
+        html.dark-mode .search-box, html.dark-mode .card,
+        html.dark-mode .autocomplete { background: #222a24; border-color: #3b473e; }
+        html.dark-mode .autocomplete-item, html.dark-mode .lookup-item {
+            background: #222a24;
+            color: #f1f5f1;
+            border-color: #455248;
+        }
+        html.dark-mode .autocomplete-item:hover, html.dark-mode .lookup-item:hover {
+            background: #3a5641;
+        }
+        html.dark-mode input, html.dark-mode select,
+        html.dark-mode .theme-toggle { background: #171d19; color: #e5ebe6; border-color: #465348; }
+        html.dark-mode button:not(.theme-toggle) { background: #4d7c59; color: #fff; }
+        html.dark-mode th { background: #303a32; color: #dce8de; }
+        html.dark-mode td { border-color: #3b473e; }
+        html.dark-mode .muted, html.dark-mode .disease-footer,
+        html.dark-mode .disease-footer-sources a { color: #aab6ad; }
         @media (max-width: 700px) {
             .search-form {
                 flex-direction: column;
@@ -1957,6 +2009,7 @@ DISEASE_HTML = r"""
 </head>
 <body>
     <header class="header">
+        <button class="theme-toggle" type="button" aria-pressed="false">Dark</button>
         <div class="header-inner">
             <a class="disease-logo" href="/" aria-label="GeoPharm home">GeoPharm</a>
             <div class="muted">Disease → Targets → Candidate Compounds → Candidate Plants</div>
@@ -2101,6 +2154,40 @@ DISEASE_HTML = r"""
         </div>
         {% endif %}
     </main>
+    <footer class="disease-footer">
+        GeoPharm · Medicinal Plant Analysis Platform
+        <div class="disease-footer-sources">
+            Data sources:
+            <a href="https://www.knapsackfamily.com/" target="_blank" rel="noopener noreferrer">KNApSAcK</a> ·
+            <a href="https://pubchem.ncbi.nlm.nih.gov/" target="_blank" rel="noopener noreferrer">PubChem</a> ·
+            <a href="https://www.ebi.ac.uk/chembl/" target="_blank" rel="noopener noreferrer">ChEMBL</a> ·
+            <a href="https://www.bindingdb.org/" target="_blank" rel="noopener noreferrer">BindingDB</a> ·
+            <a href="https://www.uniprot.org/" target="_blank" rel="noopener noreferrer">UniProt</a> ·
+            <a href="https://platform.opentargets.org/" target="_blank" rel="noopener noreferrer">Open Targets</a> ·
+            <a href="https://www.gbif.org/" target="_blank" rel="noopener noreferrer">GBIF</a> ·
+            <a href="https://www.inaturalist.org/" target="_blank" rel="noopener noreferrer">iNaturalist</a> ·
+            <a href="https://www.esri.com/" target="_blank" rel="noopener noreferrer">Esri</a>
+        </div>
+    </footer>
+    <script>
+    (function() {
+        const root = document.documentElement;
+        const toggle = document.querySelector('.theme-toggle');
+        let savedTheme = 'light';
+        try { savedTheme = localStorage.getItem('geopharm-theme') || 'light'; } catch (error) {}
+        function applyTheme(dark) {
+            root.classList.toggle('dark-mode', dark);
+            toggle.setAttribute('aria-pressed', String(dark));
+            toggle.textContent = dark ? 'Light' : 'Dark';
+        }
+        applyTheme(savedTheme === 'dark');
+        toggle.addEventListener('click', function() {
+            const dark = !root.classList.contains('dark-mode');
+            try { localStorage.setItem('geopharm-theme', dark ? 'dark' : 'light'); } catch (error) {}
+            applyTheme(dark);
+        });
+    })();
+    </script>
     <script>
     (function() {
         const search = document.getElementById('disease-search');
@@ -2227,6 +2314,8 @@ HTML = r"""
 
 <title>GeoPharm</title>
 
+<script>try { if (localStorage.getItem('geopharm-theme') === 'dark') document.documentElement.classList.add('dark-mode'); } catch (error) {}</script>
+
 
 <!-- Leaflet -->
 
@@ -2281,6 +2370,8 @@ body {
 
 .header {
 
+    position: relative;
+
     width: 100%;
 
     background: #f7f0df;
@@ -2294,6 +2385,20 @@ body {
     border-bottom:
         1px solid
         #ded4bf;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 18px;
+    right: 30px;
+    padding: 9px 13px;
+    border: 1px solid #ded4bf;
+    border-radius: 9px;
+    background: #fffaf0;
+    color: #31543b;
+    font-weight: 700;
+    cursor: pointer;
+    z-index: 10;
 }
 
 
@@ -3523,6 +3628,27 @@ th {
     text-align: center;
 }
 
+.footer-sources {
+
+    margin-top: 10px;
+
+    line-height: 1.8;
+}
+
+.footer-sources a {
+
+    color: #788071;
+
+    text-decoration: underline;
+
+    text-underline-offset: 2px;
+}
+
+.footer-sources a:hover {
+
+    color: #355e3b;
+}
+
 
 /* =========================================================
    모바일
@@ -3580,6 +3706,99 @@ th {
         width: 95%;
     }
 
+}
+
+html.dark-mode body {
+    background: #171c19;
+    color: #e5ebe6;
+}
+
+html.dark-mode body * {
+    color: #e5ebe6 !important;
+}
+
+html.dark-mode .header,
+html.dark-mode .card,
+html.dark-mode .search-box,
+html.dark-mode .ai-detail,
+html.dark-mode .full-ai-section,
+html.dark-mode .autocomplete,
+html.dark-mode .selected-compound,
+html.dark-mode .full-ai-stat,
+html.dark-mode .map-legend {
+    background-color: #222a24 !important;
+    border-color: #3b473e !important;
+}
+
+html.dark-mode .autocomplete-item {
+    background: #222a24 !important;
+    color: #f1f5f1 !important;
+    border-color: #455248 !important;
+}
+
+html.dark-mode .autocomplete-item:hover {
+    background: #3a5641 !important;
+}
+
+html.dark-mode .autocomplete-ko {
+    color: #f1f5f1 !important;
+}
+
+html.dark-mode .autocomplete-sub {
+    color: #bdc9be !important;
+}
+
+html.dark-mode .result-box,
+html.dark-mode .ai-detail-header,
+html.dark-mode .full-ai-header,
+html.dark-mode .target-table th,
+html.dark-mode th,
+html.dark-mode .evidence-badge,
+html.dark-mode .notice {
+    background-color: #303a32 !important;
+    border-color: #465348 !important;
+}
+
+html.dark-mode .search-form input,
+html.dark-mode .compound-selector select,
+html.dark-mode .theme-toggle,
+html.dark-mode #analysis-loading > div {
+    background-color: #171d19 !important;
+    border-color: #465348 !important;
+}
+
+html.dark-mode .theme-toggle {
+    color: #e5ebe6 !important;
+}
+
+html.dark-mode .search-form button,
+html.dark-mode .detail-button {
+    background: #4d7c59;
+}
+
+html.dark-mode .search-form button:hover,
+html.dark-mode .detail-button:hover {
+    background: #5c9169;
+}
+
+html.dark-mode td,
+html.dark-mode .card-header,
+html.dark-mode .map-footer,
+html.dark-mode .target-table th,
+html.dark-mode .target-table td {
+    border-color: #3b473e;
+}
+
+@media (max-width: 700px) {
+    .theme-toggle {
+        top: 14px;
+        right: 14px;
+        padding: 8px 10px;
+    }
+
+    .logo {
+        font-size: 38px;
+    }
 }
 </style>
 
@@ -3695,6 +3914,8 @@ th {
      ======================================================= -->
 
 <header class="header">
+
+    <button class="theme-toggle" type="button" aria-pressed="false">Dark</button>
 
     <div class="header-inner">
 
@@ -4758,6 +4979,21 @@ Loading AI data...
 <footer class="footer">
 
     GeoPharm · Medicinal Plant Analysis Platform
+
+    <div class="footer-sources">
+
+        Data sources:
+        <a href="https://www.knapsackfamily.com/" target="_blank" rel="noopener noreferrer">KNApSAcK</a> ·
+        <a href="https://pubchem.ncbi.nlm.nih.gov/" target="_blank" rel="noopener noreferrer">PubChem</a> ·
+        <a href="https://www.ebi.ac.uk/chembl/" target="_blank" rel="noopener noreferrer">ChEMBL</a> ·
+        <a href="https://www.bindingdb.org/" target="_blank" rel="noopener noreferrer">BindingDB</a> ·
+        <a href="https://www.uniprot.org/" target="_blank" rel="noopener noreferrer">UniProt</a> ·
+        <a href="https://platform.opentargets.org/" target="_blank" rel="noopener noreferrer">Open Targets</a> ·
+        <a href="https://www.gbif.org/" target="_blank" rel="noopener noreferrer">GBIF</a> ·
+        <a href="https://www.inaturalist.org/" target="_blank" rel="noopener noreferrer">iNaturalist</a> ·
+        <a href="https://www.esri.com/" target="_blank" rel="noopener noreferrer">Esri</a>
+
+    </div>
 
 </footer>
 
@@ -7001,6 +7237,26 @@ loadFullAIData();
 
 {% endif %}
 
+</script>
+
+<script>
+(function() {
+    const root = document.documentElement;
+    const toggle = document.querySelector('.theme-toggle');
+    let savedTheme = 'light';
+    try { savedTheme = localStorage.getItem('geopharm-theme') || 'light'; } catch (error) {}
+    function applyTheme(dark) {
+        root.classList.toggle('dark-mode', dark);
+        toggle.setAttribute('aria-pressed', String(dark));
+        toggle.textContent = dark ? 'Light' : 'Dark';
+    }
+    applyTheme(savedTheme === 'dark');
+    toggle.addEventListener('click', function() {
+        const dark = !root.classList.contains('dark-mode');
+        try { localStorage.setItem('geopharm-theme', dark ? 'dark' : 'light'); } catch (error) {}
+        applyTheme(dark);
+    });
+})();
 </script>
 
 

@@ -81,7 +81,7 @@ $env:GEOPHARM_ENABLE_PLANT_PIPELINE = "true"
 ```
 
 ```bash
-export GEOPHARM_ENABLE_PLANT_PIPELINE=true
+export GEOPHARM_ENABLE_PLANT_PIPELINE= "true"
 ```
 
 Then start the server using the command above. This flow makes requests to external services and can create or update local data files, so enable it only in a development environment where those changes are acceptable. No separate API token is required by the code currently inspected. Check each service's terms and request limits.
@@ -271,7 +271,7 @@ $env:GEOPHARM_ENABLE_PLANT_PIPELINE = "true"
 ```
 
 ```bash
-export GEOPHARM_ENABLE_PLANT_PIPELINE=true
+export GEOPHARM_ENABLE_PLANT_PIPELINE= "true"
 ```
 
 그 후 위 실행 명령으로 서버를 시작합니다. 이 흐름은 외부 서비스에 요청하고 로컬 데이터 파일을 생성·갱신할 수 있으므로, 쓰기 권한이 있는 개발 환경에서만 활성화하세요. 별도의 API 토큰이 필요한 구성은 현재 코드에서 확인되지 않았습니다. 외부 서비스의 이용 조건이나 요청 제한은 서비스별로 확인해야 합니다.

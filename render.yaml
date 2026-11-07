@@ -9,6 +9,6 @@ services:
       - key: PYTHON_VERSION
         value: 3.12.8
       - key: GEOPHARM_ENABLE_PLANT_PIPELINE
-        value: "false"
+        value: "ture"
       - key: GEOPHARM_ENABLE_DISEASE_PREDICTIONS
-        value: "false"
+        value: "ture"

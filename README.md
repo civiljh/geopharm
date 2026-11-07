@@ -184,7 +184,9 @@ Use purpose-specific branches and descriptive commit messages, and make frequent
 
 ## License
 
-The license for the project itself and the individual licenses for included data have not yet been confirmed in this README. Check redistribution terms, then add an appropriate license file and data-source information to the repository.
+Copyrightable source code authored by GeoPharm project contributors is released under the **MIT License**; see [`LICENSE`](LICENSE). This license does not cover third-party code or services, datasets and other files in `data/`, trained model files or prediction results, the logo and other media, or third-party names and marks. Those materials remain subject to their respective owners' terms and licenses.
+
+Data in `data/` may have different terms at the dataset or record level. Follow the source-specific license and attribution requirements listed by the provider. For any included data or asset whose source and reuse terms have not been verified, no permission to reuse or redistribute it is granted by this project; obtain permission or confirm the applicable terms before reuse. Python packages and browser-loaded libraries are separately licensed by their respective authors. See [Data and External Services](#data-and-external-services) for source links.
 
 ---
 
@@ -371,8 +373,6 @@ AI가 개발에 크게 기여했지만 사람의 참여는 필수적이었습니
 
 ## 라이선스
 
-프로젝트 자체의 라이선스와 포함 데이터의 개별 라이선스는 아직 이 README에서 확정하지 않았습니다. 재배포 조건을 확인한 뒤 저장소에 적절한 라이선스 파일과 데이터별 출처 정보를 추가하세요.
+GeoPharm 프로젝트 참여자가 작성한 저작권 보호 대상 소스 코드는 **MIT License**로 공개합니다. 자세한 내용은 [`LICENSE`](LICENSE)를 확인하세요. 이 라이선스는 외부 코드·서비스, `data/`의 데이터셋과 기타 파일, 학습된 모델 파일과 예측 결과, 로고 및 기타 미디어, 제3자의 이름과 상표에는 적용되지 않습니다. 해당 자료는 각 권리자와 제공자가 정한 조건 및 라이선스를 따릅니다.
 
-## 라이선스
-
-프로젝트 자체의 라이선스와 포함 데이터의 개별 라이선스는 아직 이 README에서 확정하지 않았습니다. 재배포 조건을 확인한 뒤 저장소에 적절한 라이선스 파일과 데이터별 출처 정보를 추가하세요.
+`data/`의 자료는 데이터셋 또는 개별 레코드별로 이용 조건이 다를 수 있습니다. 제공자가 명시한 라이선스와 출처 표시 요건을 따라야 합니다. 출처와 재사용 조건을 확인하지 못한 데이터나 자료에 대해서는 이 프로젝트가 재사용 또는 재배포 권한을 부여하지 않습니다. 사용 전에 권리자 허가를 받거나 적용되는 이용 조건을 확인하세요. Python 패키지와 브라우저에서 불러오는 라이브러리도 각각의 저작자가 정한 별도 라이선스를 따릅니다. 출처 링크는 README의 **데이터·외부 서비스 및 출처** 절을 참고하세요.
